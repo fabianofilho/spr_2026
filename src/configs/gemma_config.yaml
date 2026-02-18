@@ -1,0 +1,54 @@
+# GEMMA 3 Model Configuration
+# Google's latest LLM - uses LoRA/QLoRA for efficient fine-tuning
+
+model:
+  name: "google/gemma-3-4b-it"  # Instruction-tuned version
+  max_length: 2048  # Gemma supports longer context
+  pooling: null
+  
+# Alternative Gemma models:
+# - "google/gemma-3-1b-it"   # Smaller, faster
+# - "google/gemma-3-12b-it"  # Larger, more capable
+# - "google/gemma-2-9b-it"   # Previous generation
+
+training:
+  batch_size: 2  # Lower batch size for large models
+  learning_rate: 2e-4  # Higher LR for LoRA
+  num_epochs: 3
+  gradient_accumulation_steps: 8
+  fp16: true
+  
+# LoRA/QLoRA settings for efficient fine-tuning
+lora:
+  enabled: true
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+  
+# Quantization settings
+quantization:
+  enabled: true
+  bits: 4  # 4-bit quantization (QLoRA)
+  bnb_4bit_compute_dtype: "float16"
+  bnb_4bit_quant_type: "nf4"
+  
+# Prompt template for instruction-tuned model
+prompt:
+  system: |
+    Você é um assistente especializado em radiologia mamária. 
+    Analise o relatório de mamografia e classifique-o na categoria BI-RADS apropriada (0-6).
+  template: |
+    <bos><start_of_turn>user
+    Classifique este relatório de mamografia na categoria BI-RADS (0-6):
+    
+    {report}
+    <end_of_turn>
+    <start_of_turn>model
