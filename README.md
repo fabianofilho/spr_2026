@@ -37,6 +37,7 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 | 07 | DeBERTa | mDeBERTa V3 | **** | 1.5h |
 | 08 | SBERT | Sentence Transformers | ** | 15 min |
 | 09 | Ensemble | Combinação | * | 1 min |
+| 10 | Custom Transformer | Encoder + Extra Self-Attention | *** | 40 min |
 
 ## Estrutura
 
