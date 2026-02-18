@@ -59,3 +59,8 @@ Thumbs.db
 # Kaggle
 *.json
 !src/configs/*.yaml
+
+# Environment secrets
+.env
+secrets/
+kaggle.json
