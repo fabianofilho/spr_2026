@@ -28,6 +28,9 @@ ENV/
 # Jupyter Notebook
 .ipynb_checkpoints/
 
+# Notebook com credenciais (NÃO COMMITAR)
+notebooks/00_download_data.ipynb
+
 # Data files
 data/*.csv
 data/*.zip
