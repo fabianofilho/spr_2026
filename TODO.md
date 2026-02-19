@@ -1,16 +1,28 @@
 ﻿# SPR 2026 - TODO
 
+## Leaderboard (Public Score)
+
+| Rank | Modelo | Score | Status |
+|------|--------|-------|--------|
+| 1 | TF-IDF + SGDClassifier | **0.75019** | ✅ Submetido |
+| 2 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
+| 3 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 4 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 5 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+
+---
+
 ## Estrutura de Modelos
 
 ### 1. TF-IDF (8 notebooks) ✅
-- [x] LogisticRegression baseline
-- [x] LightGBM + SVD
+- [x] LogisticRegression baseline → 0.72935
+- [x] LightGBM + SVD → 0.70273
 - [x] XGBoost
-- [x] CatBoost
+- [x] CatBoost → 0.48202
 - [x] LinearSVC
-- [x] SGDClassifier
-- [x] TabPFN
-- [x] SVD + XGBoost
+- [x] SGDClassifier → **0.75019** 🏆
+- [x] TabPFN ⚠️ (requer internet)
+- [x] SVD + XGBoost → 0.66897
 
 ### 2. Word2Vec (7 notebooks) ✅
 - [x] Word2Vec + LightGBM
