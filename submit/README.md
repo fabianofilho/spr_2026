@@ -17,7 +17,8 @@ submit/
 ├── transformers/             # Fine-tuned Transformers
 │   ├── submit_bertimbau.ipynb       # BERTimbau ⏳
 │   ├── submit_distilbert.ipynb      # DistilBERT ⏳
-│   └── submit_deberta.ipynb         # DeBERTa ⏳
+│   ├── submit_deberta.ipynb         # DeBERTa ⏳
+│   └── submit_custom_transformer.ipynb # Custom Transformer ⏳
 ├── sentence_transformers/    # SBERT Embeddings + ML
 │   └── submit_sbert.ipynb           # SBERT + Logistic ⏳
 └── ensemble/                 # Combinações
@@ -53,6 +54,7 @@ submit/
 | `submit_bertimbau.ipynb` | BERTimbau | - | `neuralmind/bert-base-portuguese-cased` |
 | `submit_distilbert.ipynb` | DistilBERT | - | `distilbert-base-multilingual-cased` |
 | `submit_deberta.ipynb` | mDeBERTa | - | `microsoft/mdeberta-v3-base` |
+| `submit_custom_transformer.ipynb` | Custom Encoder | - | `neuralmind/bert-base-portuguese-cased` (tokenizer) |
 
 ### 4. Sentence Transformers (`sentence_transformers/`)
 

@@ -47,14 +47,15 @@
 
 ### 3. Transformers Fine-tuned
 
-| Data       | Modelo              | Score   | Status       | Notebook                             |
-|------------|---------------------|---------|--------------|--------------------------------------|
-| -          | BERTimbau-base      | -       | ⏳ Pendente  | transformers/submit_bertimbau.ipynb  |
-| -          | BERTimbau-large     | -       | ⏳ A criar   | -                                    |
-| -          | DistilBERT          | -       | ⏳ Pendente  | transformers/submit_distilbert.ipynb |
-| -          | mBERT               | -       | ⏳ A criar   | -                                    |
-| -          | DeBERTa-v3          | -       | ⏳ Pendente  | transformers/submit_deberta.ipynb    |
-| -          | XLM-RoBERTa         | -       | ⏳ A criar   | -                                    |
+| Data       | Modelo              | Score   | Status       | Notebook                                     |
+|------------|---------------------|---------|--------------|----------------------------------------------|
+| -          | BERTimbau-base      | -       | ⏳ Pendente  | transformers/submit_bertimbau.ipynb          |
+| -          | BERTimbau-large     | -       | ⏳ A criar   | -                                            |
+| -          | DistilBERT          | -       | ⏳ Pendente  | transformers/submit_distilbert.ipynb         |
+| -          | mBERT               | -       | ⏳ A criar   | -                                            |
+| -          | DeBERTa-v3          | -       | ⏳ Pendente  | transformers/submit_deberta.ipynb            |
+| -          | XLM-RoBERTa         | -       | ⏳ A criar   | -                                            |
+| -          | Custom Transformer  | -       | ⏳ Pendente  | transformers/submit_custom_transformer.ipynb |
 
 **Experimentos pendentes Transformers:**
 - [ ] Learning rate tuning (1e-5, 2e-5, 3e-5, 5e-5)
