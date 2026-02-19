@@ -17,12 +17,12 @@
 ### 1. TF-IDF (8 notebooks)
 - [x] LogisticRegression baseline → 0.72935 `submit/tfidf/submit_tfidf.ipynb`
 - [x] LightGBM + SVD → 0.70273 `submit/tfidf/submit_tfidf_lgbm.ipynb`
-- [ ] XGBoost → `submit/tfidf/submit_tfidf_xgboost.ipynb`
 - [x] CatBoost → 0.48202 `submit/tfidf/submit_tfidf_catboost.ipynb`
-- [ ] LinearSVC → `submit/tfidf/submit_tfidf_linearsvc.ipynb`
 - [x] SGDClassifier → **0.75019** 🏆 `submit/tfidf/submit_tfidf_sgd.ipynb`
-- [ ] TabPFN ⚠️ (requer internet) → `submit/tfidf/submit_tfidf_tabpfn.ipynb`
 - [x] SVD + XGBoost → 0.66897 `submit/tfidf/submit_tfidf_svd_xgboost.ipynb`
+- [ ] XGBoost → `submit/tfidf/submit_tfidf_xgboost.ipynb`
+- [ ] LinearSVC → `submit/tfidf/submit_tfidf_linearsvc.ipynb`
+- [ ] TabPFN v0.1.9 ✅ (offline) → `submit/tfidf/submit_tfidf_tabpfn.ipynb`
 
 ### 2. Word2Vec (7 notebooks)
 - [ ] Word2Vec + LightGBM → `submit/word2vec/submit_word2vec.ipynb`
