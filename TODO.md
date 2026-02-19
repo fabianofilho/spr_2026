@@ -1,0 +1,60 @@
+﻿# SPR 2026 - TODO
+
+## Leaderboard (Public Score)
+
+| Rank | Modelo | Score | Status |
+|------|--------|-------|--------|
+| 1 | TF-IDF + SGDClassifier | **0.75019** | ✅ Submetido |
+| 2 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
+| 3 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 4 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 5 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+
+---
+
+## Estrutura de Modelos
+
+### 1. TF-IDF (8 notebooks)
+- [x] LogisticRegression baseline → 0.72935 `submit/tfidf/submit_tfidf.ipynb`
+- [x] LightGBM + SVD → 0.70273 `submit/tfidf/submit_tfidf_lgbm.ipynb`
+- [x] CatBoost → 0.48202 `submit/tfidf/submit_tfidf_catboost.ipynb`
+- [x] SGDClassifier → **0.75019** 🏆 `submit/tfidf/submit_tfidf_sgd.ipynb`
+- [x] SVD + XGBoost → 0.66897 `submit/tfidf/submit_tfidf_svd_xgboost.ipynb`
+- [ ] XGBoost → `submit/tfidf/submit_tfidf_xgboost.ipynb`
+- [ ] LinearSVC → `submit/tfidf/submit_tfidf_linearsvc.ipynb`
+- [ ] TabPFN v0.1.9 ✅ (offline) → `submit/tfidf/submit_tfidf_tabpfn.ipynb`
+
+### 2. Word2Vec (7 notebooks)
+- [ ] Word2Vec + LightGBM → `submit/word2vec/submit_word2vec.ipynb`
+- [ ] Word2Vec + SVM → `submit/word2vec/submit_word2vec_svm.ipynb`
+- [ ] Word2Vec + XGBoost → `submit/word2vec/submit_word2vec_xgboost.ipynb`
+- [ ] FastText + LogReg → `submit/word2vec/submit_fasttext.ipynb`
+- [ ] MaxPool (Mean+Max 200D) → `submit/word2vec/submit_word2vec_maxpool.ipynb`
+- [ ] TF-IDF Weighted → `submit/word2vec/submit_word2vec_tfidf_weighted.ipynb`
+- [ ] NILC pretrained → `submit/word2vec/submit_word2vec_nilc.ipynb`
+
+### 3. Transformers (9 notebooks)
+- [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
+- [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
+- [ ] BERTimbau + LoRA → `submit/transformers/submit_bertimbau_lora.ipynb`
+- [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
+- [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
+- [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb`
+- [ ] DistilBERT → `submit/transformers/submit_distilbert.ipynb`
+- [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
+- [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
+
+### 4. Sentence Transformers (1 notebook)
+- [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb`
+
+### 5. Ensemble (3 notebooks)
+- [ ] TF-IDF + W2V voting → `submit/ensemble/submit_ensemble.ipynb`
+- [ ] VotingClassifier soft → `submit/ensemble/submit_ensemble_voting.ipynb`
+- [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb`
+
+## Workflows (Excalidraw) ✅
+- [x] 1_tfidf_pipeline.excalidraw
+- [x] 2_word2vec_pipeline.excalidraw
+- [x] 3_transformers_pipeline.excalidraw
+- [x] 4_sentence_transformers_pipeline.excalidraw
+- [x] 5_ensemble_pipeline.excalidraw
