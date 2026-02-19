@@ -2,18 +2,71 @@
 
 Notebooks prontos para submissão no Kaggle **sem acesso à internet**.
 
-## Notebooks Disponíveis
+## 📁 Estrutura por Categoria
 
-| Notebook | Estratégia | Requer Dataset Externo? |
-|----------|------------|-------------------------|
-| `submit_tfidf.ipynb` | TF-IDF + Logistic Regression | Não |
-| `submit_tfidf_lgbm.ipynb` | TF-IDF + LightGBM | Não |
-| `submit_word2vec.ipynb` | Word2Vec + LightGBM | Não |
-| `submit_ensemble.ipynb` | Ensemble (TF-IDF + W2V) | Não |
-| `submit_bertimbau.ipynb` | BERTimbau (fine-tuning) | Sim |
-| `submit_distilbert.ipynb` | DistilBERT Multilingual | Sim |
-| `submit_deberta.ipynb` | mDeBERTa V3 | Sim |
-| `submit_sbert.ipynb` | Sentence Transformers | Sim |
+```
+submit/
+├── tfidf/                    # TF-IDF + Classificadores ML
+│   ├── submit_tfidf.ipynb           # Logistic Regression ✅ 0.72935
+│   ├── submit_tfidf_lgbm.ipynb      # LightGBM ✅ 0.70273
+│   ├── submit_tfidf_xgboost.ipynb   # XGBoost ⏳
+│   ├── submit_tfidf_catboost.ipynb  # CatBoost ⏳
+│   └── submit_tfidf_tabpfn.ipynb    # TabPFN ⏳
+├── word2vec/                 # Word2Vec Embeddings
+│   └── submit_word2vec.ipynb        # Word2Vec + ML ⏳
+├── transformers/             # Fine-tuned Transformers
+│   ├── submit_bertimbau.ipynb       # BERTimbau ⏳
+│   ├── submit_distilbert.ipynb      # DistilBERT ⏳
+│   └── submit_deberta.ipynb         # DeBERTa ⏳
+├── sentence_transformers/    # SBERT Embeddings + ML
+│   └── submit_sbert.ipynb           # SBERT + Logistic ⏳
+└── ensemble/                 # Combinações
+    └── submit_ensemble.ipynb        # Voting/Stacking ⏳
+```
+
+**Legenda:** ✅ Submetido | ⏳ Pendente
+
+---
+
+## Notebooks por Categoria
+
+### 1. TF-IDF (`tfidf/`)
+
+| Notebook | Classificador | Score | Requer Dataset Externo? |
+|----------|---------------|-------|-------------------------|
+| `submit_tfidf.ipynb` | Logistic Regression | 0.72935 | Não |
+| `submit_tfidf_lgbm.ipynb` | LightGBM | 0.70273 | Não |
+| `submit_tfidf_xgboost.ipynb` | XGBoost | - | Não |
+| `submit_tfidf_catboost.ipynb` | CatBoost | - | Não |
+| `submit_tfidf_tabpfn.ipynb` | TabPFN | - | Sim (TabPFN v2 Weights) |
+
+### 2. Word2Vec (`word2vec/`)
+
+| Notebook | Classificador | Score | Requer Dataset Externo? |
+|----------|---------------|-------|-------------------------|
+| `submit_word2vec.ipynb` | LightGBM | - | Não |
+
+### 3. Transformers (`transformers/`)
+
+| Notebook | Modelo | Score | Dataset Externo |
+|----------|--------|-------|-----------------|
+| `submit_bertimbau.ipynb` | BERTimbau | - | `neuralmind/bert-base-portuguese-cased` |
+| `submit_distilbert.ipynb` | DistilBERT | - | `distilbert-base-multilingual-cased` |
+| `submit_deberta.ipynb` | mDeBERTa | - | `microsoft/mdeberta-v3-base` |
+
+### 4. Sentence Transformers (`sentence_transformers/`)
+
+| Notebook | Modelo | Score | Dataset Externo |
+|----------|--------|-------|-----------------|
+| `submit_sbert.ipynb` | SBERT + Logistic | - | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
+
+### 5. Ensemble (`ensemble/`)
+
+| Notebook | Método | Score | Requer Dataset Externo? |
+|----------|--------|-------|-------------------------|
+| `submit_ensemble.ipynb` | Voting | - | Depende dos modelos |
+
+---
 
 ## Como Submeter no Kaggle
 

@@ -8,17 +8,17 @@
 
 ### 1. TF-IDF (Bag of Words)
 
-| Data       | Classificador       | Score   | Status       | Notebook                   |
-|------------|---------------------|---------|--------------|----------------------------|
-| 2025-02-19 | Logistic Regression | 0.72935 | ✅ Submetido | submit_tfidf.ipynb         |
-| 2025-02-19 | LightGBM            | 0.70273 | ✅ Submetido | submit_tfidf_lgbm.ipynb    |
-| -          | XGBoost             | -       | ⏳ Pendente  | submit_tfidf_xgboost.ipynb |
-| -          | CatBoost            | -       | ⏳ Pendente  | submit_tfidf_catboost.ipynb|
-| -          | TabPFN              | -       | ⏳ Pendente  | submit_tfidf_tabpfn.ipynb  |
-| -          | LinearSVC           | -       | ⏳ A criar   | -                          |
-| -          | SGDClassifier       | -       | ⏳ A criar   | -                          |
-| -          | NaiveBayes          | -       | ⏳ A criar   | -                          |
-| -          | RandomForest        | -       | ⏳ A criar   | -                          |
+| Data       | Classificador       | Score   | Status       | Notebook                         |
+|------------|---------------------|---------|--------------|----------------------------------|
+| 2025-02-19 | Logistic Regression | 0.72935 | ✅ Submetido | tfidf/submit_tfidf.ipynb         |
+| 2025-02-19 | LightGBM            | 0.70273 | ✅ Submetido | tfidf/submit_tfidf_lgbm.ipynb    |
+| -          | XGBoost             | -       | ⏳ Pendente  | tfidf/submit_tfidf_xgboost.ipynb |
+| -          | CatBoost            | -       | ⏳ Pendente  | tfidf/submit_tfidf_catboost.ipynb|
+| -          | TabPFN              | -       | ⏳ Pendente  | tfidf/submit_tfidf_tabpfn.ipynb  |
+| -          | LinearSVC           | -       | ⏳ A criar   | -                                |
+| -          | SGDClassifier       | -       | ⏳ A criar   | -                                |
+| -          | NaiveBayes          | -       | ⏳ A criar   | -                                |
+| -          | RandomForest        | -       | ⏳ A criar   | -                                |
 
 **Experimentos pendentes TF-IDF:**
 - [ ] Testar diferentes `max_features` (5k, 10k, 20k, 30k)
@@ -31,10 +31,10 @@
 
 ### 2. Word2Vec / Embeddings Estáticos
 
-| Data       | Classificador       | Score   | Status       | Notebook                  |
-|------------|---------------------|---------|--------------|---------------------------|
-| -          | Logistic Regression | -       | ⏳ Pendente  | submit_word2vec.ipynb     |
-| -          | LightGBM            | -       | ⏳ A criar   | -                         |
+| Data       | Classificador       | Score   | Status       | Notebook                        |
+|------------|---------------------|---------|--------------|----------------------------------|
+| -          | Logistic Regression | -       | ⏳ Pendente  | word2vec/submit_word2vec.ipynb  |
+| -          | LightGBM            | -       | ⏳ A criar   | -                                |
 
 **Experimentos pendentes Word2Vec:**
 - [ ] Testar diferentes `vector_size` (100, 200, 300)
@@ -47,14 +47,14 @@
 
 ### 3. Transformers Fine-tuned
 
-| Data       | Modelo              | Score   | Status       | Notebook                  |
-|------------|---------------------|---------|--------------|---------------------------|
-| -          | BERTimbau-base      | -       | ⏳ Pendente  | submit_bertimbau.ipynb    |
-| -          | BERTimbau-large     | -       | ⏳ A criar   | -                         |
-| -          | DistilBERT          | -       | ⏳ Pendente  | submit_distilbert.ipynb   |
-| -          | mBERT               | -       | ⏳ A criar   | -                         |
-| -          | DeBERTa-v3          | -       | ⏳ Pendente  | submit_deberta.ipynb      |
-| -          | XLM-RoBERTa         | -       | ⏳ A criar   | -                         |
+| Data       | Modelo              | Score   | Status       | Notebook                             |
+|------------|---------------------|---------|--------------|--------------------------------------|
+| -          | BERTimbau-base      | -       | ⏳ Pendente  | transformers/submit_bertimbau.ipynb  |
+| -          | BERTimbau-large     | -       | ⏳ A criar   | -                                    |
+| -          | DistilBERT          | -       | ⏳ Pendente  | transformers/submit_distilbert.ipynb |
+| -          | mBERT               | -       | ⏳ A criar   | -                                    |
+| -          | DeBERTa-v3          | -       | ⏳ Pendente  | transformers/submit_deberta.ipynb    |
+| -          | XLM-RoBERTa         | -       | ⏳ A criar   | -                                    |
 
 **Experimentos pendentes Transformers:**
 - [ ] Learning rate tuning (1e-5, 2e-5, 3e-5, 5e-5)
@@ -69,13 +69,13 @@
 
 ### 4. Sentence Transformers (Embeddings → ML)
 
-| Data       | Modelo + Classificador | Score   | Status       | Notebook               |
-|------------|------------------------|---------|--------------|------------------------|
-| -          | SBERT + Logistic       | -       | ⏳ Pendente  | submit_sbert.ipynb     |
-| -          | SBERT + LightGBM       | -       | ⏳ A criar   | -                      |
-| -          | SBERT + XGBoost        | -       | ⏳ A criar   | -                      |
-| -          | SBERT + CatBoost       | -       | ⏳ A criar   | -                      |
-| -          | SBERT + TabPFN         | -       | ⏳ A criar   | -                      |
+| Data       | Modelo + Classificador | Score   | Status       | Notebook                                   |
+|------------|------------------------|---------|--------------|--------------------------------------------|
+| -          | SBERT + Logistic       | -       | ⏳ Pendente  | sentence_transformers/submit_sbert.ipynb   |
+| -          | SBERT + LightGBM       | -       | ⏳ A criar   | -                                          |
+| -          | SBERT + XGBoost        | -       | ⏳ A criar   | -                                          |
+| -          | SBERT + CatBoost       | -       | ⏳ A criar   | -                                          |
+| -          | SBERT + TabPFN         | -       | ⏳ A criar   | -                                          |
 
 **Modelos SBERT a testar:**
 - [ ] `neuralmind/bert-base-portuguese-cased` (sentence embeddings)
@@ -87,11 +87,11 @@
 
 ### 5. Ensemble
 
-| Data       | Método              | Score   | Status       | Notebook                 |
-|------------|---------------------|---------|--------------|--------------------------|
-| -          | Voting (Soft)       | -       | ⏳ Pendente  | submit_ensemble.ipynb    |
-| -          | Stacking            | -       | ⏳ A criar   | -                        |
-| -          | Blending            | -       | ⏳ A criar   | -                        |
+| Data       | Método              | Score   | Status       | Notebook                        |
+|------------|---------------------|---------|--------------|----------------------------------|
+| -          | Voting (Soft)       | -       | ⏳ Pendente  | ensemble/submit_ensemble.ipynb  |
+| -          | Stacking            | -       | ⏳ A criar   | -                                |
+| -          | Blending            | -       | ⏳ A criar   | -                                |
 
 **Experimentos pendentes Ensemble:**
 - [ ] Voting: TF-IDF + SBERT + BERT
