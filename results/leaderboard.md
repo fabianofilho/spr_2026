@@ -31,39 +31,46 @@
 
 ### 2. Word2Vec / Embeddings Estáticos
 
-| Data       | Classificador       | Score   | Status       | Notebook                        |
-|------------|---------------------|---------|--------------|----------------------------------|
-| -          | Logistic Regression | -       | ⏳ Pendente  | word2vec/submit_word2vec.ipynb  |
-| -          | LightGBM            | -       | ⏳ A criar   | -                                |
+| Data       | Modelo + Classificador     | Score   | Status       | Notebook                                 |
+|------------|----------------------------|---------|--------------|------------------------------------------|
+| -          | W2V + LightGBM             | -       | ⏳ Pendente  | word2vec/submit_word2vec.ipynb           |
+| -          | W2V + SVM (RBF)            | -       | ⏳ Pendente  | word2vec/submit_word2vec_svm.ipynb       |
+| -          | W2V + XGBoost              | -       | ⏳ Pendente  | word2vec/submit_word2vec_xgboost.ipynb   |
+| -          | FastText + LogReg          | -       | ⏳ Pendente  | word2vec/submit_fasttext.ipynb           |
+| -          | W2V + Max/Mean Pool        | -       | ⏳ Pendente  | word2vec/submit_word2vec_maxpool.ipynb   |
+| -          | W2V + TF-IDF Weighted      | -       | ⏳ Pendente  | word2vec/submit_word2vec_tfidf_weighted.ipynb |
+| -          | W2V NILC (pre-trained)     | -       | ⏳ Pendente  | word2vec/submit_word2vec_nilc.ipynb      |
 
 **Experimentos pendentes Word2Vec:**
 - [ ] Testar diferentes `vector_size` (100, 200, 300)
 - [ ] Testar diferentes `window` (3, 5, 7, 10)
-- [ ] Usar pesos TF-IDF na média dos embeddings
-- [ ] Testar FastText (subword)
+- [x] Usar pesos TF-IDF na média dos embeddings
+- [x] Testar FastText (subword)
 - [ ] GloVe pré-treinado português
 
 ---
 
 ### 3. Transformers Fine-tuned
 
-| Data       | Modelo              | Score   | Status       | Notebook                                     |
-|------------|---------------------|---------|--------------|----------------------------------------------|
-| -          | BERTimbau-base      | -       | ⏳ Pendente  | transformers/submit_bertimbau.ipynb          |
-| -          | BERTimbau-large     | -       | ⏳ A criar   | -                                            |
-| -          | DistilBERT          | -       | ⏳ Pendente  | transformers/submit_distilbert.ipynb         |
-| -          | mBERT               | -       | ⏳ A criar   | -                                            |
-| -          | DeBERTa-v3          | -       | ⏳ Pendente  | transformers/submit_deberta.ipynb            |
-| -          | XLM-RoBERTa         | -       | ⏳ A criar   | -                                            |
-| -          | Custom Transformer  | -       | ⏳ Pendente  | transformers/submit_custom_transformer.ipynb |
+| Data       | Modelo                    | Score   | Status       | Notebook                                          |
+|------------|---------------------------|---------|--------------|---------------------------------------------------|
+| -          | BERTimbau-base            | -       | ⏳ Pendente  | transformers/submit_bertimbau.ipynb               |
+| -          | BERTimbau-large + Focal   | -       | ⏳ Pendente  | transformers/submit_bertimbau_large_focal.ipynb   |
+| -          | BERTimbau + LoRA          | -       | ⏳ Pendente  | transformers/submit_bertimbau_lora.ipynb          |
+| -          | DistilBERT                | -       | ⏳ Pendente  | transformers/submit_distilbert.ipynb              |
+| -          | mDeBERTa + ClassWeights   | -       | ⏳ Pendente  | transformers/submit_mdeberta_classweights.ipynb   |
+| -          | DeBERTa-v3                | -       | ⏳ Pendente  | transformers/submit_deberta.ipynb                 |
+| -          | XLM-RoBERTa + MeanPool    | -       | ⏳ Pendente  | transformers/submit_xlmroberta_meanpool.ipynb     |
+| -          | BioBERTpt                 | -       | ⏳ Pendente  | transformers/submit_biobertpt.ipynb               |
+| -          | Custom Transformer        | -       | ⏳ Pendente  | transformers/submit_custom_transformer.ipynb      |
 
 **Experimentos pendentes Transformers:**
+- [x] Focal Loss para desbalanceamento
+- [x] Class Weights
+- [x] Mean Pooling
+- [x] LoRA (PEFT)
 - [ ] Learning rate tuning (1e-5, 2e-5, 3e-5, 5e-5)
 - [ ] Batch size (8, 16, 32)
-- [ ] Epochs (3, 5, 8, 10)
-- [ ] Max length (128, 256, 512)
-- [ ] Pooling strategy (CLS, Mean, Max)
-- [ ] Focal Loss para desbalanceamento
 - [ ] Layer-wise Learning Rate Decay
 
 ---
@@ -88,16 +95,17 @@
 
 ### 5. Ensemble
 
-| Data       | Método              | Score   | Status       | Notebook                        |
-|------------|---------------------|---------|--------------|----------------------------------|
-| -          | Voting (Soft)       | -       | ⏳ Pendente  | ensemble/submit_ensemble.ipynb  |
-| -          | Stacking            | -       | ⏳ A criar   | -                                |
-| -          | Blending            | -       | ⏳ A criar   | -                                |
+| Data       | Método              | Score   | Status       | Notebook                              |
+|------------|---------------------|---------|--------------|---------------------------------------|
+| -          | Voting (Soft)       | -       | ⏳ Pendente  | ensemble/submit_ensemble.ipynb        |
+| -          | Voting Classifier   | -       | ⏳ Pendente  | ensemble/submit_ensemble_voting.ipynb |
+| -          | Stacking            | -       | ⏳ Pendente  | ensemble/submit_stacking.ipynb        |
 
 **Experimentos pendentes Ensemble:**
-- [ ] Voting: TF-IDF + SBERT + BERT
-- [ ] Stacking com meta-learner (Logistic Regression)
+- [x] Voting: TF-IDF + SBERT + BERT
+- [x] Stacking com meta-learner (Logistic Regression)
 - [ ] Weighted average baseado em OOF F1
+- [ ] Blending
 
 ---
 
