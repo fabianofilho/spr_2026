@@ -5,10 +5,33 @@ Aplicar técnicas de pré-processamento de texto para melhorar a performance dos
 
 ---
 
+## ⚠️ Análise EDA - Observações Críticas
+
+### Desbalanceamento de Classes
+Os dados são **bem desbalanceados**:
+- **Classes 5 e 6**: Poucos dados e são **críticas** (casos graves)
+- **Classe 2**: Pode não estar no teste (possível "pegadinha" da competição)
+
+### Estratégias para Desbalanceamento
+- [ ] **Class Weights**: Penalizar mais erros em classes minoritárias
+- [ ] **Oversampling**: SMOTE ou RandomOverSampler para classes 5 e 6
+- [ ] **Undersampling**: Reduzir classe majoritária
+- [ ] **Focal Loss**: Para modelos de deep learning
+- [ ] **Threshold Tuning**: Ajustar thresholds de decisão por classe
+- [ ] **Stratified K-Fold**: Garantir proporção das classes no CV
+
+### Hipótese da Classe 2
+> ⚠️ Suspeita: Classe 2 pode não existir no conjunto de teste
+- Testar modelo sem classe 2 no treino
+- Verificar se redistribuir classe 2 para outras melhora score
+- Analisar se classe 2 tem padrão textual diferente
+
+---
+
 ## Pipeline de Processamento
 
 ### 1. Análise Exploratória (EDA)
-- [ ] Distribuição das classes (target)
+- [x] Distribuição das classes (target) → **DESBALANCEADO**
 - [ ] Comprimento dos textos (min, max, média)
 - [ ] Frequência de palavras
 - [ ] Identificar padrões nos laudos
