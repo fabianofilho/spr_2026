@@ -26,7 +26,7 @@
 - [x] SVD + XGBoost → 0.66897 `submit/tfidf/submit_tfidf_svd_xgboost.ipynb`
 - [x] CatBoost → 0.48202 `submit/tfidf/submit_tfidf_catboost.ipynb`
 - [x] TabPFN v0.1.9 → 0.39074 `submit/tfidf/submit_tfidf_tabpfn_v1.ipynb`
-- [ ] TabPFN-2.5 → `submit/tfidf/submit_tfidf_tabpfn_v2.ipynb`
+- ~~TabPFN-2.5~~ ❌ Não funciona offline (requer pip install com internet)
 
 ### 2. Word2Vec (7 notebooks)
 - [ ] Word2Vec + LightGBM → `submit/word2vec/submit_word2vec.ipynb`
