@@ -10,8 +10,10 @@
 | 4 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
 | 5 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
 | 6 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 7 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 8 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 7 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 8 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 9 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 10 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 
 ---
 
@@ -29,8 +31,8 @@
 - ~~TabPFN-2.5~~ ❌ Não funciona offline (requer pip install com internet)
 
 ### 2. Word2Vec (7 notebooks)
-- [ ] Word2Vec + LightGBM → `submit/word2vec/submit_word2vec.ipynb`
-- [ ] Word2Vec + SVM → `submit/word2vec/submit_word2vec_svm.ipynb`
+- [x] Word2Vec + SVM → 0.57456 `submit/word2vec/submit_word2vec_svm.ipynb`
+- [x] Word2Vec + LightGBM → 0.56096 `submit/word2vec/submit_word2vec.ipynb`
 - [ ] Word2Vec + XGBoost → `submit/word2vec/submit_word2vec_xgboost.ipynb`
 - [ ] FastText + LogReg → `submit/word2vec/submit_fasttext.ipynb`
 - [ ] MaxPool (Mean+Max 200D) → `submit/word2vec/submit_word2vec_maxpool.ipynb`
