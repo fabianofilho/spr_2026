@@ -75,6 +75,21 @@
 - CBIS-DDSM BI-RADS (`awsaf49/cbis-ddsm-breast-cancer-image-dataset`)
 - Medical Specialty Classification (`chaitanyakck/medical-text`)
 
+### 8. Dados Tratados (Pós-Processamento) - NOVO
+> Ver `submit/treated/process.md` para pipeline completo
+
+**Pipeline de processamento:**
+- [ ] Análise exploratória (distribuição, padrões)
+- [ ] Remoção de stop words (customizada para área médica)
+- [ ] Lematização (spaCy pt_core_news_lg)
+- [ ] Filtros e extração de termos BI-RADS
+- [ ] Feature engineering
+
+**Experimentos:**
+- [ ] treated_v1 (stop words + lowercase) → `submit/treated/submit_treated_v1.ipynb`
+- [ ] treated_v2 (stop words + lematização) → `submit/treated/submit_treated_v2.ipynb`
+- [ ] treated_v3 (lematização + filtros BI-RADS) → `submit/treated/submit_treated_v3.ipynb`
+
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
 - [x] 2_word2vec_pipeline.excalidraw
