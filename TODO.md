@@ -63,13 +63,13 @@
 - [ ] Gemma 3 4B → `submit/llm/submit_gemma3_4b.ipynb`
 - [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb`
 - [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb`
-
+o 
 ### 7. Pré-Treinamento (Datasets Externos) - NOVO
-> Ver `submit/pretrain/datasets.md` para lista completa de datasets disponíveis
+> Ver `tests/pretrain/datasets.md` para lista completa de datasets disponíveis
 
-- [ ] BERTimbau + MLM médico → `submit/pretrain/submit_bertimbau_pretrain.ipynb`
-- [ ] mDeBERTa + Domain Adaptation → `submit/pretrain/submit_deberta_pretrain.ipynb`
-- [ ] Sentence-BERT + Contrastive → `submit/pretrain/submit_sbert_pretrain.ipynb`
+- [ ] BERTimbau + MLM médico → `tests/pretrain/submit_bertimbau_pretrain.ipynb`
+- [ ] mDeBERTa + Domain Adaptation → `tests/pretrain/submit_deberta_pretrain.ipynb`
+- [ ] Sentence-BERT + Contrastive → `tests/pretrain/submit_sbert_pretrain.ipynb`
 
 **Datasets disponíveis:**
 - Medical Transcriptions (`tboyle10/medicaltranscriptions`)
@@ -78,7 +78,7 @@
 - Medical Specialty Classification (`chaitanyakck/medical-text`)
 
 ### 8. Dados Tratados (Pós-Processamento) - NOVO
-> Ver `submit/treated/process.md` para pipeline completo
+> Ver `tests/treated/process.md` para pipeline completo
 
 **Pipeline de processamento:**
 - [ ] Análise exploratória (distribuição, padrões)
@@ -88,9 +88,9 @@
 - [ ] Feature engineering
 
 **Experimentos:**
-- [ ] treated_v1 (stop words + lowercase) → `submit/treated/submit_treated_v1.ipynb`
-- [ ] treated_v2 (stop words + lematização) → `submit/treated/submit_treated_v2.ipynb`
-- [ ] treated_v3 (lematização + filtros BI-RADS) → `submit/treated/submit_treated_v3.ipynb`
+- [ ] treated_v1 (stop words + lowercase) → `tests/treated/submit_treated_v1.ipynb`
+- [ ] treated_v2 (stop words + lematização) → `tests/treated/submit_treated_v2.ipynb`
+- [ ] treated_v3 (lematização + filtros BI-RADS) → `tests/treated/submit_treated_v3.ipynb`
 
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
