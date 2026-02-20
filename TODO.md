@@ -52,6 +52,12 @@
 - [ ] VotingClassifier soft → `submit/ensemble/submit_ensemble_voting.ipynb`
 - [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb`
 
+### 6. LLMs (Zero-Shot) - NOVO
+- [ ] Qwen3 1.7B → `submit/llm/submit_qwen3_1.7b.ipynb`
+- [ ] Gemma 3 4B → `submit/llm/submit_gemma3_4b.ipynb`
+- [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb`
+- [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb`
+
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
 - [x] 2_word2vec_pipeline.excalidraw
