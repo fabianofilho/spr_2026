@@ -62,6 +62,19 @@
 - [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb`
 - [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb`
 
+### 7. Pré-Treinamento (Datasets Externos) - NOVO
+> Ver `submit/pretrain/datasets.md` para lista completa de datasets disponíveis
+
+- [ ] BERTimbau + MLM médico → `submit/pretrain/submit_bertimbau_pretrain.ipynb`
+- [ ] mDeBERTa + Domain Adaptation → `submit/pretrain/submit_deberta_pretrain.ipynb`
+- [ ] Sentence-BERT + Contrastive → `submit/pretrain/submit_sbert_pretrain.ipynb`
+
+**Datasets disponíveis:**
+- Medical Transcriptions (`tboyle10/medicaltranscriptions`)
+- PubMed 200k RCT (`owaiskhan9654/pubmed-200k-rct`)
+- CBIS-DDSM BI-RADS (`awsaf49/cbis-ddsm-breast-cancer-image-dataset`)
+- Medical Specialty Classification (`chaitanyakck/medical-text`)
+
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
 - [x] 2_word2vec_pipeline.excalidraw
