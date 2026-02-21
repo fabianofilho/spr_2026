@@ -57,17 +57,17 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 # 3. Add Data → Your Work → selecionar o dataset
 ```
 
-| Notebook | Modelo HuggingFace | Kaggle Models? |
+| Notebook | Modelo HuggingFace | Kaggle Dataset |
 |----------|-------------------|----------------|
-| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | ❌ Upload manual |
+| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | ✅ `fernandosr85/bertimbau-portuguese` |
 | submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
 | submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
-| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | ❌ Upload manual |
-| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | ✅ Verificar |
-| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | ✅ Verificar |
-| submit_distilbert.ipynb | `google/bert` → distilbert | ✅ Verificar |
-| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | ✅ Verificar |
-| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ❌ Upload manual |
+| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | ❌ Upload (ou usar `Bio_ClinicalBERT`) |
+| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
+| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
+| submit_distilbert.ipynb | `distilbert-base-multilingual-cased` | ✅ Verificar no Kaggle |
+| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | ✅ Verificar no Kaggle |
+| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ✅ `chesteryuan/modernbert-base` |
 | submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
 
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
