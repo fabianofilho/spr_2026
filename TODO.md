@@ -70,11 +70,14 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 | submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ✅ `chesteryuan/modernbert-base` |
 | submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
 
+#### dia 1
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
 - [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
 - [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
+
+#### dia 2
 - [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb`
 - [ ] DistilBERT → `submit/transformers/submit_distilbert.ipynb`
 - [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
