@@ -12,7 +12,24 @@
 | - | mDeBERTa + class weights | - | ⏳ Pendente |
 | - | DistilBERT | - | ⏳ Pendente |
 | - | XLM-RoBERTa + Mean Pool | - | ⏳ Pendente |
+| - | **ModernBERT base** | - | ⏳ Pendente 🆕 |
 | - | Custom Transformer | - | ⏳ Pendente |
+
+---
+
+## Inputs Kaggle Necessários
+
+Todos os modelos transformer precisam ser adicionados como **Input** no Kaggle:
+
+| Modelo | Kaggle Input |
+|--------|--------------|
+| BERTimbau base | `neuralmind/bert-base-portuguese-cased` |
+| BERTimbau large | `neuralmind/bert-large-portuguese-cased` |
+| BioBERTpt | `pucpr/biobertpt-all` |
+| mDeBERTa-v3 | `microsoft/mdeberta-v3-base` |
+| DistilBERT | `distilbert-base-multilingual-cased` |
+| XLM-RoBERTa | `xlm-roberta-large` |
+| ModernBERT | `answerdotai/ModernBERT-base` |
 
 ---
 

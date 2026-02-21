@@ -44,18 +44,38 @@
 - [x] Word2Vec + LightGBM → 0.56096 `submit/word2vec/submit_word2vec.ipynb`
 - [x] Word2Vec + TF-IDF Weighted → 0.52215 `submit/word2vec/submit_word2vec_tfidf_weighted.ipynb`
 
-### 3. Transformers (9 notebooks)
+### 3. Transformers (10 notebooks)
+
+> **⚠️ IMPORTANTE:** Todos os modelos devem ser adicionados como **Input** no Kaggle (Settings → Add Data → Models)
+
+| Notebook | Kaggle Input | HuggingFace |
+|----------|--------------|-------------|
+| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-base-portuguese-cased) |
+| submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-large-portuguese-cased) |
+| submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-large-portuguese-cased) |
+| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | [Link](https://huggingface.co/pucpr/biobertpt-all) |
+| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | [Link](https://huggingface.co/microsoft/mdeberta-v3-base) |
+| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | [Link](https://huggingface.co/microsoft/mdeberta-v3-base) |
+| submit_distilbert.ipynb | `distilbert-base-multilingual-cased` | [Link](https://huggingface.co/distilbert-base-multilingual-cased) |
+| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | [Link](https://huggingface.co/xlm-roberta-large) |
+| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | [Link](https://huggingface.co/answerdotai/ModernBERT-base) |
+| submit_custom_transformer.ipynb | `neuralmind/bert-base-portuguese-cased` (tokenizer only) | - |
+
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
-- [ ] BERTimbau + LoRA → `submit/transformers/submit_bertimbau_lora.ipynb`
+- [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
 - [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
 - [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
 - [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb`
 - [ ] DistilBERT → `submit/transformers/submit_distilbert.ipynb`
 - [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
+- [ ] **ModernBERT base** → `submit/transformers/submit_modernbert.ipynb` 🆕
 - [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
 
 ### 4. Sentence Transformers (1 notebook)
+
+> **Kaggle Input:** `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
+
 - [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb`
 
 ### 5. Ensemble (3 notebooks)
@@ -64,11 +84,21 @@
 - [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb`
 
 ### 6. LLMs (Zero-Shot) - NOVO
+
+> **⚠️ IMPORTANTE:** Modelos devem ser adicionados como **Input** no Kaggle
+
+| Notebook | Kaggle Input |
+|----------|--------------|
+| submit_qwen3_1.7b.ipynb | `QwenLM/Qwen3` → Variação `1.7B` |
+| submit_gemma3_4b.ipynb | `google/gemma-3` → Variação `4b` |
+| submit_qwen3_4b.ipynb | `QwenLM/Qwen3` → Variação `4B` |
+| submit_llama3_3b.ipynb | `meta-llama/Llama-3.2` → Variação `3B` |
+
 - [ ] Qwen3 1.7B → `submit/llm/submit_qwen3_1.7b.ipynb`
 - [ ] Gemma 3 4B → `submit/llm/submit_gemma3_4b.ipynb`
 - [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb`
 - [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb`
-o 
+
 ### 7. Pré-Treinamento (Datasets Externos) - NOVO
 > Ver `tests/pretrain/datasets.md` para lista completa de datasets disponíveis
 
@@ -96,6 +126,23 @@ o
 - [ ] treated_v1 (stop words + lowercase) → `tests/treated/submit_treated_v1.ipynb`
 - [ ] treated_v2 (stop words + lematização) → `tests/treated/submit_treated_v2.ipynb`
 - [ ] treated_v3 (lematização + filtros BI-RADS) → `tests/treated/submit_treated_v3.ipynb`
+
+### 9. Data Augmentation - NOVO
+> Ver `tests/augmented/strategies.md` para técnicas disponíveis
+
+**Status:** ⏳ Aguardando resultados dos modelos base
+
+**Técnicas planejadas:**
+- [ ] EDA (Easy Data Augmentation): synonym/swap/delete
+- [ ] SMOTE oversampling para classes 5 e 6
+- [ ] MLM augmentation com BERTimbau
+- [ ] Back-translation PT→EN→PT
+- [ ] Pseudo-labeling com datasets externos
+
+**Experimentos (após identificar melhores modelos):**
+- [ ] augmented_linearsvc → `tests/augmented/submit_augmented_linearsvc.ipynb`
+- [ ] augmented_bertimbau → `tests/augmented/submit_augmented_bertimbau.ipynb`
+- [ ] augmented_ensemble → `tests/augmented/submit_augmented_ensemble.ipynb`
 
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
