@@ -10,10 +10,15 @@
 | 4 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
 | 5 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
 | 6 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 7 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 8 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 9 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 10 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 7 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 8 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 9 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 10 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 11 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 12 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 13 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 14 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 15 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 
 ---
 
@@ -31,13 +36,13 @@
 - ~~TabPFN-2.5~~ ❌ Não funciona offline (requer pip install com internet)
 
 ### 2. Word2Vec (7 notebooks)
+- [x] Word2Vec + XGBoost → 0.66385 `submit/word2vec/submit_word2vec_xgboost.ipynb`
+- [x] Word2Vec + Max Pooling → 0.58009 `submit/word2vec/submit_word2vec_maxpool.ipynb`
 - [x] Word2Vec + SVM → 0.57456 `submit/word2vec/submit_word2vec_svm.ipynb`
+- [x] FastText + LogReg → 0.56783 `submit/word2vec/submit_fasttext.ipynb`
+- [x] Word2Vec NILC → 0.56727 `submit/word2vec/submit_word2vec_nilc.ipynb`
 - [x] Word2Vec + LightGBM → 0.56096 `submit/word2vec/submit_word2vec.ipynb`
-- [ ] Word2Vec + XGBoost → `submit/word2vec/submit_word2vec_xgboost.ipynb`
-- [ ] FastText + LogReg → `submit/word2vec/submit_fasttext.ipynb`
-- [ ] MaxPool (Mean+Max 200D) → `submit/word2vec/submit_word2vec_maxpool.ipynb`
-- [ ] TF-IDF Weighted → `submit/word2vec/submit_word2vec_tfidf_weighted.ipynb`
-- [ ] NILC pretrained → `submit/word2vec/submit_word2vec_nilc.ipynb`
+- [x] Word2Vec + TF-IDF Weighted → 0.52215 `submit/word2vec/submit_word2vec_tfidf_weighted.ipynb`
 
 ### 3. Transformers (9 notebooks)
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
