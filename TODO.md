@@ -46,20 +46,29 @@
 
 ### 3. Transformers (10 notebooks)
 
-> **⚠️ IMPORTANTE:** Todos os modelos devem ser adicionados como **Input** no Kaggle (Settings → Add Data → Models)
+> **⚠️ IMPORTANTE:** A maioria dos modelos **NÃO está** no Kaggle Models. Requer upload manual como Dataset.
 
-| Notebook | Kaggle Input | HuggingFace |
-|----------|--------------|-------------|
-| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-base-portuguese-cased) |
-| submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-large-portuguese-cased) |
-| submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | [Link](https://huggingface.co/neuralmind/bert-large-portuguese-cased) |
-| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | [Link](https://huggingface.co/pucpr/biobertpt-all) |
-| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | [Link](https://huggingface.co/microsoft/mdeberta-v3-base) |
-| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | [Link](https://huggingface.co/microsoft/mdeberta-v3-base) |
-| submit_distilbert.ipynb | `distilbert-base-multilingual-cased` | [Link](https://huggingface.co/distilbert-base-multilingual-cased) |
-| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | [Link](https://huggingface.co/xlm-roberta-large) |
-| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | [Link](https://huggingface.co/answerdotai/ModernBERT-base) |
-| submit_custom_transformer.ipynb | `neuralmind/bert-base-portuguese-cased` (tokenizer only) | - |
+#### Como fazer upload de modelos HuggingFace:
+```bash
+# 1. Clone o modelo localmente
+git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
+
+# 2. Kaggle → Datasets → New Dataset → Upload a pasta
+# 3. Add Data → Your Work → selecionar o dataset
+```
+
+| Notebook | Modelo HuggingFace | Kaggle Models? |
+|----------|-------------------|----------------|
+| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | ❌ Upload manual |
+| submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
+| submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
+| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | ❌ Upload manual |
+| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | ✅ Verificar |
+| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | ✅ Verificar |
+| submit_distilbert.ipynb | `google/bert` → distilbert | ✅ Verificar |
+| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | ✅ Verificar |
+| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ❌ Upload manual |
+| submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
 
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
