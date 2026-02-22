@@ -4,8 +4,9 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 1 | **BERT Multilingual** | 0.56095 | ✅ Submetido |
-| - | BERTimbau base | - | ⏳ Pendente |
+| 1 | **ModernBERT base** | 0.68578 | ✅ Submetido |
+| 2 | **BERTimbau base** | 0.64319 | ✅ Submetido |
+| 3 | BERT Multilingual | 0.56095 | ✅ Submetido |
 | - | BERTimbau large + Focal | - | ⏳ Pendente |
 | - | BERTimbau + LoRA | - | ⏳ Pendente |
 | - | BioBERTpt | - | ⏳ Pendente |
@@ -13,8 +14,43 @@
 | - | mDeBERTa + class weights | - | ⏳ Pendente |
 | - | DistilBERT | - | ⏳ Pendente |
 | - | XLM-RoBERTa + Mean Pool | - | ⏳ Pendente |
-| - | ModernBERT base | - | ⏳ Pendente |
 | - | Custom Transformer | - | ⏳ Pendente |
+
+---
+
+## Análise: ModernBERT (0.68578) 🏆
+
+**Melhor transformer até agora!** ModernBERT ficou apenas **12% abaixo** do TF-IDF baseline (0.77885).
+
+### Por que funcionou melhor?
+
+1. **Arquitetura moderna:** RoPE embeddings, Flash Attention 2, GeGLU
+2. **Contexto longo:** Suporta até 8192 tokens nativamente
+3. **Treinamento eficiente:** Mais dados, melhor curriculum
+4. **Tokenização robusta:** Melhor handling de tokens subword
+
+### Comparação com baseline TF-IDF
+
+- ModernBERT: **0.68578** (88% do baseline)
+- Gap ainda significativo, mas promissor para ensembles
+
+---
+
+## Análise: BERTimbau (0.64319)
+
+**Resultado intermediário.** BERTimbau ficou abaixo do ModernBERT apesar de ser especializado em português.
+
+### Por que não superou ModernBERT?
+
+1. **Arquitetura mais antiga:** BERT original (2018) vs ModernBERT (2024)
+2. **Sem otimizações modernas:** Sem Flash Attention, RoPE
+3. **Pré-treinamento limitado:** Menos dados que ModernBERT
+4. **Contexto máximo:** 512 tokens vs 8192 do ModernBERT
+
+### Pontos positivos
+
+- Modelo PT-BR ainda é **14% melhor** que BERT Multilingual (0.56095)
+- Base sólida para fine-tuning adicional
 
 ---
 

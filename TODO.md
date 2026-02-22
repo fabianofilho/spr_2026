@@ -9,17 +9,19 @@
 | 3 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
 | 4 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
 | 5 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
-| 6 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 7 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
-| 8 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
-| 9 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 10 | FastText + LogReg | 0.56783 | ✅ Submetido |
-| 11 | Word2Vec NILC | 0.56727 | ✅ Submetido |
-| 12 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 13 | **BERT Multilingual** | 0.56095 | ✅ Submetido |
-| 14 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 15 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 16 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 6 | **ModernBERT** | 0.68578 | ✅ Submetido |
+| 7 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 8 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 9 | **BERTimbau** | 0.64319 | ✅ Submetido |
+| 10 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 11 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 12 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 13 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 14 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 15 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 16 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 17 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 18 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 
 ---
 
@@ -75,8 +77,8 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 
 #### dia 1
 - [x] **BERT Multilingual** → 0.56095 `submit/transformers/submit_bert_multilingual.ipynb` ✅ Kaggle Models
-- [ ] **ModernBERT base** → `submit/transformers/submit_modernbert.ipynb` 🆕
-- [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
+- [x] **ModernBERT base** → 0.68578 `submit/transformers/submit_modernbert.ipynb` 🆕
+- [x] **BERTimbau base** → 0.64319 `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
 
