@@ -75,24 +75,25 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 
 #### dia 1
 - [x] **BERT Multilingual** → 0.56095 `submit/transformers/submit_bert_multilingual.ipynb` ✅ Kaggle Models
+- [ ] **ModernBERT base** → `submit/transformers/submit_modernbert.ipynb` 🆕
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
-- [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
-- [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
 
 #### dia 2
 - [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb`
 - [ ] DistilBERT → `submit/transformers/submit_distilbert.ipynb`
 - [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
-- [ ] **ModernBERT base** → `submit/transformers/submit_modernbert.ipynb` 🆕
-- [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
+- [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
+- [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
 
-### 4. Sentence Transformers (1 notebook)
+
+### 4. Other Transformers (1 notebook)
 
 > **Kaggle Input:** `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
 
 - [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb`
+- [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
 
 ### 5. Ensemble (3 notebooks)
 - [ ] TF-IDF + W2V voting → `submit/ensemble/submit_ensemble.ipynb`
