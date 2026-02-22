@@ -63,14 +63,17 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 | submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
 | submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
 | submit_biobertpt.ipynb | `pucpr/biobertpt-all` | ❌ Upload (ou usar `Bio_ClinicalBERT`) |
+
 | submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
 | submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
 | submit_distilbert.ipynb | `distilbert-base-multilingual-cased` | ✅ Verificar no Kaggle |
 | submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | ✅ Verificar no Kaggle |
 | submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ✅ `chesteryuan/modernbert-base` |
+| submit_bert_multilingual.ipynb | `google-bert/bert-base-multilingual-cased` | ✅ Kaggle Models |
 | submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
 
 #### dia 1
+- [ ] **BERT Multilingual** → `submit/transformers/submit_bert_multilingual.ipynb` 🆕 ✅ Kaggle Models
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
