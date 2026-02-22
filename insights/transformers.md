@@ -4,6 +4,7 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
+| 1 | **BERT Multilingual** | 0.56095 | ✅ Submetido |
 | - | BERTimbau base | - | ⏳ Pendente |
 | - | BERTimbau large + Focal | - | ⏳ Pendente |
 | - | BERTimbau + LoRA | - | ⏳ Pendente |
@@ -12,8 +13,28 @@
 | - | mDeBERTa + class weights | - | ⏳ Pendente |
 | - | DistilBERT | - | ⏳ Pendente |
 | - | XLM-RoBERTa + Mean Pool | - | ⏳ Pendente |
-| - | **ModernBERT base** | - | ⏳ Pendente 🆕 |
+| - | ModernBERT base | - | ⏳ Pendente |
 | - | Custom Transformer | - | ⏳ Pendente |
+
+---
+
+## Análise: BERT Multilingual (0.56095)
+
+**Resultado decepcionante.** BERT Multilingual ficou **28% abaixo** do TF-IDF baseline (0.77885).
+
+### Por que falhou?
+
+1. **Modelo genérico:** BERT Multilingual é treinado em 104 idiomas, diluindo conhecimento de português
+2. **Sem domínio médico:** Vocabulário médico/radiológico não está bem representado
+3. **Tokenização subótima:** Warning de regex do Mistral indica problemas no tokenizer
+4. **Epoch insuficientes:** F1 ainda estava subindo (0.43 → 0.50 → 0.56), precisava de mais epochs
+5. **Incompatibilidade LayerNorm:** Warnings de `gamma/beta` vs `weight/bias` indicam checkpoint com formato antigo
+
+### Lições aprendidas
+
+- Transformers genéricos **não** superam TF-IDF automaticamente
+- Precisa de modelo especializado em português (BERTimbau) ou domínio médico (BioBERTpt)
+- Hiperparâmetros precisam de tuning (mais epochs, learning rate schedule)
 
 ---
 

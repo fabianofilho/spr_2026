@@ -16,9 +16,10 @@
 | 10 | FastText + LogReg | 0.56783 | ✅ Submetido |
 | 11 | Word2Vec NILC | 0.56727 | ✅ Submetido |
 | 12 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 13 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 14 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 15 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 13 | **BERT Multilingual** | 0.56095 | ✅ Submetido |
+| 14 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 15 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 16 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 
 ---
 
@@ -73,7 +74,7 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 | submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
 
 #### dia 1
-- [ ] **BERT Multilingual** → `submit/transformers/submit_bert_multilingual.ipynb` 🆕 ✅ Kaggle Models
+- [x] **BERT Multilingual** → 0.56095 `submit/transformers/submit_bert_multilingual.ipynb` ✅ Kaggle Models
 - [ ] BERTimbau base → `submit/transformers/submit_bertimbau.ipynb`
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
