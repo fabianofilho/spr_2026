@@ -23,6 +23,7 @@
 | 17 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
 | 18 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
 | 19 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 20 | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug - investigar |
 
 ---
 
@@ -81,7 +82,7 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 - [x] **ModernBERT base** → 0.68578 `submit/transformers/submit_modernbert.ipynb` 🆕
 - [x] **BERTimbau base** → 0.64319 `submit/transformers/submit_bertimbau.ipynb`
 - [x] **DistilBERT Multilingual** → 0.55229 `submit/transformers/submit_distilbert.ipynb`
-- [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb` ⏳ Running
+- [x] mDeBERTa + class weights → 0.01008 ⚠️ BUG `submit/transformers/submit_mdeberta_classweights.ipynb`
 
 #### dia 2
 - [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
