@@ -19,9 +19,10 @@
 | 13 | Word2Vec NILC | 0.56727 | ✅ Submetido |
 | 14 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
 | 15 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 16 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 17 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 18 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 16 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
+| 17 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 18 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 19 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 
 ---
 
@@ -79,14 +80,13 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 - [x] **BERT Multilingual** → 0.56095 `submit/transformers/submit_bert_multilingual.ipynb` ✅ Kaggle Models
 - [x] **ModernBERT base** → 0.68578 `submit/transformers/submit_modernbert.ipynb` 🆕
 - [x] **BERTimbau base** → 0.64319 `submit/transformers/submit_bertimbau.ipynb`
-- [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
-- [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` 🆕 ✅ 100% offline
+- [x] **DistilBERT Multilingual** → 0.55229 `submit/transformers/submit_distilbert.ipynb`
+- [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb` ⏳ Running
 
 #### dia 2
-- [ ] mDeBERTa + class weights → `submit/transformers/submit_mdeberta_classweights.ipynb`
-- [ ] DistilBERT → `submit/transformers/submit_distilbert.ipynb`
-- [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
+- [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
+- [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` - [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
 - [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
 
 
