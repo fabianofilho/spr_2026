@@ -4,13 +4,13 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 1 | **ModernBERT base** | 0.68578 | ✅ Submetido |
-| 2 | **BERTimbau base** | 0.64319 | ✅ Submetido |
-| 3 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 4 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
+| 2 | ModernBERT base | 0.68578 | ✅ Submetido |
+| 3 | BERTimbau base | 0.64319 | ✅ Submetido |
+| 4 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 5 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa + class weights | 0.01008 | ⚠️ BUG |
-| - | BERTimbau large + Focal | - | ⏳ Pendente |
-| - | BERTimbau + LoRA | - | ⏳ Pendente |
 | - | BioBERTpt | - | ⏳ Pendente |
 | - | mDeBERTa-v3 (sem class weights) | - | ⏳ Pendente |
 | - | XLM-RoBERTa + Mean Pool | - | ⏳ Pendente |
@@ -18,9 +18,53 @@
 
 ---
 
-## Análise: ModernBERT (0.68578) 🏆
+## 🏆 Análise: BERTimbau + Focal Loss (0.79696) - MELHOR SCORE!
 
-**Melhor transformer até agora!** ModernBERT ficou apenas **12% abaixo** do TF-IDF baseline (0.77885).
+**Primeiro transformer a superar TF-IDF!** BERTimbau com Focal Loss alcançou **0.79696**, superando o baseline TF-IDF (0.77885) em **+2.3%**.
+
+### Por que funcionou?
+
+1. **Focal Loss:** γ=2 foca nos exemplos difíceis, melhorando classes minoritárias
+2. **BERTimbau base:** Especializado em português, vocabulário adequado
+3. **Fine-tuning adequado:** Parâmetros bem calibrados para o dataset
+4. **Sem overfitting:** Focal Loss tem efeito regularizador implícito
+
+### Por que superou TF-IDF?
+
+- **Contexto semântico:** Entende relações complexas como "sem sinais de malignidade"
+- **Transfer learning:** Conhecimento prévio de português médico
+- **Focal Loss:** Resolve o problema de desbalanceamento de classes
+
+### Comparação com baseline TF-IDF
+
+- BERTimbau + Focal: **0.79696** (+2.3% acima)
+- TF-IDF baseline: 0.77885
+- **Breakthrough!** Primeiro transformer a vencer.
+
+---
+
+## ⚠️ Análise: BERTimbau + LoRA (0.13261) - FALHA
+
+**LoRA offline falhou completamente.** Score de 0.13261 indica predições quase aleatórias.
+
+### Por que falhou?
+
+1. **Offline execution:** Kaggle offline pode ter problemas com bibliotecas PEFT
+2. **Rank muito baixo:** LoRA com r=4 ou r=8 pode ser insuficiente para este task
+3. **Adapter não treinou:** Possível problema no salvamento/carregamento dos pesos
+4. **Incompatibilidade:** Versão do PEFT pode não ser compatível com ambiente Kaggle
+
+### Lições aprendidas
+
+- Full fine-tuning funciona melhor que LoRA para datasets pequenos
+- Testar sempre online antes de submeter offline
+- LoRA economiza memória mas pode perder performance
+
+---
+
+## Análise: ModernBERT (0.68578)
+
+**Segundo melhor transformer.** ModernBERT ficou **12% abaixo** do TF-IDF baseline (0.77885).
 
 ### Por que funcionou melhor?
 
@@ -181,23 +225,25 @@ Todos os modelos transformer precisam ser adicionados como **Input** no Kaggle:
 
 ---
 
-## Resumo do Dia 1
+## Resumo
 
 | Modelo | Score | vs Baseline |
 |--------|-------|-------------|
+| **BERTimbau + Focal** | **0.79696** | **+2.3%** 🏆 |
 | ModernBERT | 0.68578 | -12% |
 | BERTimbau | 0.64319 | -17% |
 | BERT Multilingual | 0.56095 | -28% |
 | DistilBERT | 0.55229 | -29% |
+| BERTimbau + LoRA | 0.13261 | ❌ Falhou |
 | mDeBERTa + CW | 0.01008 | ❌ BUG |
 
-**Conclusão:** Nenhum transformer superou TF-IDF (0.77885). ModernBERT é o melhor, mas ainda 12% atrás.
+**Conclusão:** 🎉 **BERTimbau + Focal Loss superou o baseline TF-IDF (0.77885)!** Primeiro transformer a vencer.
 
-**Próximos passos (Dia 2):**
-1. Investigar bug do mDeBERTa
-2. Testar BERTimbau Large + Focal Loss
+**Próximos passos:**
+1. Investigar por que LoRA falhou (0.13261)
+2. Testar BioBERTpt com Focal Loss
 3. Testar mDeBERTa SEM class weights
 
 ---
 
-*Atualizado em: 22/02/2026*
+*Atualizado em: 23/02/2026*
