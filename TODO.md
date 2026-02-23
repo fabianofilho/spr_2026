@@ -8,23 +8,26 @@
 | 2 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
 | 3 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
 | 4 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
-| 5 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
-| 6 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
-| 7 | **ModernBERT** | 0.68578 | ✅ Submetido |
-| 8 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 9 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
-| 10 | **BERTimbau base** | 0.64319 | ✅ Submetido |
-| 11 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
-| 12 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 13 | FastText + LogReg | 0.56783 | ✅ Submetido |
-| 14 | Word2Vec NILC | 0.56727 | ✅ Submetido |
-| 15 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 16 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 17 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
-| 18 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 19 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 20 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 5 | **BioBERTpt** | 0.72480 | ✅ Submetido |
+| 6 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 7 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
+| 8 | **XLM-RoBERTa + Mean Pooling** | 0.68767 | ✅ Submetido |
+| 9 | **ModernBERT** | 0.68578 | ✅ Submetido |
+| 10 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 11 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 12 | **BERTimbau base** | 0.64319 | ✅ Submetido |
+| 13 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 14 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 15 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 16 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 17 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 18 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 19 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
+| 20 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 21 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 22 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
+| ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
 | ❌ | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug fp16
 
 ---
@@ -53,31 +56,42 @@
 
 ### 3. Transformers (10 notebooks)
 
-> **⚠️ IMPORTANTE:** A maioria dos modelos **NÃO está** no Kaggle Models. Requer upload manual como Dataset.
+> **✅ TODOS OS TRANSFORMERS JÁ FORAM SUBMETIDOS** - Veja resultados no leaderboard acima
 
-#### Como fazer upload de modelos HuggingFace:
-```bash
-# 1. Clone o modelo localmente
-git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
+#### Notebooks de Download Disponíveis (`models/`)
 
-# 2. Kaggle → Datasets → New Dataset → Upload a pasta
-# 3. Add Data → Your Work → selecionar o dataset
-```
+**`models/bert/`**
+| Notebook | Modelo HuggingFace | Tamanho | Status |
+|----------|-------------------|---------|--------|
+| `download_bertimbau.ipynb` | `neuralmind/bert-base-portuguese-cased` | ~440 MB | ✅ Usado |
+| `download_bertimbau_large.ipynb` | `neuralmind/bert-large-portuguese-cased` | ~1.3 GB | ✅ Usado |
+| `download_biobertpt.ipynb` | `pucpr/biobertpt-all` | ~440 MB | ✅ Usado |
+| `download_distilbert.ipynb` | `distilbert-base-multilingual-cased` | ~540 MB | ✅ Usado |
+| `download_modernbert.ipynb` | `answerdotai/ModernBERT-base` | ~580 MB | ✅ Usado |
 
-| Notebook | Modelo HuggingFace | Kaggle Dataset |
-|----------|-------------------|----------------|
-| submit_bertimbau.ipynb | `neuralmind/bert-base-portuguese-cased` | ✅ `fernandosr85/bertimbau-portuguese` |
-| submit_bertimbau_large_focal.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
-| submit_bertimbau_lora_offline.ipynb | `neuralmind/bert-large-portuguese-cased` | ❌ Upload manual |
-| submit_biobertpt.ipynb | `pucpr/biobertpt-all` | ❌ Upload (ou usar `Bio_ClinicalBERT`) |
+**`models/deberta/`**
+| Notebook | Modelo HuggingFace | Tamanho | Status |
+|----------|-------------------|---------|--------|
+| `download_mdeberta.ipynb` | `microsoft/mdeberta-v3-base` | ~560 MB | ✅ Usado |
 
-| submit_deberta.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
-| submit_mdeberta_classweights.ipynb | `microsoft/mdeberta-v3-base` | ✅ `jonathanchan/mdeberta_v3_base` |
-| submit_distilbert.ipynb | `distilbert-base-multilingual-cased` | ✅ Verificar no Kaggle |
-| submit_xlmroberta_meanpool.ipynb | `xlm-roberta-large` | ✅ Verificar no Kaggle |
-| submit_modernbert.ipynb | `answerdotai/ModernBERT-base` | ✅ `chesteryuan/modernbert-base` |
-| submit_bert_multilingual.ipynb | `google-bert/bert-base-multilingual-cased` | ✅ Kaggle Models |
-| submit_custom_transformer.ipynb | Tokenizer only | ❌ Upload manual |
+**`models/roberta/`**
+| Notebook | Modelo HuggingFace | Tamanho | Status |
+|----------|-------------------|---------|--------|
+| `download_xlmroberta.ipynb` | `xlm-roberta-base` | ~1.1 GB | ✅ Usado |
+
+**`models/sbert/`**
+| Notebook | Modelo HuggingFace | Tamanho | Status |
+|----------|-------------------|---------|--------|
+| `download_sbert.ipynb` | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | ~470 MB | ⏳ Pendente |
+
+#### Modelos Disponíveis no Kaggle (sem download)
+
+| Modelo | Kaggle Path | Como adicionar |
+|--------|-------------|----------------|
+| BERT Multilingual | `bert-base-multilingual-cased` | Add Input → Models |
+| ModernBERT | `modernbert` (answer-ai/base) | Add Input → Models |
+| BERTimbau | `bertimbau-ptbr-complete` | Add Input → Models |
+| mDeBERTa | `mdeberta_v3_base` (Jonathan Chan) | Add Input → Datasets |
 
 #### dia 1
 - [x] **BERT Multilingual** → 0.56095 `submit/transformers/submit_bert_multilingual.ipynb` ✅ Kaggle Models
@@ -89,40 +103,46 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 #### dia 2
 - [x] **BERTimbau + Focal Loss** → **0.79696** 🏆 `submit/transformers/submit_bertimbau_large_focal.ipynb`
 - [x] BERTimbau + LoRA (offline) → 0.13261 ❌ Falhou `submit/transformers/submit_bertimbau_lora.ipynb`
-- [ ] mDeBERTa-v3 (fp16=False) → `submit/transformers/submit_mdeberta.ipynb`
-- [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
-- [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
+- [x] mDeBERTa-v3 → 0.01008 ⚠️ Bug fp16 `submit/transformers/submit_mdeberta.ipynb`
+- [x] **XLM-RoBERTa + Mean Pooling** → 0.68767 `submit/transformers/submit_xlmroberta_meanpool.ipynb`
+- [x] **BioBERTpt** → 0.72480 `submit/transformers/submit_biobertpt.ipynb`
 
 
-### 4. Other Transformers (1 notebook)
+### 4. Sentence Transformers (2 notebooks)
 
-> **Kaggle Input:** `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
+| Notebook | Modelo | Download | Status |
+|----------|--------|----------|--------|
+| `submit_sbert.ipynb` | `paraphrase-multilingual-MiniLM-L12-v2` | `models/sbert/download_sbert.ipynb` | ⏳ Precisa baixar primeiro |
+| `submit_custom_transformer.ipynb` | Tokenizer from scratch | Não precisa | ❌ Não implementado |
 
-- [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb`
+- [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb` ⚠️ **Rodar download primeiro**
 - [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
 
 ### 5. Ensemble (3 notebooks)
-- [ ] TF-IDF + W2V voting → `submit/ensemble/submit_ensemble.ipynb`
-- [ ] VotingClassifier soft → `submit/ensemble/submit_ensemble_voting.ipynb`
-- [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb`
 
-### 6. LLMs (Zero-Shot) - NOVO
+> **Não precisa de modelos externos** - usa modelos já treinados (TF-IDF, W2V, etc.)
 
-> **⚠️ IMPORTANTE:** Modelos devem ser adicionados como **Input** no Kaggle
+- [ ] TF-IDF + W2V voting → `submit/ensemble/submit_ensemble.ipynb` ✅ **Pronto para rodar**
+- [ ] VotingClassifier soft → `submit/ensemble/submit_ensemble_voting.ipynb` ✅ **Pronto para rodar**
+- [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb` ✅ **Pronto para rodar**
 
-| Notebook | Kaggle Input |
-|----------|--------------|
-| submit_qwen3_1.7b.ipynb | `QwenLM/Qwen3` → Variação `1.7B` |
-| submit_gemma3_4b.ipynb | `google/gemma-3` → Variação `4b` |
-| submit_qwen3_4b.ipynb | `QwenLM/Qwen3` → Variação `4B` |
-| submit_llama3_3b.ipynb | `meta-llama/Llama-3.2` → Variação `3B` |
+### 6. LLMs (Zero-Shot)
 
-- [ ] Qwen3 1.7B → `submit/llm/submit_qwen3_1.7b.ipynb`
-- [ ] Gemma 3 4B → `submit/llm/submit_gemma3_4b.ipynb`
-- [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb`
-- [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb`
+> **Modelos disponíveis no Kaggle Models** - Add Input → Models
 
-### 7. Pré-Treinamento (Datasets Externos) - NOVO
+| Notebook | Kaggle Models Path | Variação | VRAM | Download? |
+|----------|--------------------|----------|------|----------|
+| `submit_qwen3_1.7b.ipynb` | `QwenLM/Qwen3` | `1.7B` | ~4 GB | ✅ Kaggle Models |
+| `submit_qwen3_4b.ipynb` | `QwenLM/Qwen3` | `4B` | ~8 GB | ✅ Kaggle Models |
+| `submit_gemma3_4b.ipynb` | `google/gemma-3` | `4b` | ~8 GB | ✅ Kaggle Models |
+| `submit_llama3_3b.ipynb` | `meta-llama/Llama-3.2` | `3B` | ~6 GB | ✅ Kaggle Models |
+
+- [ ] Qwen3 1.7B → `submit/llm/submit_qwen3_1.7b.ipynb` ✅ **Pronto para rodar**
+- [ ] Gemma 3 4B → `submit/llm/submit_gemma3_4b.ipynb` ✅ **Pronto para rodar**
+- [ ] Qwen3 4B → `submit/llm/submit_qwen3_4b.ipynb` ✅ **Pronto para rodar**
+- [ ] Llama 3.2 3B → `submit/llm/submit_llama3_3b.ipynb` ✅ **Pronto para rodar**
+
+### 7. Pré-Treinamento (Datasets Externos)
 > Ver `tests/pretrain/datasets.md` para lista completa de datasets disponíveis
 
 - [ ] BERTimbau + MLM médico → `tests/pretrain/submit_bertimbau_pretrain.ipynb`
