@@ -4,26 +4,28 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 1 | TF-IDF + LinearSVC | **0.77885** | ✅ Submetido |
-| 2 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
-| 3 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
-| 4 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
-| 5 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
-| 6 | **ModernBERT** | 0.68578 | ✅ Submetido |
-| 7 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 8 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
-| 9 | **BERTimbau** | 0.64319 | ✅ Submetido |
-| 10 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
-| 11 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 12 | FastText + LogReg | 0.56783 | ✅ Submetido |
-| 13 | Word2Vec NILC | 0.56727 | ✅ Submetido |
-| 14 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 15 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 16 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
-| 17 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 18 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 19 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
-| 20 | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug - investigar |
+| 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
+| 2 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
+| 3 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
+| 4 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
+| 5 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 6 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
+| 7 | **ModernBERT** | 0.68578 | ✅ Submetido |
+| 8 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 9 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 10 | **BERTimbau base** | 0.64319 | ✅ Submetido |
+| 11 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 12 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 13 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 14 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 15 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 16 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 17 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
+| 18 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 19 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 20 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
+| ❌ | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug fp16
 
 ---
 
@@ -85,9 +87,10 @@ git clone https://huggingface.co/neuralmind/bert-base-portuguese-cased
 - [x] mDeBERTa + class weights → 0.01008 ⚠️ BUG `submit/transformers/submit_mdeberta_classweights.ipynb`
 
 #### dia 2
-- [ ] BERTimbau large + Focal Loss → `submit/transformers/submit_bertimbau_large_focal.ipynb`
-- [ ] mDeBERTa-v3 → `submit/transformers/submit_deberta.ipynb`
-- [ ] BERTimbau + LoRA (offline) → `submit/transformers/submit_bertimbau_lora_offline.ipynb` - [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
+- [x] **BERTimbau + Focal Loss** → **0.79696** 🏆 `submit/transformers/submit_bertimbau_large_focal.ipynb`
+- [x] BERTimbau + LoRA (offline) → 0.13261 ❌ Falhou `submit/transformers/submit_bertimbau_lora.ipynb`
+- [ ] mDeBERTa-v3 (fp16=False) → `submit/transformers/submit_mdeberta.ipynb`
+- [ ] XLM-RoBERTa + Mean Pool → `submit/transformers/submit_xlmroberta_meanpool.ipynb`
 - [ ] BioBERTpt → `submit/transformers/submit_biobertpt.ipynb`
 
 
