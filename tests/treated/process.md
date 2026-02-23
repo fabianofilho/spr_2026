@@ -82,12 +82,20 @@ Os dados são **bem desbalanceados**:
 
 ## Experimentos Planejados
 
-| Experimento | Processamento | Modelo Base | Status |
-|-------------|---------------|-------------|--------|
-| treated_v1 | Stop words + lowercase | LinearSVC | ⏳ |
-| treated_v2 | Stop words + lematização | LinearSVC | ⏳ |
-| treated_v3 | Lematização + filtros BI-RADS | LinearSVC | ⏳ |
-| treated_v4 | Completo (todos os passos) | Top 3 modelos | ⏳ |
+### BERTimbau + Focal Loss (melhor modelo: 0.79696)
+| Experimento | Processamento | Notebook | Status |
+|-------------|---------------|----------|--------|
+| treated_v1 | Stop words + lowercase | `submit_bertimbau_focal_treated_v1.ipynb` | ⏳ |
+| treated_v2 | Lematização + normalização BI-RADS | `submit_bertimbau_focal_treated_v2.ipynb` | ⏳ |
+| treated_v3 | Extração features BI-RADS | ⏳ | ⏳ |
+
+### LinearSVC (baseline TF-IDF: 0.77885)
+| Experimento | Processamento | Notebook | Status |
+|-------------|---------------|----------|--------|
+| treated_v1 | Stop words + lowercase | `submit_linearsvc_treated_v1.ipynb` | ⏳ |
+| treated_v2 | Stop words + lematização | `submit_linearsvc_treated_v2.ipynb` | ⏳ |
+| treated_v3 | Lematização + filtros BI-RADS | `submit_linearsvc_treated_v3.ipynb` | ⏳ |
+| treated_v4 | Completo (todos os passos) | `submit_linearsvc_treated_v4.ipynb` | ⏳ |
 
 ---
 

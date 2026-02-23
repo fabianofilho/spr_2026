@@ -1,7 +1,15 @@
-# Resubmit - Modelos Top 4 (Score > 0.7)
+# Resubmit - Modelos Top 5 (Score > 0.7)
 
 ## Objetivo
 Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanceamento de classes**.
+
+---
+
+## 🏆 Melhor Modelo: BERTimbau + Focal Loss (0.79696)
+
+| Versão | Notebook | Estratégias | Status |
+|--------|----------|-------------|--------|
+| v3 | `resubmit_bertimbau_focal_v3.ipynb` | Alpha por classe + Threshold tuning + Label smoothing | ⏳ |
 
 ---
 
@@ -10,10 +18,11 @@ Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanc
 ### Versão 2 (Baseline com class_weight='balanced')
 | Rank | Modelo | Score Base | Notebook |
 |------|--------|------------|----------|
-| 1 | LinearSVC | 0.77885 | `resubmit_linearsvc_v2.ipynb` |
-| 2 | SGDClassifier | 0.75019 | `resubmit_sgd_v2.ipynb` |
-| 3 | Logistic Regression | 0.72935 | `resubmit_logreg_v2.ipynb` |
-| 4 | LightGBM | 0.70273 | `resubmit_lgbm_v2.ipynb` |
+| 🏆 | BERTimbau + Focal | **0.79696** | `resubmit_bertimbau_v2.ipynb` |
+| 2 | LinearSVC | 0.77885 | `resubmit_linearsvc_v2.ipynb` |
+| 3 | SGDClassifier | 0.75019 | `resubmit_sgd_v2.ipynb` |
+| 4 | Logistic Regression | 0.72935 | `resubmit_logreg_v2.ipynb` |
+| 5 | LightGBM | 0.70273 | `resubmit_lgbm_v2.ipynb` |
 
 ### Versão 3 (RandomizedSearchCV + Estratégias)
 | Modelo | Notebook | Estratégias |
@@ -78,6 +87,13 @@ REMOVE_CLASS_2 = True  # Ativar para testar
 | v3 | + tuning hiperparâmetros | ⏳ |
 | v4 | + threshold optimization | ⏳ |
 | v5 | sem classe 2 | ⏳ |
+
+### BERTimbau + Focal Loss (melhorias)
+| Versão | Estratégia | Status |
+|--------|------------|--------|
+| v3 | Alpha por classe + Threshold + Label smoothing | ⏳ |
+| v4 | + SMOTE classes 5/6 | ⏳ |
+| v5 | + Mixup augmentation | ⏳ |
 
 ---
 
