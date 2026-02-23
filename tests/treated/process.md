@@ -5,6 +5,33 @@ Aplicar técnicas de pré-processamento de texto para melhorar a performance dos
 
 ---
 
+## 💡 Insight [22/02/2026] - Eduardo Farina
+
+> "Acho que tem que tratar os dados muito bem antes. Os laudos são muito parecidos. Tem o glossário do BI-RADS."
+
+### Implicações
+1. **Laudos muito parecidos** → O modelo precisa capturar **diferenças sutis** entre categorias
+   - Pequenas variações de vocabulário podem ser decisivas
+   - TF-IDF funciona bem (0.77885) porque captura frequências de termos específicos
+   
+2. **Glossário BI-RADS** → Usar vocabulário **padronizado** do BI-RADS como guia
+   - Termos-chave por categoria já existem e são bem definidos
+   - Possibilidade de criar features baseadas no glossário oficial
+   - Normalizar sinônimos para termos canônicos do BI-RADS
+
+3. **Tratamento cuidadoso** → Foco em:
+   - Não perder informação discriminativa (evitar stemming agressivo)
+   - Preservar termos técnicos exatos do BI-RADS
+   - Extrair e destacar keywords que diferenciam categorias
+
+### Ações Prioritárias
+- [ ] Obter glossário oficial BI-RADS
+- [ ] Mapear termos-chave por categoria (0-6)
+- [ ] Criar dicionário de normalização (sinônimos → termo canônico)
+- [ ] Feature engineering baseada no glossário
+
+---
+
 ## ⚠️ Análise EDA - Observações Críticas
 
 ### Desbalanceamento de Classes
