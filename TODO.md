@@ -192,6 +192,23 @@
 - [ ] augmented_bertimbau → `tests/augmented/submit_augmented_bertimbau.ipynb`
 - [ ] augmented_ensemble → `tests/augmented/submit_augmented_ensemble.ipynb`
 
+### 10. NER (Named Entity Recognition) - NOVO
+> Ver `tests/ner/README.md` para estratégia completa
+
+**Motivação:** "ausência de microcalcificações" ≈ "microcalcificações pleomórficas" no espaço vetorial, mas são opostos para classificação BI-RADS.
+
+**Pipeline:**
+1. Extrair entidades (Nódulo, Microcalcificação, Arquitetura, Negação, BI-RADS)
+2. Gerar embeddings **separados** por categoria
+3. Concatenar + PCA (reduzir dimensionalidade)
+4. XGBoost ordinal + regras determinísticas (BI-RADS 0 e 6)
+
+**Experimentos:**
+- [ ] NER + Regex + LinearSVC → `tests/ner/submit_ner_regex.ipynb`
+- [ ] NER + BERTimbau embeddings → `tests/ner/submit_ner_bertimbau.ipynb`
+- [ ] NER + XGBoost ordinal → `tests/ner/submit_ner_xgboost_ordinal.ipynb`
+- [ ] NER + Regras determinísticas → `tests/ner/submit_ner_rules.ipynb`
+
 ## Workflows (Excalidraw) ✅
 - [x] 1_tfidf_pipeline.excalidraw
 - [x] 2_word2vec_pipeline.excalidraw
@@ -200,4 +217,8 @@
 - [x] 5_ensemble_pipeline.excalidraw
 
 ## Depois de rodar
-- Refazer 
+- Mapear um passo a passo para rodar os melhores modelos melhorados nos topicos dos tests/
+    - Preprocess
+    - Review
+    - Treated
+    - Augmented
