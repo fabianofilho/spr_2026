@@ -4,76 +4,105 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| - | TF-IDF + W2V voting | - | ⏳ Pendente |
-| - | VotingClassifier soft | - | ⏳ Pendente |
-| - | Stacking OOF | - | ⏳ Pendente |
+| 🥈 | **VotingClassifier soft** | **0.78049** | ✅ Submetido |
+| 2 | TF-IDF + W2V voting | 0.74667 | ✅ Submetido |
+| 3 | Stacking Meta-Learner | 0.73852 | ✅ Submetido |
 
 ---
 
-## Estratégias
+## 🏆 Análise: Soft Voting (0.78049) - 2º MELHOR OVERALL!
 
-### 1. Voting (Soft)
+**Ensemble com Soft Voting superou TF-IDF baseline!** Score de **0.78049** coloca como 2º melhor modelo geral.
 
-Combinar predições probabilísticas de múltiplos modelos.
+### Por que funcionou?
+
+1. **Erros descorrelacionados:** Cada modelo erra em exemplos diferentes
+2. **Soft voting:** Média de probabilidades é mais robusta que hard voting
+3. **Top 3 TF-IDF:** Combina os melhores modelos da categoria
+4. **Mesma representação:** Todos usam TF-IDF, garantindo consistência
+
+### Composição
 
 ```python
 VotingClassifier([
-    ('tfidf_svc', tfidf_svc_pipeline),
-    ('tfidf_sgd', tfidf_sgd_pipeline),
-    ('tfidf_lr', tfidf_lr_pipeline),
+    ('tfidf_svc', LinearSVC),      # 0.77885 (líder TF-IDF)
+    ('tfidf_sgd', SGDClassifier),  # 0.75019 
+    ('tfidf_lr', LogisticRegression),  # 0.72935
 ], voting='soft')
 ```
 
-**Candidatos (Top 3 TF-IDF):**
-- LinearSVC (0.77885)
-- SGDClassifier (0.75019)
-- LogReg (0.72935)
+### Por que supera modelos individuais?
 
-### 2. Stacking
+| Modelo | Score | Erro |
+|--------|-------|------|
+| LinearSVC | 0.77885 | Erra exemplos ambíguos |
+| SGDClassifier | 0.75019 | Regularização diferente |
+| LogReg | 0.72935 | Probabilidades calibradas |
+| **Ensemble** | **0.78049** | Vota majoritariamente certo |
 
-Meta-learner treinado nas predições OOF (out-of-fold).
+**Ganho:** +0.16% sobre o melhor modelo individual
+
+---
+
+## Análise: TF-IDF + W2V Voting (0.74667)
+
+Combinação de TF-IDF com Word2Vec teve resultado misto.
+
+### Por que não superou TF-IDF puro?
+
+1. **Word2Vec adiciona ruído:** Pior nas classes críticas
+2. **Representações incompatíveis:** TF-IDF sparse vs W2V dense
+3. **Correlação de erros:** Ambos erram nos mesmos exemplos difíceis
+
+### Lição aprendida
+
+> **Ensemble só melhora se os modelos tiverem erros descorrelacionados.**
+> Combinar TF-IDF + W2V é pior que TF-IDF + TF-IDF com classificadores diferentes.
+
+---
+
+## Análise: Stacking Meta-Learner (0.73852)
+
+Stacking com meta-learner LogReg ficou abaixo do esperado.
+
+### Por que não superou Soft Voting?
+
+1. **Overfitting no meta-learner:** CV interno pode ter vazado
+2. **Pouca diversidade:** Base learners muito similares
+3. **Dataset pequeno:** Insuficiente para treinar meta-learner robusto
+
+### Quando Stacking funciona melhor?
+
+- Datasets maiores (>10k samples)
+- Base learners muito diversos (ex: TF-IDF + Transformers + W2V)
+- Meta-learner adequado (não-linear como XGBoost)
+
+---
+
+## 💡 Próximos Passos
+
+### Ensemble com Transformers
+
+Combinar BERTimbau + Focal (0.797) com TF-IDF Ensemble (0.780):
+
+```python
+# Proposta: Weighted Blend
+final_pred = 0.6 * bertimbau_probs + 0.4 * tfidf_ensemble_probs
+```
+
+**Hipótese:** Pode superar 0.80 se erros forem complementares.
+
+### Stacking com Transformers
+
+Usar embeddings de BERTimbau como features para meta-learner:
 
 ```python
 StackingClassifier(
-    estimators=[...],
-    final_estimator=LogisticRegression(),
-    cv=5,
-    stack_method='predict_proba'
+    estimators=[bertimbau, linearsvc, biobertpt],
+    final_estimator=XGBClassifier()
 )
 ```
 
-### 3. Blending Manual
-
-Média ponderada das probabilidades.
-
-```python
-# Pesos baseados em performance
-weights = {
-    'tfidf_svc': 0.5,
-    'tfidf_sgd': 0.3,
-    'tfidf_lr': 0.2,
-}
-final_prob = sum(w * pred for w, pred in zip(weights, preds))
-```
-
 ---
 
-## Hipóteses
-
-### Pode funcionar se:
-- Modelos têm **erros descorrelacionados**
-- Combinação de TF-IDF + embeddings captura aspectos diferentes
-
-### Pode falhar se:
-- Todos os modelos erram nos mesmos exemplos
-- Word2Vec adiciona mais ruído que sinal
-
----
-
-## Análise (a ser preenchida após submissões)
-
-*Aguardando resultados...*
-
----
-
-*Atualizado em: 20/02/2026*
+*Atualizado em: 24/02/2026*

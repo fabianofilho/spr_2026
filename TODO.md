@@ -5,27 +5,32 @@
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
 | 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 2 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
-| 3 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
-| 4 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
-| 5 | **BioBERTpt** | 0.72480 | ✅ Submetido |
-| 6 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
-| 7 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
-| 8 | **XLM-RoBERTa + Mean Pooling** | 0.68767 | ✅ Submetido |
-| 9 | **ModernBERT** | 0.68578 | ✅ Submetido |
-| 10 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 11 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
-| 12 | **BERTimbau base** | 0.64319 | ✅ Submetido |
-| 13 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
-| 14 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 15 | FastText + LogReg | 0.56783 | ✅ Submetido |
-| 16 | Word2Vec NILC | 0.56727 | ✅ Submetido |
-| 17 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 18 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 19 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
-| 20 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 21 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 22 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 2 | **Ensemble Soft Voting** | **0.78049** | ✅ Submetido |
+| 3 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
+| 4 | **Custom Transformer Encoder** | **0.77272** | ✅ Submetido |
+| 5 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
+| 6 | **Ensemble TF-IDF + W2V** | **0.74667** | ✅ Submetido |
+| 7 | **Stacking Meta-Learner** | **0.73852** | ✅ Submetido |
+| 8 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
+| 9 | **BioBERTpt** | 0.72480 | ✅ Submetido |
+| 10 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 11 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
+| 12 | **XLM-RoBERTa + Mean Pooling** | 0.68767 | ✅ Submetido |
+| 13 | **ModernBERT** | 0.68578 | ✅ Submetido |
+| 14 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 15 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 16 | **BERTimbau base** | 0.64319 | ✅ Submetido |
+| 17 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 18 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 19 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 20 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 21 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 22 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 23 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
+| 24 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 25 | **SBERT + LightGBM** | 0.48376 | ✅ Submetido |
+| 26 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 27 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
 | ❌ | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug fp16
@@ -112,19 +117,19 @@
 
 | Notebook | Modelo | Download | Status |
 |----------|--------|----------|--------|
-| `submit_sbert.ipynb` | `paraphrase-multilingual-MiniLM-L12-v2` | `models/sbert/download_sbert.ipynb` | ⏳ Precisa baixar primeiro |
-| `submit_custom_transformer.ipynb` | Tokenizer from scratch | Não precisa | ❌ Não implementado |
+| `submit_sbert.ipynb` | `paraphrase-multilingual-MiniLM-L12-v2` | `models/sbert/download_sbert.ipynb` | ✅ Submetido |
+| `submit_custom_transformer.ipynb` | Tokenizer from scratch | Não precisa | ✅ Submetido |
 
-- [ ] SBERT + LightGBM → `submit/sentence_transformers/submit_sbert.ipynb` ⚠️ **Rodar download primeiro**
-- [ ] Custom Transformer → `submit/transformers/submit_custom_transformer.ipynb`
+- [x] SBERT + LightGBM → 0.48376 `submit/sentence_transformers/submit_sbert.ipynb`
+- [x] Custom Transformer Encoder → **0.77272** 🔥 `submit/transformers/submit_custom_transformer.ipynb`
 
 ### 5. Ensemble (3 notebooks)
 
-> **Não precisa de modelos externos** - usa modelos já treinados (TF-IDF, W2V, etc.)
+> **✅ TODOS OS ENSEMBLES JÁ FORAM SUBMETIDOS** - Ensemble Soft Voting é o 2º melhor modelo!
 
-- [ ] TF-IDF + W2V voting → `submit/ensemble/submit_ensemble.ipynb` ✅ **Pronto para rodar**
-- [ ] VotingClassifier soft → `submit/ensemble/submit_ensemble_voting.ipynb` ✅ **Pronto para rodar**
-- [ ] Stacking OOF → `submit/ensemble/submit_stacking.ipynb` ✅ **Pronto para rodar**
+- [x] VotingClassifier soft → **0.78049** 🥈 `submit/ensemble/submit_ensemble_voting.ipynb`
+- [x] TF-IDF + W2V voting → 0.74667 `submit/ensemble/submit_ensemble.ipynb`
+- [x] Stacking Meta-Learner → 0.73852 `submit/ensemble/submit_stacking.ipynb`
 
 ### 6. LLMs (Zero-Shot)
 
@@ -193,3 +198,6 @@
 - [x] 3_transformers_pipeline.excalidraw
 - [x] 4_sentence_transformers_pipeline.excalidraw
 - [x] 5_ensemble_pipeline.excalidraw
+
+## Depois de rodar
+- Refazer 

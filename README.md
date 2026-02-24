@@ -9,18 +9,22 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 - **Métrica**: F1-Score Macro
 - **Formato**: O teste só existe no runtime de avaliação do Kaggle
 
-## Leaderboard Atual (Top 5)
+## Leaderboard Atual (Top 10)
 
 | Rank | Modelo | Score |
 |------|--------|-------|
-| 🥇 | TF-IDF + LinearSVC | **0.77885** |
-| 🥈 | TF-IDF + SGDClassifier | 0.75019 |
-| 🥉 | TF-IDF + Logistic Regression | 0.72935 |
-| 4 | TF-IDF + LightGBM | 0.70273 |
-| 5 | TF-IDF + XGBoost | 0.69482 |
-| 6 | **ModernBERT** | 0.68578 |
+| 🥇 | **BERTimbau + Focal Loss** | **0.79696** |
+| 🥈 | Ensemble Soft Voting | 0.78049 |
+| 🥉 | TF-IDF + LinearSVC | 0.77885 |
+| 4 | Custom Transformer Encoder | 0.77272 |
+| 5 | TF-IDF + SGDClassifier | 0.75019 |
+| 6 | Ensemble TF-IDF + W2V | 0.74667 |
+| 7 | Stacking Meta-Learner | 0.73852 |
+| 8 | TF-IDF + Logistic Regression | 0.72935 |
+| 9 | BioBERTpt | 0.72480 |
+| 10 | TF-IDF + LightGBM | 0.70273 |
 
-> Ver [TODO.md](TODO.md) para lista completa de 18 submissões.
+> Ver [TODO.md](TODO.md) para lista completa de 27 submissões.
 
 ## Estrutura do Repositório
 
@@ -69,11 +73,12 @@ spr_2026/
 
 | Categoria | Notebooks | Melhor Score | Status |
 |-----------|-----------|--------------|--------|
-| TF-IDF | 12 | **0.77885** | ✅ Completo |
+| Transformers | 11 | **0.79696** | ✅ Completo |
+| Ensemble | 3 | 0.78049 | ✅ Completo |
+| TF-IDF | 12 | 0.77885 | ✅ Completo |
+| Custom Transformer | 1 | 0.77272 | ✅ Completo |
 | Word2Vec | 7 | 0.66385 | ✅ Completo |
-| Transformers | 11 | 0.68578 | 🔄 Em progresso |
-| SBERT | 1 | - | ⏳ Pendente |
-| Ensemble | 3 | - | ⏳ Pendente |
+| SBERT | 1 | 0.48376 | ✅ Completo |
 | LLMs | 6 | - | ⏳ Pendente |
 
 ## Insights
@@ -87,7 +92,8 @@ Análises metodológicas por categoria em `insights/`:
 
 ## Dicas
 
-1. **Melhor modelo até agora**: TF-IDF + LinearSVC (baseline forte!)
-2. **Transformers**: ModernBERT (0.68578) superou BERTimbau (0.64319)
-3. **Class weights**: Use para lidar com desbalanceamento
-4. **Offline**: Sempre use `local_files_only=True` no Kaggle
+1. **Melhor modelo até agora**: BERTimbau + Focal Loss (0.79696)
+2. **Ensemble**: Soft Voting (0.78049) é o 2º melhor modelo!
+3. **Custom Transformer**: Tokenizer from scratch (0.77272) supera maioria dos transformers
+4. **Class weights**: Use para lidar com desbalanceamento
+5. **Offline**: Sempre use `local_files_only=True` no Kaggle

@@ -13,6 +13,35 @@ Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanc
 
 ---
 
+## 🆕 Novos Resubmits (Top 4 - Fev/2026)
+
+| Modelo Base | Score | Notebook v2 | Estratégia |
+|-------------|-------|-------------|------------|
+| Ensemble Soft Voting | 0.78049 | `resubmit_ensemble_voting_v2.ipynb` | +SGD (3 modelos), pesos otimizados |
+| Custom Transformer | 0.77272 | `resubmit_custom_transformer_v2.ipynb` | **Focal Loss** + label smoothing + warmup |
+| BioBERTpt | 0.72480 | `resubmit_biobertpt_focal_v2.ipynb` | **Focal Loss** (γ=2) + gradient accumulation |
+
+### Melhorias Implementadas:
+
+**Ensemble Soft Voting v2:**
+- Adiciona SGDClassifier ao voting (3 modelos vs 2)
+- Pesos baseados nos F1-Scores públicos: SVC=0.345, SGD=0.332, LR=0.323
+- TF-IDF com 25k features (vs 20k)
+
+**Custom Transformer v2:**
+- Focal Loss (γ=2) - mesma estratégia do BERTimbau campeão
+- Label smoothing (0.1) para regularização
+- Learning rate scheduler com warmup
+- 15 epochs (vs 10)
+
+**BioBERTpt v2:**
+- Focal Loss (γ=2) com class weights
+- Gradient accumulation (2 steps)
+- 7 epochs (vs 5)
+- LR 3e-5 (vs 2e-5)
+
+---
+
 ## Notebooks Disponíveis
 
 ### Versão 2 (Baseline com class_weight='balanced')

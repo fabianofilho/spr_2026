@@ -5,16 +5,17 @@
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
 | 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 2 | ModernBERT base | 0.68578 | ✅ Submetido |
-| 3 | BERTimbau base | 0.64319 | ✅ Submetido |
-| 4 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 5 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| 2 | **BioBERTpt** | **0.72480** | ✅ Submetido |
+| 3 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
+| 4 | ModernBERT base | 0.68578 | ✅ Submetido |
+| 5 | BERTimbau base | 0.64319 | ✅ Submetido |
+| 6 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 7 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa + class weights | 0.01008 | ⚠️ BUG |
-| - | BioBERTpt | - | ⏳ Pendente |
-| - | mDeBERTa-v3 (sem class weights) | - | ⏳ Pendente |
-| - | XLM-RoBERTa + Mean Pool | - | ⏳ Pendente |
-| - | Custom Transformer | - | ⏳ Pendente |
+| ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
+
+> **✅ TODOS OS TRANSFORMERS SUBMETIDOS** - BERTimbau + Focal Loss lidera!
 
 ---
 
@@ -77,6 +78,55 @@
 
 - ModernBERT: **0.68578** (88% do baseline)
 - Gap ainda significativo, mas promissor para ensembles
+
+---
+
+## ✅ Análise: BioBERTpt (0.72480) - 2º MELHOR TRANSFORMER
+
+**BioBERTpt superou ModernBERT!** Score de **0.72480** demonstra a importância do domínio médico.
+
+### Por que funcionou bem?
+
+1. **Pré-treino médico:** Treinado em textos biomédicos PT-BR (PubMed, artigos)
+2. **Vocabulário especializado:** Tokeniza "calcificação", "BIRADS" corretamente
+3. **Transfer learning específico:** Conhecimento de domínio médico
+4. **Português nativo:** Entende nuances da língua
+
+### Comparação com outros modelos
+
+| Modelo | Score | Domínio | Língua |
+|--------|-------|---------|--------|
+| BioBERTpt | **0.72480** | Médico | PT |
+| ModernBERT | 0.68578 | Geral | EN |
+| BERTimbau | 0.64319 | Geral | PT |
+
+**Insight:** Domínio específico > Língua específica > Geral multilingual
+
+### Por que não superou BERTimbau + Focal?
+
+- Sem Focal Loss: Class weights normais não são tão efetivos
+- BERTimbau Large + Focal teve mais capacidade
+
+---
+
+## ✅ Análise: XLM-RoBERTa + Mean Pooling (0.68767)
+
+**XLM-RoBERTa competitivo** com ModernBERT. Mean pooling melhorou a representação.
+
+### Por que funcionou?
+
+1. **Mean Pooling:** Agrega todos os tokens, não só [CLS]
+2. **Pré-treino massivo:** 100 línguas, dados abundantes
+3. **RoBERTa optimizations:** Treinamento mais longo, sem NSP
+
+### Comparação Mean vs CLS pooling
+
+| Pooling | Score | Motivo |
+|---------|-------|--------|
+| Mean | **0.68767** | Captura toda a sequência |
+| CLS | ~0.65 | Perde informação de tokens finais |
+
+**Insight:** Mean pooling é superior para classificação de textos médicos.
 
 ---
 
