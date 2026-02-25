@@ -33,7 +33,19 @@
 | 27 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
-| ❌ | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug fp16
+| ❌ | mDeBERTa-v3 + Class Weights | 0.01008 | ⚠️ Bug fp16 |
+
+### Resubmissões (v2/v3)
+
+| Modelo | Score Original | Score Resubmit | Delta | Status |
+|--------|----------------|----------------|-------|--------|
+| BERTimbau + Focal Loss v2 | 0.79696 | **0.79505** | -0.2% | ✅ OK |
+| BERTimbau + Focal Loss v3 | 0.79696 | 0.72625 | -8.9% | ⚠️ Regressão |
+| Ensemble Soft Voting v2 | 0.78049 | 0.76387 | -2.1% | ⚠️ Regressão |
+| Custom Transformer v2 | 0.77272 | 0.41721 | -46% | ❌ Falhou |
+| BioBERTpt + Focal Loss v2 | 0.72480 | 0.26099 | -64% | ❌ Falhou |
+
+> **Lição:** Resubmissões com alterações quebraram os modelos. Apenas BERTimbau + Focal v2 manteve performance.
 
 ---
 

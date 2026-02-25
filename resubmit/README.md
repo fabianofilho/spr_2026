@@ -3,23 +3,50 @@
 ## Objetivo
 Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanceamento de classes**.
 
----
-
-## 🏆 Melhor Modelo: BERTimbau + Focal Loss (0.79696)
-
-| Versão | Notebook | Estratégias | Status |
-|--------|----------|-------------|--------|
-| v3 | `resubmit_bertimbau_focal_v3.ipynb` | Alpha por classe + Threshold tuning + Label smoothing | ⏳ |
+**Limite:** 5 submissões/dia
 
 ---
 
-## 🆕 Novos Resubmits (Top 4 - Fev/2026)
+## 🏆 Melhor Modelo: BERTimbau + Focal Loss v2 (0.79505)
 
-| Modelo Base | Score | Notebook v2 | Estratégia |
-|-------------|-------|-------------|------------|
-| Ensemble Soft Voting | 0.78049 | `resubmit_ensemble_voting_v2.ipynb` | +SGD (3 modelos), pesos otimizados |
-| Custom Transformer | 0.77272 | `resubmit_custom_transformer_v2.ipynb` | **Focal Loss** + label smoothing + warmup |
-| BioBERTpt | 0.72480 | `resubmit_biobertpt_focal_v2.ipynb` | **Focal Loss** (γ=2) + gradient accumulation |
+---
+
+## 📅 Submissões por Data
+
+### 2026-02-24 (5/5 submissões)
+| Modelo | Notebook | Score | Delta |
+|--------|----------|-------|-------|
+| BERTimbau + Focal Loss v2 | `resubmit_bertimbau_v2.ipynb` | **0.79505** | -0.19 pp |
+| BERTimbau + Focal Loss v3 | `resubmit_bertimbau_focal_v3.ipynb` | 0.72625 | -7.07 pp |
+| Ensemble Soft Voting v2 | `resubmit_ensemble_voting_v2.ipynb` | 0.76387 | -1.66 pp |
+| Custom Transformer v2 | `resubmit_custom_transformer_v2.ipynb` | 0.41721 | -35.55 pp |
+| BioBERTpt + Focal Loss v2 | `resubmit_biobertpt_focal_v2.ipynb` | 0.26099 | -46.38 pp |
+
+### 2026-02-25 (0/5 submissões) - HOJE
+| Modelo | Notebook | Score | Status |
+|--------|----------|-------|--------|
+| LightGBM v2 | `resubmit_lgbm_v2.ipynb` | - | ⏳ |
+| LightGBM v3 | `resubmit_lgbm_v3.ipynb` | - | ⏳ |
+| LinearSVC v2 | `resubmit_linearsvc_v2.ipynb` | - | ⏳ |
+| LinearSVC v3 | `resubmit_linearsvc_v3.ipynb` | - | ⏳ |
+| LogReg v2 | `resubmit_logreg_v2.ipynb` | - | ⏳ |
+
+### 2026-02-26 (0/5 submissões)
+| Modelo | Notebook | Score | Status |
+|--------|----------|-------|--------|
+| LogReg v3 | `resubmit_logreg_v3.ipynb` | - | ⏳ |
+| SGD v2 | `resubmit_sgd_v2.ipynb` | - | ⏳ |
+| SGD v3 | `resubmit_sgd_v3.ipynb` | - | ⏳ |
+
+---
+
+## ⚠️ Insights dos Resultados (24/02)
+
+1. **BERTimbau v2 é estável** - Score próximo ao baseline (0.79505 vs 0.79696)
+2. **v3 piorou** - Estratégias extras (alpha por classe, label smoothing) não ajudaram
+3. **Modelos transformers quebraram** - Custom Transformer e BioBERTpt colapsaram
+   - Possível overfitting ou instabilidade no fine-tuning
+4. **Ensemble regrediu** - Adicionar SGD e ajustar pesos não melhorou
 
 ### Melhorias Implementadas:
 

@@ -14,17 +14,17 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 | Rank | Modelo | Score |
 |------|--------|-------|
 | 🥇 | **BERTimbau + Focal Loss** | **0.79696** |
-| 🥈 | Ensemble Soft Voting | 0.78049 |
-| 🥉 | TF-IDF + LinearSVC | 0.77885 |
-| 4 | Custom Transformer Encoder | 0.77272 |
-| 5 | TF-IDF + SGDClassifier | 0.75019 |
-| 6 | Ensemble TF-IDF + W2V | 0.74667 |
-| 7 | Stacking Meta-Learner | 0.73852 |
-| 8 | TF-IDF + Logistic Regression | 0.72935 |
-| 9 | BioBERTpt | 0.72480 |
-| 10 | TF-IDF + LightGBM | 0.70273 |
+| 🥈 | BERTimbau + Focal Loss v2 | 0.79505 |
+| 🥉 | Ensemble Soft Voting | 0.78049 |
+| 4 | TF-IDF + LinearSVC | 0.77885 |
+| 5 | Custom Transformer Encoder | 0.77272 |
+| 6 | Ensemble Soft Voting v2 | 0.76387 |
+| 7 | TF-IDF + SGDClassifier | 0.75019 |
+| 8 | Ensemble TF-IDF + W2V | 0.74667 |
+| 9 | Stacking Meta-Learner | 0.73852 |
+| 10 | TF-IDF + Logistic Regression | 0.72935 |
 
-> Ver [TODO.md](TODO.md) para lista completa de 27 submissões.
+> Ver [TODO.md](TODO.md) para lista completa de 32 submissões (incluindo resubmissões).
 
 ## Estrutura do Repositório
 
@@ -89,6 +89,18 @@ Análises metodológicas por categoria em `insights/`:
 - [Transformers](insights/transformers.md) - Análise de resultados
 - [Sentence Transformers](insights/sentence_transformers.md)
 - [Ensemble](insights/ensemble.md)
+
+### Lições das Resubmissões (v2/v3)
+
+| Modelo | Original | Resubmit | Status |
+|--------|----------|----------|--------|
+| BERTimbau + Focal v2 | 0.79696 | 0.79505 | ✅ OK |
+| BERTimbau + Focal v3 | 0.79696 | 0.72625 | ⚠️ -8.9% |
+| Ensemble Voting v2 | 0.78049 | 0.76387 | ⚠️ -2.1% |
+| Custom Transformer v2 | 0.77272 | 0.41721 | ❌ -46% |
+| BioBERTpt + Focal v2 | 0.72480 | 0.26099 | ❌ -64% |
+
+> **Insight:** Alterações prejudicaram os modelos. Ver [NEXT.md](NEXT.md) para próximos passos.
 
 ## Dicas
 

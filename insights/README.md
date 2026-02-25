@@ -27,9 +27,33 @@ Identificar **por que** certos modelos performam melhor que outros, analisando:
 | Rank | Modelo | Score | Categoria |
 |------|--------|-------|----------|
 | 1 | BERTimbau + Focal Loss | **0.79696** | Transformers |
-| 2 | Ensemble Soft Voting | 0.78049 | Ensemble |
-| 3 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
-| 4 | Custom Transformer Encoder | 0.77272 | Custom |
+| 2 | BERTimbau + Focal Loss v2 | 0.79505 | Resubmit |
+| 3 | Ensemble Soft Voting | 0.78049 | Ensemble |
+| 4 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
+
+---
+
+## ⚠️ Resubmissões (v2/v3) - Lições Aprendidas
+
+| Modelo | Original | Resubmit | Delta | Status |
+|--------|----------|----------|-------|--------|
+| BERTimbau + Focal v2 | 0.79696 | **0.79505** | -0.2% | ✅ OK |
+| BERTimbau + Focal v3 | 0.79696 | 0.72625 | -8.9% | ⚠️ |
+| Ensemble Soft Voting v2 | 0.78049 | 0.76387 | -2.1% | ⚠️ |
+| Custom Transformer v2 | 0.77272 | 0.41721 | -46% | ❌ |
+| BioBERTpt + Focal v2 | 0.72480 | 0.26099 | -64% | ❌ |
+
+### O que deu errado nas resubmissões?
+
+1. **BioBERTpt + Focal v2 (0.26099):** Focal Loss provavelmente mal configurada para BioBERTpt
+2. **Custom Transformer v2 (0.41721):** Alterações no tokenizer/arquitetura quebraram o modelo
+3. **BERTimbau v3 (0.72625):** v3 adicionou mudanças que prejudicaram generalização
+4. **Ensemble v2 (0.76387):** Composição diferente não funcionou tão bem
+
+### O que funcionou?
+
+- **BERTimbau + Focal v2 (0.79505):** Mantém 99.8% da performance original
+- **Conclusão:** Mudanças incrementais pequenas são mais seguras
 
 ---
 
@@ -104,7 +128,12 @@ Custom Transformer Encoder (0.77272) é competitivo sem pré-treino!
 - Vocabulário médico sub-representado
 - Score: 0.56-0.66 (30% abaixo do baseline)
 
-### 2. Modelos Multilingual
+### 5. Resubmissões com Muitas Alterações
+- BioBERTpt + Focal (0.26) e Custom v2 (0.41) quebraram completamente
+- **Lição:** Mudanças radicais são arriscadas
+- **Recomendação:** Testar uma alteração por vez
+
+### 6. Modelos Multilingual
 - BERT Multilingual (0.561) e DistilBERT (0.552) decepcionam
 - Tokenização genérica perde termos médicos PT
 
@@ -160,4 +189,4 @@ classifica corretamente. TF-IDF captura isso diretamente.
 
 ---
 
-*Atualizado em: 24/02/2026*
+*Atualizado em: 25/02/2026*
