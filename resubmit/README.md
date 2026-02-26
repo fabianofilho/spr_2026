@@ -22,21 +22,35 @@ Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanc
 | Custom Transformer v2 | `resubmit_custom_transformer_v2.ipynb` | 0.41721 | -35.55 pp |
 | BioBERTpt + Focal Loss v2 | `resubmit_biobertpt_focal_v2.ipynb` | 0.26099 | -46.38 pp |
 
-### 2026-02-25 (0/5 submissões) - HOJE
+### 2026-02-25 (5/5 submissões)
 | Modelo | Notebook | Score | Status |
 |--------|----------|-------|--------|
-| LightGBM v2 | `resubmit_lgbm_v2.ipynb` | - | ⏳ |
-| LightGBM v3 | `resubmit_lgbm_v3.ipynb` | - | ⏳ |
-| LinearSVC v2 | `resubmit_linearsvc_v2.ipynb` | - | ⏳ |
-| LinearSVC v3 | `resubmit_linearsvc_v3.ipynb` | - | ⏳ |
-| LogReg v2 | `resubmit_logreg_v2.ipynb` | - | ⏳ |
+| LightGBM v2 | `resubmit_lgbm_v2.ipynb` | 0.60915 | ✅ |
+| LinearSVC v2 | `resubmit_linearsvc_v2.ipynb` | 0.77885 | ✅ |
+| LogReg v2 | `resubmit_logreg_v2.ipynb` | 0.72935 | ✅ |
+| SGD v2 | `resubmit_sgd_v2.ipynb` | 0.75019 | ✅ |
+| Qwen3 Zero-Shot | `resubmit_qwen3_zeroshot.ipynb` | 0.13261 | ✅ |
 
-### 2026-02-26 (0/5 submissões)
+### 2026-02-26 (0/5 submissões) - HOJE
 | Modelo | Notebook | Score | Status |
 |--------|----------|-------|--------|
+| LightGBM v3 | `resubmit_lgbm_v3.ipynb` | - | ⏳ |
+| LinearSVC v3 | `resubmit_linearsvc_v3.ipynb` | - | ⏳ |
 | LogReg v3 | `resubmit_logreg_v3.ipynb` | - | ⏳ |
-| SGD v2 | `resubmit_sgd_v2.ipynb` | - | ⏳ |
 | SGD v3 | `resubmit_sgd_v3.ipynb` | - | ⏳ |
+| Qwen3 One-Shot | `resubmit_qwen3_oneshot.ipynb` | - | ⏳ |
+
+---
+
+## ⚠️ Insights dos Resultados (25/02)
+
+1. **LinearSVC v2 mantém top** - Score 0.77885 (igual baseline, sem degradação)
+2. **SGD v2 estável** - Score 0.75019 (similar ao esperado)
+3. **LogReg v2 estável** - Score 0.72935
+4. **LightGBM v2 piorou** - Score 0.60915 (abaixo do baseline 0.70273)
+5. **Qwen3 Zero-Shot MUITO ruim** - Score 0.13261 (LLM sem fine-tuning não funciona)
+   - LLMs zero-shot não entendem o contexto médico específico
+   - **Tentativa:** One-shot com exemplo no prompt
 
 ---
 
