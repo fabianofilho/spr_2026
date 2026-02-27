@@ -7,7 +7,16 @@ Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanc
 
 ---
 
-## 🏆 Melhor Modelo: BERTimbau + Focal Loss v2 (0.79505)
+## 🏆 Melhor Modelo: BERTimbau + Focal Loss (0.79696)
+
+### ✅ Modelos que Mantiveram/Melhoraram
+| Rank | Modelo | Score | Status |
+|------|--------|-------|--------|
+| 🏆 | BERTimbau + Focal Loss | 0.79696 | ✅ Baseline campeão |
+| 2 | BERTimbau + Focal Loss v2 | 0.79505 | ✅ Estável (-0.2%) |
+| 3 | Ensemble Soft Voting | 0.78049 | ✅ Baseline estável |
+| 4 | **SGDClassifier v3** | **0.77036** | 🚀 **MELHOROU +2.7%** |
+| 5 | LinearSVC | 0.77885 | ✅ Baseline estável |
 
 ---
 
@@ -25,59 +34,108 @@ Melhorar os melhores modelos baseline com técnicas para lidar com o **desbalanc
 ### 2026-02-25 (5/5 submissões)
 | Modelo | Notebook | Score | Status |
 |--------|----------|-------|--------|
-| LightGBM v2 | `resubmit_lgbm_v2.ipynb` | 0.60915 | ✅ |
-| LinearSVC v2 | `resubmit_linearsvc_v2.ipynb` | 0.77885 | ✅ |
-| LogReg v2 | `resubmit_logreg_v2.ipynb` | 0.72935 | ✅ |
-| SGD v2 | `resubmit_sgd_v2.ipynb` | 0.75019 | ✅ |
-| Qwen3 Zero-Shot | `resubmit_qwen3_zeroshot.ipynb` | 0.13261 | ✅ |
+| LightGBM v2 | `resubmit_lgbm_v2.ipynb` | 0.60915 | ⚠️ Regrediu |
+| LinearSVC v2 | `resubmit_linearsvc_v2.ipynb` | 0.77885 | ✅ Estável |
+| LogReg v2 | `resubmit_logreg_v2.ipynb` | 0.72935 | ✅ Estável |
+| SGD v2 | `resubmit_sgd_v2.ipynb` | 0.75019 | ✅ Estável |
+| Qwen3 Zero-Shot | `resubmit_qwen3_zeroshot.ipynb` | 0.13261 | ❌ Falhou |
 
-### 2026-02-26 (0/5 submissões) - HOJE
+### 2026-02-26 (5/5 submissões) ✅
 | Modelo | Notebook | Score | Status |
 |--------|----------|-------|--------|
-| LightGBM v3 | `resubmit_lgbm_v3.ipynb` | - | ⏳ |
-| LinearSVC v3 | `resubmit_linearsvc_v3.ipynb` | - | ⏳ |
-| LogReg v3 | `resubmit_logreg_v3.ipynb` | - | ⏳ |
-| SGD v3 | `resubmit_sgd_v3.ipynb` | - | ⏳ |
-| Qwen3 One-Shot | `resubmit_qwen3_oneshot.ipynb` | - | ⏳ |
+| **SGDClassifier v3** | `resubmit_sgd_v3.ipynb` | **0.77036** | 🚀 **+2.7%** |
+| SGDClassifier v3 | - | 0.77036 | ⚠️ Duplicado |
+| LinearSVC v3 | `resubmit_linearsvc_v3.ipynb` | 0.75966 | ⚠️ -2.5% |
+| LogisticRegression v3 | `resubmit_logreg_v3.ipynb` | 0.71303 | ⚠️ -2.2% |
+| Qwen3 One-Shot | `resubmit_qwen3_oneshot.ipynb` | 0.13261 | ❌ Falhou |
+
+### 2026-02-27 (1/5 submissões) - HOJE
+| Modelo | Notebook | Score | Status |
+|--------|----------|-------|--------|
+| LightGBM v3 | `resubmit_lgbm_v3.ipynb` | ⏳ | Pendente (reagendado) |
 
 ---
 
-## ⚠️ Insights dos Resultados (25/02)
+## 🚀 Plano: Próximos 3 Dias
 
-1. **LinearSVC v2 mantém top** - Score 0.77885 (igual baseline, sem degradação)
-2. **SGD v2 estável** - Score 0.75019 (similar ao esperado)
-3. **LogReg v2 estável** - Score 0.72935
-4. **LightGBM v2 piorou** - Score 0.60915 (abaixo do baseline 0.70273)
-5. **Qwen3 Zero-Shot MUITO ruim** - Score 0.13261 (LLM sem fine-tuning não funciona)
-   - LLMs zero-shot não entendem o contexto médico específico
-   - **Tentativa:** One-shot com exemplo no prompt
+> **Foco:** Replicar sucesso do SGDClassifier v3 (+2.7%) em outros modelos
+
+### 2026-02-28 (5/5 planejadas)
+| # | Modelo | Notebook | Estratégia |
+|---|--------|----------|------------|
+| 1 | SGDClassifier v4 | `resubmit_sgd_v4.ipynb` | RandomSearch 50 iter + SMOTE classes 5/6 |
+| 2 | Ensemble v3 | `resubmit_ensemble_v3.ipynb` | SGD v3 + LinearSVC + LogReg (weighted blend) |
+| 3 | BERTimbau v4 | `resubmit_bertimbau_v4.ipynb` | Threshold tuning apenas (não mexer no modelo) |
+| 4 | LinearSVC v4 | `resubmit_linearsvc_v4.ipynb` | Calibration + Platt Scaling |
+| 5 | **Gemma 3 4B** | `resubmit_gemma3_oneshot.ipynb` | 🆕 LLM One-Shot |
+
+### 2026-03-01 (5/5 planejadas)
+| # | Modelo | Notebook | Estratégia |
+|---|--------|----------|------------|
+| 1 | SGDClassifier v5 | `resubmit_sgd_v5.ipynb` | SGD v4 + sem classe 2 (hipótese pegadinha) |
+| 2 | Ensemble v4 | `resubmit_ensemble_v4.ipynb` | BERTimbau + SGD v3 blend (0.6/0.4) |
+| 3 | XLM-RoBERTa v2 | `resubmit_xlmroberta_v2.ipynb` | Focal Loss (copiar config BERTimbau) |
+| 4 | ModernBERT v2 | `resubmit_modernbert_v2.ipynb` | Focal Loss (copiar config BERTimbau) |
+| 5 | **Llama 3.2 3B** | `resubmit_llama3_oneshot.ipynb` | 🆕 LLM One-Shot |
+
+### 2026-03-02 (5/5 planejadas)
+| # | Modelo | Notebook | Estratégia |
+|---|--------|----------|------------|
+| 1 | Ensemble v5 | `resubmit_ensemble_v5.ipynb` | Top 3 voting: BERTimbau + SGD v4 + Ensemble v4 |
+| 2 | SGDClassifier v6 | `resubmit_sgd_v6.ipynb` | SGD v5 + threshold por classe otimizado |
+| 3 | BERTimbau v5 | `resubmit_bertimbau_v5.ipynb` | Data augmentation conservadora (EDA) |
+| 4 | BioBERTpt v3 | `resubmit_biobertpt_v3.ipynb` | Config exata do BERTimbau v1 (sem mexer) |
+| 5 | **Qwen3 4B** | `resubmit_qwen3_4b_oneshot.ipynb` | 🆕 LLM One-Shot (modelo maior) |
 
 ---
 
-## ⚠️ Insights dos Resultados (24/02)
+## 📊 Estratégias v4/v5/v6
 
-1. **BERTimbau v2 é estável** - Score próximo ao baseline (0.79505 vs 0.79696)
-2. **v3 piorou** - Estratégias extras (alpha por classe, label smoothing) não ajudaram
-3. **Modelos transformers quebraram** - Custom Transformer e BioBERTpt colapsaram
-   - Possível overfitting ou instabilidade no fine-tuning
-4. **Ensemble regrediu** - Adicionar SGD e ajustar pesos não melhorou
+### SGD v4: RandomSearch Intensivo + SMOTE
+```python
+N_SEARCH_ITER = 50          # vs 20 no v3
+USE_SMOTE = True            # Oversample classes 5/6
+sampling_strategy = {5: 500, 6: 500}
+```
 
-### Melhorias Implementadas:
+### Ensemble v3: Weighted Blend com SGD v3
+```python
+# Pesos baseados em scores públicos
+weights = {
+    'sgd_v3': 0.35,      # 0.77036 - único que melhorou
+    'linearsvc': 0.35,   # 0.77885 - baseline estável  
+    'logreg': 0.30       # 0.72935
+}
+final_pred = sum(w * proba for w, proba in zip(weights, probas))
+```
 
-**Ensemble Soft Voting v2:**
-- Adiciona SGDClassifier ao voting (3 modelos vs 2)
-- Pesos baseados nos F1-Scores públicos: SVC=0.345, SGD=0.332, LR=0.323
-- TF-IDF com 25k features (vs 20k)
+### BERTimbau v4: Threshold Tuning (NÃO MEXER NO MODELO)
+```python
+# Apenas ajustar thresholds na inferência
+thresholds = {
+    0: 0.50, 1: 0.50, 2: 0.50, 
+    3: 0.50, 4: 0.50, 
+    5: 0.30,  # Mais sensível
+    6: 0.25   # Muito mais sensível
+}
+```
 
-**Custom Transformer v2:**
-- Focal Loss (γ=2) - mesma estratégia do BERTimbau campeão
-- Label smoothing (0.1) para regularização
-- Learning rate scheduler com warmup
-- 15 epochs (vs 10)
+### Ensemble v4: BERTimbau + SGD Blend
+```python
+# Hipótese: Combinar deep learning + clássico
+final_proba = 0.6 * bertimbau_proba + 0.4 * sgd_v3_proba
+```
 
-**BioBERTpt v2:**
-- Focal Loss (γ=2) com class weights
-- Gradient accumulation (2 steps)
+### Transformers v2: Copiar Config Exata do BERTimbau
+```python
+# COPIAR EXATAMENTE - não inventar
+focal_loss_gamma = 2.0
+learning_rate = 2e-5
+epochs = 5
+batch_size = 16
+```
+
+---
 - 7 epochs (vs 5)
 - LR 3e-5 (vs 2e-5)
 

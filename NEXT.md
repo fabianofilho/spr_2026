@@ -1,6 +1,6 @@
 # NEXT.md - Próximos Passos
 
-> Baseado nos insights de 32 submissões (incluindo 5 resubmissões)
+> Baseado nos insights de 35+ submissões (incluindo resubmissões v2/v3)
 
 ## 📊 Resumo do Estado Atual
 
@@ -8,21 +8,24 @@
 |---------|-------|
 | Melhor Score | **0.79696** (BERTimbau + Focal Loss) |
 | 2º Melhor | 0.79505 (BERTimbau + Focal Loss v2) |
-| Total Submissões | 32 |
-| Submissões com Falha | 5 (LoRA, mDeBERTa, BioBERTpt v2, Custom v2) |
+| 🚀 **Única Melhoria** | **0.77036** (SGDClassifier v3, +2.7%) |
+| Total Submissões | 35+ |
+| Submissões com Falha | 7+ (LoRA, mDeBERTa, BioBERTpt v2, Custom v2, Qwen3, LLMs) |
 
 ---
 
-## ✅ O Que Funciona (Não Mexer)
+## ✅ O Que Funciona (Replicar)
 
-### Modelos Estáveis
+### Modelos que Mantiveram/Melhoraram
 1. **BERTimbau + Focal Loss** → 0.79696 (CAMPEÃO)
 2. **BERTimbau + Focal Loss v2** → 0.79505 (99.8% do original)
-3. **Ensemble Soft Voting** → 0.78049
-4. **TF-IDF + LinearSVC** → 0.77885
+3. **Ensemble Soft Voting** → 0.78049 (baseline estável)
+4. **TF-IDF + LinearSVC** → 0.77885 (baseline estável)
+5. 🚀 **SGDClassifier v3** → **0.77036** (ÚNICO QUE MELHOROU! +2.7%)
 
 ### Técnicas Comprovadas
 - **Focal Loss** com γ=2 funciona bem para classes desbalanceadas
+- **RandomizedSearchCV** com 20+ iter → SGD v3 melhorou 2.7%!
 - **Class weights** como fallback para modelos clássicos
 - **Soft Voting** entre modelos TF-IDF diversos
 - **BERTimbau** supera modelos multilingual
@@ -37,67 +40,91 @@
 | BioBERTpt + Focal v2 | 0.26099 | Focal Loss mal calibrada |
 | Custom Transformer v2 | 0.41721 | Alterações quebraram tokenizer |
 | BERTimbau + LoRA | 0.13261 | Offline não funciona |
+| Qwen3 Zero-Shot | 0.13261 | LLM não entende contexto médico |
+| Qwen3 One-Shot | 0.13261 | Mesmo com exemplo, não funciona |
 | mDeBERTa | 0.01008 | Bug fp16 no Kaggle |
+
+### Resubmissões que Regrediram
+| Modelo | Baseline | Resubmit | Delta |
+|--------|----------|----------|-------|
+| LinearSVC v3 | 0.77885 | 0.75966 | -2.5% |
+| LogisticRegression v3 | 0.72935 | 0.71303 | -2.2% |
+| BERTimbau + Focal v3 | 0.79696 | 0.72625 | -8.9% |
 
 ### Anti-patterns
 - ⚠️ **Muitas alterações de uma vez** → Quebraram 3 de 5 resubmissões
 - ⚠️ **LoRA offline** → Não funciona no Kaggle
 - ⚠️ **Modelos multilingual** → ~30% piores que PT nativo
-- ⚠️ **Word2Vec média** → Dilui informação discriminativa
+- ⚠️ **LLMs zero/one-shot** → Não funcionam para este problema
+- ⚠️ **RandomSearch em LinearSVC/LogReg** → Regrediu, não melhorou
 
 ---
 
 ## 🎯 Próximos Experimentos Prioritários
 
-### 1. Ensemble com BERTimbau (ALTA PRIORIDADE)
+### 1. SGDClassifier v4: Replicar Sucesso (ALTA PRIORIDADE)
 
-**Hipótese:** Combinar BERTimbau + Focal com TF-IDF Ensemble pode superar 0.80
+**Hipótese:** RandomSearch intensivo + SMOTE pode melhorar ainda mais
 
 ```python
-# Proposta: Weighted Blend
-final_pred = 0.6 * bertimbau_probs + 0.4 * tfidf_ensemble_probs
+N_SEARCH_ITER = 50          # vs 20 no v3 que já melhorou
+USE_SMOTE = True            # Oversample classes 5/6 para 500 amostras
+sampling_strategy = {5: 500, 6: 500}
 ```
 
-**Notebook:** `submit/ensemble/submit_ensemble_bertimbau_tfidf.ipynb`
+**Cuidados:**
+- Manter mesma seed e estrutura do v3
+- SMOTE apenas no treino, nunca no val/test
+
+---
+
+### 2. Ensemble BERTimbau + SGD (ALTA PRIORIDADE)
+
+**Hipótese:** Combinar os 2 melhores pode superar 0.80
+
+```python
+# Weighted Blend
+final_proba = 0.6 * bertimbau_proba + 0.4 * sgd_v3_proba
+```
 
 **Cuidados:**
-- Usar mesma seed do BERTimbau original
-- Não alterar hiperparâmetros do Focal Loss
+- NÃO re-treinar BERTimbau, usar probabilidades salvas
 - Testar pesos: 0.5/0.5, 0.6/0.4, 0.7/0.3
 
 ---
 
-### 2. Data Augmentation para Classes 5 e 6 (MÉDIA PRIORIDADE)
+### 3. BERTimbau v4: Threshold Tuning Apenas (MÉDIA PRIORIDADE)
 
-**Hipótese:** Aumentar samples das classes minoritárias pode melhorar F1-Macro
+**Hipótese:** Ajustar thresholds na inferência pode melhorar F1-Macro
 
-**Técnicas a testar:**
-- [ ] EDA (Easy Data Augmentation) - synonym replacement
-- [ ] Back-translation PT→EN→PT
-- [ ] SMOTE no espaço de embeddings do BERTimbau
-
-**Notebook:** `tests/augmented/submit_augmented_bertimbau.ipynb`
+```python
+# NÃO MEXER NO MODELO - apenas pós-processamento
+thresholds = {
+    0: 0.50, 1: 0.50, 2: 0.50, 
+    3: 0.50, 4: 0.50, 
+    5: 0.30,  # Mais sensível para classe minoritária
+    6: 0.25   # Muito mais sensível
+}
+```
 
 **Cuidados:**
-- Augmentar APENAS treino, não validação
-- Monitorar overfitting nas classes aumentadas
-- Usar augmentation conservadora (max 2x samples)
+- Usar modelo EXATAMENTE como está
+- Apenas ajustar thresholds na predição final
 
 ---
 
-### 3. Focal Loss em Outros Modelos (MÉDIA PRIORIDADE)
+### 4. Focal Loss em Transformers (MÉDIA PRIORIDADE)
 
-**Hipótese:** Focal Loss pode melhorar modelos abaixo de 0.78
+**Hipótese:** Copiar config EXATA do BERTimbau em outros transformers
 
 **Candidatos:**
 | Modelo | Score Atual | Score Esperado |
 |--------|-------------|----------------|
-| BioBERTpt | 0.72480 | ~0.76+ |
-| XLM-RoBERTa | 0.68767 | ~0.72+ |
-| ModernBERT | 0.68578 | ~0.72+ |
+| XLM-RoBERTa | 0.68767 | ~0.74+ |
+| ModernBERT | 0.68578 | ~0.74+ |
 
 **Cuidados:**
-- Copiar EXATAMENTE a configuração do BERTimbau + Focal
+- COPIAR EXATAMENTE config do BERTimbau, não inventar
 - γ=2, sem alterações
 - Uma alteração por vez
 

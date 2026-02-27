@@ -9,7 +9,7 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 - **Métrica**: F1-Score Macro
 - **Formato**: O teste só existe no runtime de avaliação do Kaggle
 
-## Leaderboard Atual (Top 10)
+## Leaderboard Atual (Top 12)
 
 | Rank | Modelo | Score |
 |------|--------|-------|
@@ -18,13 +18,15 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 | 🥉 | Ensemble Soft Voting | 0.78049 |
 | 4 | TF-IDF + LinearSVC | 0.77885 |
 | 5 | Custom Transformer Encoder | 0.77272 |
-| 6 | Ensemble Soft Voting v2 | 0.76387 |
-| 7 | TF-IDF + SGDClassifier | 0.75019 |
-| 8 | Ensemble TF-IDF + W2V | 0.74667 |
-| 9 | Stacking Meta-Learner | 0.73852 |
-| 10 | TF-IDF + Logistic Regression | 0.72935 |
+| 6 | **SGDClassifier v3** 🚀 | **0.77036** |
+| 7 | Ensemble Soft Voting v2 | 0.76387 |
+| 8 | LinearSVC v3 | 0.75966 |
+| 9 | TF-IDF + SGDClassifier | 0.75019 |
+| 10 | Ensemble TF-IDF + W2V | 0.74667 |
+| 11 | Stacking Meta-Learner | 0.73852 |
+| 12 | TF-IDF + Logistic Regression | 0.72935 |
 
-> Ver [TODO.md](TODO.md) para lista completa de 32 submissões (incluindo resubmissões).
+> Ver [TODO.md](TODO.md) para lista completa de 35+ submissões (incluindo resubmissões v2/v3).
 
 ## Estrutura do Repositório
 
@@ -95,12 +97,16 @@ Análises metodológicas por categoria em `insights/`:
 | Modelo | Original | Resubmit | Status |
 |--------|----------|----------|--------|
 | BERTimbau + Focal v2 | 0.79696 | 0.79505 | ✅ OK |
+| **SGDClassifier v3** | 0.75019 | **0.77036** | 🚀 +2.7% |
+| LinearSVC v3 | 0.77885 | 0.75966 | ⚠️ -2.5% |
+| LogisticRegression v3 | 0.72935 | 0.71303 | ⚠️ -2.2% |
 | BERTimbau + Focal v3 | 0.79696 | 0.72625 | ⚠️ -8.9% |
 | Ensemble Voting v2 | 0.78049 | 0.76387 | ⚠️ -2.1% |
 | Custom Transformer v2 | 0.77272 | 0.41721 | ❌ -46% |
 | BioBERTpt + Focal v2 | 0.72480 | 0.26099 | ❌ -64% |
+| Qwen3 1.7B One-Shot | - | 0.13261 | ❌ Falhou |
 
-> **Insight:** Alterações prejudicaram os modelos. Ver [NEXT.md](NEXT.md) para próximos passos.
+> **Insight:** SGDClassifier v3 é a única melhoria! RandomizedSearch funcionou. Ver [NEXT.md](NEXT.md) para próximos passos.
 
 ## Dicas
 
