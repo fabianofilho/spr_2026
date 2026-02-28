@@ -1,192 +1,128 @@
 # Insights - Análise Metodológica
 
-Esta pasta contém análises metodológicas dos resultados de cada categoria de modelos.
+> Consolidação de 40+ submissões (Fev/2026)
 
-## Objetivo
+## Leaderboard Completo
 
-Identificar **por que** certos modelos performam melhor que outros, analisando:
-- Características do dataset
-- Adequação da representação textual
-- Hiperparâmetros e configurações
-- Trade-offs entre abordagens
-
-## Arquivos
-
-| Arquivo | Categoria | Melhor Score |
-|---------|-----------|---------------|
-| [transformers.md](transformers.md) | Transformers | **0.79696** 🏆 |
-| [ensemble.md](ensemble.md) | Ensemble | 0.78049 |
-| [tfidf.md](tfidf.md) | TF-IDF | 0.77885 |
-| [sentence_transformers.md](sentence_transformers.md) | SBERT/Custom | 0.77272 |
-| [word2vec.md](word2vec.md) | Word2Vec | 0.66385 |
-
----
-
-## 🏆 Top 4 Modelos - O Que Funciona
+### Top Performers (> 0.75)
 
 | Rank | Modelo | Score | Categoria |
-|------|--------|-------|----------|
-| 1 | BERTimbau + Focal Loss | **0.79696** | Transformers |
-| 2 | BERTimbau + Focal Loss v2 | 0.79505 | Resubmit |
+|------|--------|-------|-----------|
+| 🏆 | BERTimbau + Focal Loss | **0.79696** | Transformers |
+| 2 | Super Ensemble v1 | 0.78729 | Ensemble |
 | 3 | Ensemble Soft Voting | 0.78049 | Ensemble |
 | 4 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
+| 5 | Custom Transformer | 0.77272 | Custom |
+| 6 | LinearSVC v4 | 0.77244 | TF-IDF |
+| 7 | SGDClassifier v3 🚀 | 0.77036 | TF-IDF |
+
+### Mid Performers (0.65 - 0.75)
+
+| Modelo | Score | Categoria |
+|--------|-------|-----------|
+| Ensemble v3 | 0.76567 | Ensemble |
+| SGDClassifier v4 | 0.76503 | TF-IDF |
+| LinearSVC v3 | 0.75966 | TF-IDF |
+| TF-IDF + SGDClassifier | 0.75019 | TF-IDF |
+| Ensemble TF-IDF + W2V | 0.74667 | Ensemble |
+| Stacking Meta-Learner | 0.73852 | Ensemble |
+| TF-IDF + LogReg | 0.72935 | TF-IDF |
+| BioBERTpt | 0.72480 | Transformers |
+| LogReg v3 | 0.71303 | TF-IDF |
+| TF-IDF + LightGBM | 0.70273 | TF-IDF |
+| TF-IDF + XGBoost | 0.69482 | TF-IDF |
+| XLM-RoBERTa | 0.68767 | Transformers |
+| ModernBERT | 0.68578 | Transformers |
+| SVD + XGBoost | 0.66897 | TF-IDF |
+| LightGBM v3 | 0.66454 | TF-IDF |
+| Word2Vec + XGBoost | 0.66385 | Word2Vec |
+
+### Low Performers (< 0.65)
+
+| Modelo | Score | Categoria |
+|--------|-------|-----------|
+| BERTimbau base | 0.64319 | Transformers |
+| Word2Vec + Max Pooling | 0.58009 | Word2Vec |
+| Word2Vec + SVM | 0.57456 | Word2Vec |
+| FastText + LogReg | 0.56783 | Word2Vec |
+| Word2Vec NILC | 0.56727 | Word2Vec |
+| Word2Vec + LightGBM | 0.56096 | Word2Vec |
+| BERT Multilingual | 0.56095 | Transformers |
+| DistilBERT | 0.55229 | Transformers |
+| Word2Vec TF-IDF Weighted | 0.52215 | Word2Vec |
+| SBERT + LightGBM | 0.48376 | SBERT |
+| TF-IDF + CatBoost | 0.48202 | TF-IDF |
+| TF-IDF + TabPFN | 0.39074 | TF-IDF |
+
+### Falhas (< 0.30)
+
+| Modelo | Score | Motivo |
+|--------|-------|--------|
+| BioBERTpt + Focal v2 | 0.26099 | Focal mal calibrada |
+| Custom Transformer v2 | 0.41721 | Tokenizer quebrado |
+| BERTimbau + LoRA | 0.13261 | Offline não funciona |
+| Qwen3 Zero-Shot | 0.13261 | LLM não entende |
+| Qwen3 One-Shot | 0.13261 | Mesmo problema |
+| mDeBERTa | 0.01008 | Bug fp16 |
 
 ---
 
-## ⚠️ Resubmissões (v2/v3) - Lições Aprendidas
+## Resubmissões (v2/v3/v4)
 
 | Modelo | Original | Resubmit | Delta | Status |
 |--------|----------|----------|-------|--------|
-| BERTimbau + Focal v2 | 0.79696 | **0.79505** | -0.2% | ✅ OK |
+| Super Ensemble v1 | - | **0.78729** | - | 🔥 Novo 2º! |
+| SGDClassifier v3 | 0.75019 | **0.77036** | **+2.7%** | 🚀 Única melhoria |
+| BERTimbau + Focal v2 | 0.79696 | 0.79505 | -0.2% | ✅ OK |
+| LinearSVC v4 | 0.77885 | 0.77244 | -0.8% | ⚠️ |
+| Ensemble v3 | 0.78049 | 0.76567 | -1.9% | ⚠️ |
+| SGDClassifier v4 | 0.77036 | 0.76503 | -0.7% | ⚠️ |
+| LinearSVC v3 | 0.77885 | 0.75966 | -2.5% | ⚠️ |
 | BERTimbau + Focal v3 | 0.79696 | 0.72625 | -8.9% | ⚠️ |
-| Ensemble Soft Voting v2 | 0.78049 | 0.76387 | -2.1% | ⚠️ |
+| LogReg v3 | 0.72935 | 0.71303 | -2.2% | ⚠️ |
 | Custom Transformer v2 | 0.77272 | 0.41721 | -46% | ❌ |
 | BioBERTpt + Focal v2 | 0.72480 | 0.26099 | -64% | ❌ |
 
-### O que deu errado nas resubmissões?
-
-1. **BioBERTpt + Focal v2 (0.26099):** Focal Loss provavelmente mal configurada para BioBERTpt
-2. **Custom Transformer v2 (0.41721):** Alterações no tokenizer/arquitetura quebraram o modelo
-3. **BERTimbau v3 (0.72625):** v3 adicionou mudanças que prejudicaram generalização
-4. **Ensemble v2 (0.76387):** Composição diferente não funcionou tão bem
-
-### O que funcionou?
-
-- **BERTimbau + Focal v2 (0.79505):** Mantém 99.8% da performance original
-- **Conclusão:** Mudanças incrementais pequenas são mais seguras
+**Taxa de sucesso:** 2/11 melhoraram (18%)
 
 ---
 
-## 🔑 Fatores de Sucesso Identificados
+## Fatores de Sucesso
 
-### 1. **Tratamento de Desbalanceamento de Classes**
+### 1. Tratamento de Classes Desbalanceadas
 
-O dataset tem classes minoritárias (BI-RADS 5 e 6) que são críticas para o F1-Macro.
+| Técnica | Impacto |
+|---------|---------|
+| Focal Loss (γ=2) | +15% em classes raras |
+| class_weight='balanced' | Baseline sólido |
+| Soft Voting | Suaviza erros |
 
-| Modelo | Técnica | Impacto |
-|--------|---------|----------|
-| BERTimbau + Focal | Focal Loss (γ=2) | +15% nas classes raras |
-| LinearSVC | class_weight='balanced' | Baseline sólido |
-| Ensemble | Voting suaviza erros | Reduz falsos negativos |
-
-**Insight:** Focal Loss > Class Weights > Nada
-
-### 2. **Preservação de Termos Específicos**
-
-Termos como "BIRADS", "calcificação", "nódulo espiculado" são altamente discriminativos.
-
-| Abordagem | Preserva Termos? | Score |
-|-----------|-----------------|-------|
-| TF-IDF | ✅ Sim (exata) | 0.778 |
-| BERTimbau | ✅ Sim (contextual) | 0.797 |
-| Word2Vec (média) | ❌ Dilui | 0.664 |
-
-**Insight:** Métodos que preservam lexicalidade vencem.
-
-### 3. **Transfer Learning em Português**
+### 2. Modelos em Português
 
 | Modelo | Língua | Score |
 |--------|--------|-------|
-| BERTimbau (PT) | Português | **0.797** |
-| BioBERTpt (PT) | Português | 0.725 |
-| ModernBERT (EN) | Inglês | 0.686 |
+| BERTimbau | PT | **0.797** |
+| BioBERTpt | PT | 0.725 |
+| ModernBERT | EN | 0.686 |
 | BERT Multilingual | Multi | 0.561 |
 
-**Insight:** Modelos nativos PT > Multilingual > Inglês
+### 3. Preservação de Termos Técnicos
 
-### 4. **Diversidade no Ensemble**
-
-Soft Voting combina modelos com erros descorrelacionados:
-
-```
-Ensemble Soft Voting (0.78049):
-├─ TF-IDF + LinearSVC (0.778) → Captura termos exatos
-├─ TF-IDF + SGD (0.750) → Regularização diferente
-└─ TF-IDF + LogReg (0.729) → Probabilidades calibradas
-```
-
-**Insight:** Voting > Modelo único quando modelos são diversos.
-
-### 5. **Arquitetura Custom vs Pré-treinado**
-
-Custom Transformer Encoder (0.77272) é competitivo sem pré-treino!
-
-| Vantagem | Descrição |
-|----------|----------|
-| Tokenizer específico | Vocabulário do domínio médico |
-| Sem overhead | Modelo menor e mais rápido |
-| Sem transfer gap | Treinado direto no task |
-
-**Insight:** Custom from scratch pode superar modelos multilingual.
+TF-IDF e BERTimbau preservam termos como "BIRADS", "calcificação", "nódulo espiculado".
+Word2Vec (média) dilui essa informação.
 
 ---
 
-## ❌ O Que Não Funciona
+## Arquivos de Insight por Categoria
 
-### 1. Word2Vec Média
-- Média de embeddings dilui informação discriminativa
-- Vocabulário médico sub-representado
-- Score: 0.56-0.66 (30% abaixo do baseline)
-
-### 5. Resubmissões com Muitas Alterações
-- BioBERTpt + Focal (0.26) e Custom v2 (0.41) quebraram completamente
-- **Lição:** Mudanças radicais são arriscadas
-- **Recomendação:** Testar uma alteração por vez
-
-### 6. Modelos Multilingual
-- BERT Multilingual (0.561) e DistilBERT (0.552) decepcionam
-- Tokenização genérica perde termos médicos PT
-
-### 3. LoRA Offline
-- BERTimbau + LoRA: 0.132 (FALHA)
-- Adapters não salvam corretamente offline
-- Full fine-tuning é mais confiável
-
-### 4. mDeBERTa + fp16
-- Bug de mixed precision no Kaggle
-- Score: 0.01 (quase aleatório)
+| Arquivo | Melhor Score | Conclusão |
+|---------|--------------|-----------|
+| [transformers.md](transformers.md) | 0.79696 | BERTimbau + Focal Loss domina |
+| [ensemble.md](ensemble.md) | 0.78049 | Soft Voting > Stacking |
+| [tfidf.md](tfidf.md) | 0.77885 | Baseline difícil de bater |
+| [sentence_transformers.md](sentence_transformers.md) | 0.77272 | Custom encoder surpreende |
+| [word2vec.md](word2vec.md) | 0.66385 | Não recomendado |
 
 ---
 
-## 💡 Recomendações
-
-### Para melhorar ainda mais:
-
-1. **Ensemble com BERTimbau + Focal**
-   - Adicionar ao Soft Voting pode superar 0.80
-   
-2. **Focal Loss em outros modelos**
-   - Aplicar em BioBERTpt, Custom Transformer
-   
-3. **Data Augmentation**
-   - EDA para classes 5 e 6 (minoritárias)
-   - SMOTE no espaço de embeddings
-   
-4. **Pré-treino domínio**
-   - MLM com datasets médicos PT
-   - PubMed PT, Medical Transcriptions
-
----
-
-## Resumo Executivo
-
-### Por que BERTimbau + Focal Loss lidera?
-
-1. **Língua nativa:** Treinado em português, entende nuances
-2. **Focal Loss:** Foca em exemplos difíceis/raros
-3. **Fine-tuning:** Transfer learning efetivo
-4. **Contexto:** Captura "sem sinais de malignidade" vs "com sinais"
-
-### Por que Ensemble é vice-campeão?
-
-Combinação de TF-IDF + SVC/SGD/LogReg tem erros descorrelacionados.
-Soft voting suaviza predições e melhora robustez.
-
-### Por que TF-IDF ainda é top 3?
-
-Termos médicos são altamente discriminativos. "BIRADS 4" sozinho
-classifica corretamente. TF-IDF captura isso diretamente.
-
----
-
-*Atualizado em: 25/02/2026*
+*Atualizado: 28/02/2026*
