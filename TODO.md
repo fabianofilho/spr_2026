@@ -9,8 +9,11 @@
 | 3 | **Ensemble Soft Voting** | **0.78049** | ✅ Submetido |
 | 4 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
 | 5 | **Custom Transformer Encoder** | **0.77272** | ✅ Submetido |
-| 6 | **SGDClassifier v3** 🚀 | **0.77036** | ✅ Submetido (26/02) |
-| 7 | LinearSVC v3 | 0.75966 | ✅ Submetido (26/02) |
+| 6 | LinearSVC v4 (Calibration+Platt) | 0.77244 | ✅ Submetido (28/02) |
+| 7 | **SGDClassifier v3** 🚀 | **0.77036** | ✅ Submetido (26/02) |
+| 8 | Ensemble v3 | 0.76567 | ✅ Submetido (28/02) |
+| 9 | SGDClassifier v4 (RandomSearch) | 0.76503 | ✅ Submetido (28/02) |
+| 10 | LinearSVC v3 | 0.75966 | ✅ Submetido (26/02) |
 | 8 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
 | 9 | **Ensemble TF-IDF + W2V** | **0.74667** | ✅ Submetido |
 | 10 | **Stacking Meta-Learner** | **0.73852** | ✅ Submetido |
@@ -56,8 +59,11 @@
 | Qwen3 1.7B One-Shot | - | 0.13261 | - | ❌ Falhou |
 | LightGBM v3 | 0.70273 | 0.66454 | -5.4% | ⚠️ Regressão |
 | **Super Ensemble v1** | - | **0.78729** | - | 🔥 2º melhor! |
+| LinearSVC v4 | 0.77885 | 0.77244 | -0.8% | ⚠️ Regressão |
+| SGDClassifier v4 | 0.77036 | 0.76503 | -0.7% | ⚠️ Regressão |
+| Ensemble v3 | 0.78049 | 0.76567 | -1.9% | ⚠️ Regressão |
 
-> **Lição:** SGDClassifier v3 foi a única melhoria! RandomizedSearch funcionou bem. Restantes v3 regredram.
+> **Lição:** SGDClassifier v3 foi a única melhoria! RandomizedSearch funcionou bem. v4 não melhorou.
 > ⚠️ **Nota:** SGDClassifier v3 foi submetido 2x por engano (duplicado).
 
 ---

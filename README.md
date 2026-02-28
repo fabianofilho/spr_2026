@@ -9,22 +9,25 @@ Repositório para o desafio [SPR 2026 Mammography Report Classification](https:/
 - **Métrica**: F1-Score Macro
 - **Formato**: O teste só existe no runtime de avaliação do Kaggle
 
-## Leaderboard Atual (Top 12)
+## Leaderboard Atual (Top 15)
 
 | Rank | Modelo | Score |
 |------|--------|-------|
 | 🥇 | **BERTimbau + Focal Loss** | **0.79696** |
 | 🥈 | BERTimbau + Focal Loss v2 | 0.79505 |
-| 🥉 | Ensemble Soft Voting | 0.78049 |
-| 4 | TF-IDF + LinearSVC | 0.77885 |
-| 5 | Custom Transformer Encoder | 0.77272 |
-| 6 | **SGDClassifier v3** 🚀 | **0.77036** |
-| 7 | Ensemble Soft Voting v2 | 0.76387 |
-| 8 | LinearSVC v3 | 0.75966 |
-| 9 | TF-IDF + SGDClassifier | 0.75019 |
-| 10 | Ensemble TF-IDF + W2V | 0.74667 |
-| 11 | Stacking Meta-Learner | 0.73852 |
-| 12 | TF-IDF + Logistic Regression | 0.72935 |
+| 🥉 | **Super Ensemble v1** | **0.78729** |
+| 4 | Ensemble Soft Voting | 0.78049 |
+| 5 | TF-IDF + LinearSVC | 0.77885 |
+| 6 | Custom Transformer Encoder | 0.77272 |
+| 7 | LinearSVC v4 (Calibration+Platt) | 0.77244 |
+| 8 | **SGDClassifier v3** 🚀 | **0.77036** |
+| 9 | Ensemble v3 | 0.76567 |
+| 10 | SGDClassifier v4 (RandomSearch) | 0.76503 |
+| 11 | Ensemble Soft Voting v2 | 0.76387 |
+| 12 | LinearSVC v3 | 0.75966 |
+| 13 | TF-IDF + SGDClassifier | 0.75019 |
+| 14 | Ensemble TF-IDF + W2V | 0.74667 |
+| 15 | Stacking Meta-Learner | 0.73852 |
 
 > Ver [TODO.md](TODO.md) para lista completa de 35+ submissões (incluindo resubmissões v2/v3).
 
@@ -92,12 +95,16 @@ Análises metodológicas por categoria em `insights/`:
 - [Sentence Transformers](insights/sentence_transformers.md)
 - [Ensemble](insights/ensemble.md)
 
-### Lições das Resubmissões (v2/v3)
+### Lições das Resubmissões (v2/v3/v4)
 
 | Modelo | Original | Resubmit | Status |
 |--------|----------|----------|--------|
+| **Super Ensemble v1** | - | **0.78729** | 🔥 2º melhor! |
 | BERTimbau + Focal v2 | 0.79696 | 0.79505 | ✅ OK |
 | **SGDClassifier v3** | 0.75019 | **0.77036** | 🚀 +2.7% |
+| LinearSVC v4 | 0.77885 | 0.77244 | ⚠️ -0.8% |
+| Ensemble v3 | 0.78049 | 0.76567 | ⚠️ -1.9% |
+| SGDClassifier v4 | 0.77036 | 0.76503 | ⚠️ -0.7% |
 | LinearSVC v3 | 0.77885 | 0.75966 | ⚠️ -2.5% |
 | LogisticRegression v3 | 0.72935 | 0.71303 | ⚠️ -2.2% |
 | BERTimbau + Focal v3 | 0.79696 | 0.72625 | ⚠️ -8.9% |
@@ -106,7 +113,7 @@ Análises metodológicas por categoria em `insights/`:
 | BioBERTpt + Focal v2 | 0.72480 | 0.26099 | ❌ -64% |
 | Qwen3 1.7B One-Shot | - | 0.13261 | ❌ Falhou |
 
-> **Insight:** SGDClassifier v3 é a única melhoria! RandomizedSearch funcionou. Ver [NEXT.md](NEXT.md) para próximos passos.
+> **Insight:** SGDClassifier v3 é a única melhoria! v4 com SMOTE regrediu. Super Ensemble v1 é 2º melhor!
 
 ## Dicas
 
