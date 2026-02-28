@@ -5,35 +5,37 @@
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
 | 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 2 | **Ensemble Soft Voting** | **0.78049** | ✅ Submetido |
-| 3 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
-| 4 | **Custom Transformer Encoder** | **0.77272** | ✅ Submetido |
-| 5 | **SGDClassifier v3** 🚀 | **0.77036** | ✅ Submetido (26/02) |
-| 6 | LinearSVC v3 | 0.75966 | ✅ Submetido (26/02) |
-| 7 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
-| 8 | **Ensemble TF-IDF + W2V** | **0.74667** | ✅ Submetido |
-| 9 | **Stacking Meta-Learner** | **0.73852** | ✅ Submetido |
-| 10 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
-| 11 | **BioBERTpt** | 0.72480 | ✅ Submetido |
-| 12 | LogisticRegression v3 | 0.71303 | ✅ Submetido (26/02) |
-| 13 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
-| 14 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
-| 15 | **XLM-RoBERTa + Mean Pooling** | 0.68767 | ✅ Submetido |
-| 16 | **ModernBERT** | 0.68578 | ✅ Submetido |
-| 17 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
-| 18 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
-| 19 | **BERTimbau base** | 0.64319 | ✅ Submetido |
-| 20 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
-| 21 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
-| 22 | FastText + LogReg | 0.56783 | ✅ Submetido |
-| 23 | Word2Vec NILC | 0.56727 | ✅ Submetido |
-| 24 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
-| 25 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 26 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
-| 27 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
-| 28 | **SBERT + LightGBM** | 0.48376 | ✅ Submetido |
-| 29 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
-| 30 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
+| 2 | **Super Ensemble v1 (BERTimbau + TFIDF)** | **0.78729** | ✅ Submetido (27/02) |
+| 3 | **Ensemble Soft Voting** | **0.78049** | ✅ Submetido |
+| 4 | TF-IDF + LinearSVC | 0.77885 | ✅ Submetido |
+| 5 | **Custom Transformer Encoder** | **0.77272** | ✅ Submetido |
+| 6 | **SGDClassifier v3** 🚀 | **0.77036** | ✅ Submetido (26/02) |
+| 7 | LinearSVC v3 | 0.75966 | ✅ Submetido (26/02) |
+| 8 | TF-IDF + SGDClassifier | 0.75019 | ✅ Submetido |
+| 9 | **Ensemble TF-IDF + W2V** | **0.74667** | ✅ Submetido |
+| 10 | **Stacking Meta-Learner** | **0.73852** | ✅ Submetido |
+| 11 | TF-IDF + Logistic Regression | 0.72935 | ✅ Submetido |
+| 12 | **BioBERTpt** | 0.72480 | ✅ Submetido |
+| 13 | LogisticRegression v3 | 0.71303 | ✅ Submetido (26/02) |
+| 14 | TF-IDF + LightGBM | 0.70273 | ✅ Submetido |
+| 15 | TF-IDF + XGBoost | 0.69482 | ✅ Submetido |
+| 16 | **XLM-RoBERTa + Mean Pooling** | 0.68767 | ✅ Submetido |
+| 17 | **ModernBERT** | 0.68578 | ✅ Submetido |
+| 18 | TF-IDF + SVD + XGBoost | 0.66897 | ✅ Submetido |
+| 19 | LightGBM v3 | 0.66454 | ✅ Submetido (27/02) |
+| 20 | Word2Vec + XGBoost | 0.66385 | ✅ Submetido |
+| 21 | **BERTimbau base** | 0.64319 | ✅ Submetido |
+| 22 | Word2Vec + Max Pooling | 0.58009 | ✅ Submetido |
+| 23 | Word2Vec + SVM | 0.57456 | ✅ Submetido |
+| 24 | FastText + LogReg | 0.56783 | ✅ Submetido |
+| 25 | Word2Vec NILC | 0.56727 | ✅ Submetido |
+| 26 | Word2Vec + LightGBM | 0.56096 | ✅ Submetido |
+| 27 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 28 | **DistilBERT Multilingual** | 0.55229 | ✅ Submetido |
+| 29 | Word2Vec + TF-IDF Weighted | 0.52215 | ✅ Submetido |
+| 30 | **SBERT + LightGBM** | 0.48376 | ✅ Submetido |
+| 31 | TF-IDF + CatBoost | 0.48202 | ✅ Submetido |
+| 32 | TF-IDF + TabPFN v0.1.9 | 0.39074 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | Qwen3 1.7B One-Shot | 0.13261 | ⚠️ Falhou (26/02) |
 | ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
@@ -52,7 +54,8 @@
 | Custom Transformer v2 | 0.77272 | 0.41721 | -46% | ❌ Falhou |
 | BioBERTpt + Focal Loss v2 | 0.72480 | 0.26099 | -64% | ❌ Falhou |
 | Qwen3 1.7B One-Shot | - | 0.13261 | - | ❌ Falhou |
-| LightGBM v3 | 0.70273 | ⏳ Pendente | - | 📅 Reagendado 27/02 |
+| LightGBM v3 | 0.70273 | 0.66454 | -5.4% | ⚠️ Regressão |
+| **Super Ensemble v1** | - | **0.78729** | - | 🔥 2º melhor! |
 
 > **Lição:** SGDClassifier v3 foi a única melhoria! RandomizedSearch funcionou bem. Restantes v3 regredram.
 > ⚠️ **Nota:** SGDClassifier v3 foi submetido 2x por engano (duplicado).
