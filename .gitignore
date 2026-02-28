@@ -67,7 +67,3 @@ Thumbs.db
 .env
 secrets/
 kaggle.json
-
-# Local only (não versionar)
-CLAUDE.md
-
