@@ -29,6 +29,13 @@ Notebooks baseados na arquitetura campeã: **BERTimbau v4 Threshold Tuning (0.82
 | `resubmit_bertimbau_v5_seed_ensemble.ipynb` | Multi-seed | 5 seeds diferentes |
 | `resubmit_bertimbau_v5_ensemble_threshold.ipynb` | Multi-model | BERTimbau + BioBERTpt |
 
+## 🤖 LLMs (BI-RADS Instruction)
+
+| Notebook | Modelo | Diferencial |
+|----------|--------|-------------|
+| `resubmit_qwen_birads_instruction.ipynb` | Qwen 1.5B | Prompt detalhado BI-RADS |
+| `resubmit_medgemma_birads_instruction.ipynb` | MedGemma | Modelo médico Google |
+
 ---
 
 ## 📊 Arquitetura Base (BERTimbau v4)
