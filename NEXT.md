@@ -15,19 +15,17 @@
 
 ## 🎯 Estratégias Prioritárias
 
-### 1. Threshold Tuning (ALTA PRIORIDADE)
+### 1. Threshold Tuning (ALTA PRIORIDADE) 🔥
 
 **Hipótese:** Ajustar thresholds de decisão por classe pode melhorar F1-Macro em classes minoritárias.
 
-```python
-# Não mexer no modelo - apenas pós-processamento
-thresholds = {
-    0: 0.50, 1: 0.50, 2: 0.50, 
-    3: 0.50, 4: 0.50, 
-    5: 0.30,  # Mais sensível para classe minoritária
-    6: 0.25   # Muito mais sensível
-}
-```
+**Resultados do Colab (validação):**
+| Config | F1-Macro |
+|--------|----------|
+| Baseline (argmax) | 0.78665 |
+| Threshold tuning | **0.84896** |
+
+**Notebook:** `resubmit/backlog/resubmit_bertimbau_threshold_v6.ipynb`
 
 **Risco:** Baixo (não altera modelo treinado)
 
