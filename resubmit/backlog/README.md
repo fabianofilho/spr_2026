@@ -1,46 +1,33 @@
 # Backlog - Notebooks para Submissões Futuras
 
-Notebooks baseados na arquitetura campeã: **BERTimbau v4 Threshold Tuning (0.82073)** 🏆
+✅ **Backlog vazio!** Todos os experimentos foram movidos para dias específicos.
 
 ---
 
-## 🎯 Prioridade Alta (BERTimbau v5 Series)
+## 📅 Cronograma de Submissões
 
-| Notebook | Melhoria | Hipótese |
-|----------|----------|----------|
-| `resubmit_bertimbau_v5_threshold_grid.ipynb` | Grid search fino | Thresholds mais precisos (+0.5-1%) |
-| `resubmit_bertimbau_v5_cv_thresholds.ipynb` | CV para thresholds | Mais estabilidade |
-| `resubmit_bertimbau_v5_alpha_weights.ipynb` | α adaptativo por classe | Foco em minoritárias |
-| `resubmit_super_ensemble_v3_threshold.ipynb` | Super Ensemble + Threshold | Combinar tudo |
+| Data | Foco | Notebooks |
+|------|------|-----------|
+| 2026-03-01 | Threshold Tuning | BERTimbau v5 threshold_grid, cv_thresholds |
+| 2026-03-02 | **Transformers Críticos** | mDeBERTa FP32 fix, α weights, γ search, LR search, maxlen 512 |
+| 2026-03-03 | Regularização + Ensemble | Label smoothing, seed ensemble, super ensemble, ClinicalBERT |
+| 2026-03-04 | LLMs Menores | BioGPT, MedGemma 4B, MedMO, BERTimbau ultimate |
+| 2026-03-05 | LLMs Grandes | MedGemma 1.5 4B, MedGemma 27B, Qwen few-shot, MedGemma CoT |
 
-## 🔬 Prioridade Média (Hyperparameter Search)
+---
 
-| Notebook | Melhoria | Valores |
-|----------|----------|---------|
-| `resubmit_bertimbau_v5_gamma_search.ipynb` | Testar γ Focal Loss | 1.0, 1.5, 2.0, 2.5, 3.0 |
-| `resubmit_bertimbau_v5_lr_search.ipynb` | Learning rate | 1e-5, 2e-5, 3e-5, 5e-5 |
-| `resubmit_bertimbau_v5_maxlen_512.ipynb` | Sequências maiores | 512 tokens |
-| `resubmit_bertimbau_v5_label_smoothing.ipynb` | Regularização | ε = 0.1 |
+## 🎯 Prioridade por Dia
 
-## 🔄 Prioridade Baixa (Ensemble Variations)
+### 2026-03-02 (Alta Prioridade)
+- `resubmit_mdeberta_fp32_fix.ipynb` - **NUNCA TESTADO CORRETAMENTE** (potencial 0.80+)
+- Hyperparameters do campeão (α, γ, LR, max_len)
 
-| Notebook | Melhoria | Descrição |
-|----------|----------|-----------|
-| `resubmit_bertimbau_v5_seed_ensemble.ipynb` | Multi-seed | 5 seeds diferentes |
-| `resubmit_bertimbau_v5_ensemble_threshold.ipynb` | Multi-model | BERTimbau + BioBERTpt |
+### 2026-03-03 (Média Prioridade)
+- Regularização (label smoothing)
+- Ensembles e variações
 
-## 🤖 LLMs (BI-RADS Instruction)
-
-| Notebook | Modelo | Características |
-|----------|--------|-----------------|
-| `resubmit_qwen_birads_instruction.ipynb` | Qwen 1.5B | Prompt PT-BR |
-| `resubmit_medgemma_birads_instruction.ipynb` | MedGemma (geral) | Google médico |
-| `resubmit_medgemma_1_5_4b_it.ipynb` | MedGemma 1.5 4B | Multimodal, reasoning |
-| `resubmit_medgemma_4b_it.ipynb` | MedGemma 4B IT | Texto/visão clínico |
-| `resubmit_medgemma_27b_text_it.ipynb` | MedGemma 27B | Grande, quantizado 4-bit |
-| `resubmit_medmo_birads_instruction.ipynb` | MedMO 4B/8B | MBZUAI médico |
-| `resubmit_biogpt_large_birads.ipynb` | BioGPT Large | Microsoft biomédico |
-| `resubmit_clinicalbert_finetune.ipynb` | ClinicalBERT | Fine-tuning encoder |
+### 2026-03-04-05 (Exploratório)
+- LLMs para comparação
 
 ---
 
