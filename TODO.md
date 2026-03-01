@@ -23,11 +23,27 @@
 
 Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 
-| Prioridade | Experimento | Hipótese |
-|------------|-------------|----------|
-| 🔴 Alta | BERTimbau v4 Threshold Tuning | Ajustar thresholds pode melhorar F1-Macro |
-| 🟡 Média | Ensemble v4 (pesos otimizados) | Otimizar pesos do Super Ensemble |
-| 🟢 Baixa | Focal Loss em XLM-RoBERTa | Replicar sucesso do BERTimbau |
+### Pasta 2026-03-01 (Prioridade Máxima)
+| Notebook | Técnica | Expectativa |
+|----------|---------|-------------|
+| `resubmit_bertimbau_ultimate_v6` | 3-Seed + 5-Fold CV + Grid Search Thresholds | >0.82073 |
+| `resubmit_bertimbau_v5_threshold_grid` | Grid search fino de thresholds | +0.5-1% |
+| `resubmit_bertimbau_v5_cv_thresholds` | CV para thresholds estáveis | +0.5% |
+| `resubmit_qwen_birads_instruction` | LLM com prompt BI-RADS | Experimental |
+
+### Backlog de Alta Prioridade
+| Notebook | Técnica |
+|----------|---------|
+| `resubmit_bertimbau_v5_alpha_weights` | Testar α=0.3, 0.4 no Focal Loss |
+| `resubmit_bertimbau_v5_gamma_search` | Testar γ=1.5, 2.5, 3.0 |
+| `resubmit_bertimbau_v5_seed_ensemble` | Ensemble de 5 seeds |
+
+### LLMs Médicos (Experimental)
+| Notebook | Modelo |
+|----------|--------|
+| `resubmit_medgemma_birads_instruction` | MedGemma 4B |
+| `resubmit_medgemma_27b_text_it` | MedGemma 27B |
+| `resubmit_biogpt_large_birads` | BioGPT Large |
 
 ---
 
@@ -35,16 +51,18 @@ Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 
 ### ✅ O que funciona
 - **Threshold Tuning** por classe (+3% no BERTimbau v4!) 🔥
+- **Focal Loss** (γ=2.0, α=0.25) → essencial
+- **Seed Ensemble** (3 seeds) → +0.5-1% robustez
+- **5-Fold CV** → thresholds estáveis
 - **BERTimbau** > modelos multilingual
-- **Focal Loss** (γ=2) para classes desbalanceadas
-- **Soft Voting** entre modelos diversos
 
 ### ❌ O que não funciona
 - **LoRA offline** no Kaggle
 - **LLMs zero/one-shot** para este problema
 - **SMOTE** com v4/v5 (todas regrediram)
-- **Tratamento de texto** com v5 (piorou scores)
-- **Muitas alterações** de uma vez (3/5 falharam)
+- **Tratamento de texto** com v5 (piorou -2%)
+- **Label Smoothing alto** → prejudica threshold tuning
+- **MAX_LEN=512** → timeout (relatórios são curtos)
 
 ---
 

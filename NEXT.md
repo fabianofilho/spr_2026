@@ -1,6 +1,6 @@
 # NEXT.md - Próximos Passos
 
-> Baseado em 40+ submissões (Fev/2026)
+> Baseado em 45+ submissões (Fev/2026)
 
 ## Estado Atual
 
@@ -9,56 +9,32 @@
 | 🏆 Melhor Score | **0.82073** (BERTimbau v4 + Threshold Tuning) |
 | 2º Melhor | 0.79696 (BERTimbau + Focal Loss) |
 | 3º Melhor | 0.78729 (Super Ensemble v1) |
+| Baseline TF-IDF | 0.77885 |
 | Total Submissões | 45+ |
 
 ---
 
-## 🎯 Estratégias Prioritárias
+## 🚀 Pasta 2026-03-01 (Rodar Amanhã)
 
-### 1. ✅ Threshold Tuning - VALIDADO!
-
-**Resultado Kaggle:** 0.82073 (+3% sobre baseline!) 🏆
-
-**Config vencedora:**
+### Ultimate v6 - PRIORIDADE MÁXIMA
 ```python
-THRESHOLDS = {
-    0: 0.50, 1: 0.50, 2: 0.50,
-    3: 0.50, 4: 0.50,
-    5: 0.30,  # Classe 5 - mais sensível
-    6: 0.25,  # Classe 6 - muito mais sensível
-}
+# Combina TODAS as técnicas validadas:
+SEEDS = [42, 123, 456]      # 3-seed ensemble
+N_FOLDS = 5                  # Cross-validation
+FOCAL_GAMMA = 2.0            # Focal Loss
+FOCAL_ALPHA = 0.25
+# + Grid Search Thresholds por classe
 ```
+**Expectativa:** >0.82073, meta 0.83+
 
-**Próximo:** Otimizar thresholds via grid search no backlog
+### Threshold Grid v5
+Grid search mais fino de thresholds (step=0.02).
 
----
+### CV Thresholds v5
+Thresholds estimados via média de 5 folds para estabilidade.
 
-### 2. Ensemble v4 - Otimização de Pesos (MÉDIA PRIORIDADE)
-
-**Hipótese:** Otimizar pesos do Super Ensemble com validação cruzada.
-
-**Composição atual (v1 = 0.78729):**
-- BERTimbau + Focal: 0.45
-- LinearSVC: 0.25
-- SGD v3: 0.20
-- LogReg: 0.10
-
-**Experimento:** Usar optuna para encontrar pesos ótimos.
-
-**Risco:** Médio (overfitting nos pesos)
-
----
-
-### 3. Focal Loss em Outros Transformers (BAIXA PRIORIDADE)
-
-**Hipótese:** Replicar sucesso do BERTimbau em XLM-RoBERTa e ModernBERT.
-
-| Modelo | Score Atual | Score Esperado |
-|--------|-------------|----------------|
-| XLM-RoBERTa | 0.68767 | ~0.74+ |
-| ModernBERT | 0.68578 | ~0.74+ |
-
-**Risco:** Médio (pode não funcionar igual)
+### Qwen + BI-RADS Instruction
+LLM com prompt detalhado das categorias BI-RADS (experimental).
 
 ---
 
@@ -70,30 +46,45 @@ THRESHOLDS = {
 | LLMs zero/one-shot | Não entendem contexto médico |
 | SMOTE | v4/v5 regrediram |
 | Tratamento de texto | v5 com normalização piorou -2% |
-| Muitas alterações | 3/5 resubmissões falharam |
+| Label Smoothing alto | Prejudica threshold tuning |
+| MAX_LEN=512 | Timeout, relatórios são curtos (~100 tokens) |
 | Iterar sobre sucesso | SGD v4/v5 pioraram vs v3 |
 
 ---
 
-## 📋 Checklist de Submissão
+## 🧪 Backlog de Experimentos
 
-### Antes de Submeter
-- [ ] Testar localmente com CV (5-fold)
-- [ ] Seed fixa para reprodutibilidade
-- [ ] `local_files_only=True` em modelos HF
-- [ ] UMA alteração por vez
+### Alta Prioridade (BERTimbau v5)
+| Notebook | Técnica | Risco |
+|----------|---------|-------|
+| `alpha_weights` | α=0.3, 0.4 no Focal Loss | Baixo |
+| `gamma_search` | γ=1.5, 2.5, 3.0 | Baixo |
+| `seed_ensemble` | 5 seeds | Baixo |
+| `lr_search` | LR=1e-5, 3e-5 | Baixo |
 
-### Durante Resubmissão
-- [ ] Copiar notebook original (não editar)
-- [ ] Documentar exatamente o que mudou
-- [ ] Se der bom score, PARAR de iterar
+### LLMs Médicos (Experimental)
+| Notebook | Modelo | Tamanho |
+|----------|--------|---------|
+| `qwen_birads` | Qwen 2.5 1.5B | 1.5B |
+| `medgemma_birads` | MedGemma 4B | 4B |
+| `medgemma_27b` | MedGemma 27B Text IT | 27B |
+| `biogpt_large` | BioGPT Large | 1.5B |
+| `clinicalbert` | ClinicalBERT (fine-tune) | 110M |
 
 ---
 
-## 🔑 Princípios Guia
+## 🔑 Configuração Vencedora (Referência)
 
-1. **Conservadorismo:** Mudanças pequenas e incrementais
-2. **Documentação:** Registrar toda alteração
-3. **Validação:** CV antes de submeter
-4. **Simplicidade:** Soft Voting > Stacking complexo
-5. **Especialização:** Modelos PT > Multilingual
+```python
+# BERTimbau v4 = 0.82073
+MAX_LEN = 256
+BATCH_SIZE = 8
+EPOCHS = 5
+LR = 2e-5
+FOCAL_GAMMA = 2.0
+FOCAL_ALPHA = 0.25
+SEED = 42
+
+# Thresholds
+THRESHOLDS = {0: 0.50, 1: 0.50, 2: 0.50, 3: 0.50, 4: 0.50, 5: 0.30, 6: 0.25}
+```

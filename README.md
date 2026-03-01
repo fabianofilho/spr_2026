@@ -4,17 +4,17 @@ Classificação de relatórios de mamografia em categorias BI-RADS (0-6).
 
 - **Competição:** [SPR 2026](https://www.kaggle.com/competitions/spr-2026-mammography-report-classification)
 - **Métrica:** F1-Score Macro
-- **Melhor Score:** **0.79696** (BERTimbau + Focal Loss)
+- **Melhor Score:** **0.82073** (BERTimbau v4 + Focal Loss + Threshold Tuning)
 
 ## Leaderboard (Top 5)
 
 | Rank | Modelo | Score |
 |------|--------|-------|
-| 🥇 | BERTimbau + Focal Loss | **0.79696** |
-| 🥈 | Super Ensemble v1 | 0.78729 |
-| 🥉 | Ensemble Soft Voting | 0.78049 |
-| 4 | TF-IDF + LinearSVC | 0.77885 |
-| 5 | Custom Transformer | 0.77272 |
+| 🥇 | **BERTimbau v4 (Threshold Tuning)** | **0.82073** |
+| 🥈 | BERTimbau + Focal Loss | 0.79696 |
+| 🥉 | Super Ensemble v1 | 0.78729 |
+| 4 | Ensemble Soft Voting | 0.78049 |
+| 5 | TF-IDF + LinearSVC | 0.77885 |
 
 > Ver [TODO.md](TODO.md) para lista completa de 40+ submissões.
 
@@ -42,9 +42,15 @@ tests/            # Experimentos
 - [ensemble.md](insights/ensemble.md) - Soft Voting eficaz
 - [NEXT.md](NEXT.md) - Próximas estratégias
 
-## Lições Principais
+## Técnicas que Funcionam
 
-1. **BERTimbau + Focal Loss** é o padrão ouro
-2. **Modelos PT nativos** > multilingual
-3. **Soft Voting** supera stacking complexo
-4. **Resubmissões são arriscadas** - apenas 1 em 5 melhora
+1. **BERTimbau + Focal Loss + Threshold Tuning** → 0.82073 (+5.4% vs baseline)
+2. **Focal Loss** (γ=2.0, α=0.25) → essencial para desbalanceamento
+3. **Threshold Tuning** por classe → +3% F1 adicional
+4. **Seed Ensemble** (3 seeds) → +0.5-1% estabilidade
+
+## Técnicas que NÃO Funcionam
+
+- **SMOTE** → regrediu o score
+- **LLMs zero/one-shot** → não entendem contexto médico
+- **Tratamento de texto pesado** → -2% F1
