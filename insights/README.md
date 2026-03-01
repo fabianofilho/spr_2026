@@ -77,13 +77,15 @@
 | LinearSVC v4 | 0.77885 | 0.77244 | -0.8% | ⚠️ |
 | Ensemble v3 | 0.78049 | 0.76567 | -1.9% | ⚠️ |
 | SGDClassifier v4 | 0.77036 | 0.76503 | -0.7% | ⚠️ |
+| LinearSVC v5 | 0.77244 | 0.76298 | -1.2% | ⚠️ |
 | LinearSVC v3 | 0.77885 | 0.75966 | -2.5% | ⚠️ |
+| SGDClassifier v5 | 0.76503 | 0.74827 | -2.2% | ⚠️ |
 | BERTimbau + Focal v3 | 0.79696 | 0.72625 | -8.9% | ⚠️ |
 | LogReg v3 | 0.72935 | 0.71303 | -2.2% | ⚠️ |
 | Custom Transformer v2 | 0.77272 | 0.41721 | -46% | ❌ |
 | BioBERTpt + Focal v2 | 0.72480 | 0.26099 | -64% | ❌ |
 
-**Taxa de sucesso:** 2/11 melhoraram (18%)
+**Taxa de sucesso:** 2/13 melhoraram (15%)
 
 ---
 

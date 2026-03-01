@@ -68,9 +68,10 @@ thresholds = {
 |---------|----------------|
 | LoRA offline | Não funciona no Kaggle |
 | LLMs zero/one-shot | Não entendem contexto médico |
-| SMOTE | v4 regrediram vs v3 |
+| SMOTE | v4/v5 regrediram |
+| Tratamento de texto | v5 com normalização piorou -2% |
 | Muitas alterações | 3/5 resubmissões falharam |
-| Iterar sobre sucesso | SGD v4 piorou vs v3 |
+| Iterar sobre sucesso | SGD v4/v5 pioraram vs v3 |
 
 ---
 

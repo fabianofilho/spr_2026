@@ -9,11 +9,13 @@
 | 3 | Ensemble Soft Voting | 0.78049 | 24/02 |
 | 4 | TF-IDF + LinearSVC | 0.77885 | 24/02 |
 | 5 | Custom Transformer | 0.77272 | 24/02 |
-| 6 | SGDClassifier v3 🚀 | 0.77036 | 26/02 |
-| 7 | LinearSVC v4 | 0.77244 | 28/02 |
+| 6 | LinearSVC v4 | 0.77244 | 28/02 |
+| 7 | SGDClassifier v3 🚀 | 0.77036 | 26/02 |
 | 8 | Ensemble v3 | 0.76567 | 28/02 |
 | 9 | SGDClassifier v4 | 0.76503 | 28/02 |
-| 10 | LinearSVC v3 | 0.75966 | 26/02 |
+| 10 | LinearSVC v5 | 0.76298 | 28/02 |
+| 11 | LinearSVC v3 | 0.75966 | 26/02 |
+| 12 | SGDClassifier v5 | 0.74827 | 28/02 |
 
 > Ver lista completa em [insights/README.md](insights/README.md)
 
@@ -42,7 +44,8 @@ Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 ### ❌ O que não funciona
 - **LoRA offline** no Kaggle
 - **LLMs zero/one-shot** para este problema
-- **SMOTE** com v4 (todas regrediram)
+- **SMOTE** com v4/v5 (todas regrediram)
+- **Tratamento de texto** com v5 (piorou scores)
 - **Muitas alterações** de uma vez (3/5 falharam)
 
 ---
@@ -51,6 +54,6 @@ Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 
 | Mês | Total | Melhorias | Regressões | Falhas |
 |-----|-------|-----------|------------|--------|
-| Fev | 40+ | 2 | 8 | 7 |
+| Fev | 42+ | 2 | 10 | 7 |
 
-**Taxa de sucesso:** ~25% das resubmissões melhoraram ou mantiveram
+**Taxa de sucesso:** ~20% das resubmissões melhoraram ou mantiveram
