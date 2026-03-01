@@ -31,10 +31,16 @@ Notebooks baseados na arquitetura campeã: **BERTimbau v4 Threshold Tuning (0.82
 
 ## 🤖 LLMs (BI-RADS Instruction)
 
-| Notebook | Modelo | Diferencial |
-|----------|--------|-------------|
-| `resubmit_qwen_birads_instruction.ipynb` | Qwen 1.5B | Prompt detalhado BI-RADS |
-| `resubmit_medgemma_birads_instruction.ipynb` | MedGemma | Modelo médico Google |
+| Notebook | Modelo | Características |
+|----------|--------|-----------------|
+| `resubmit_qwen_birads_instruction.ipynb` | Qwen 1.5B | Prompt PT-BR |
+| `resubmit_medgemma_birads_instruction.ipynb` | MedGemma (geral) | Google médico |
+| `resubmit_medgemma_1_5_4b_it.ipynb` | MedGemma 1.5 4B | Multimodal, reasoning |
+| `resubmit_medgemma_4b_it.ipynb` | MedGemma 4B IT | Texto/visão clínico |
+| `resubmit_medgemma_27b_text_it.ipynb` | MedGemma 27B | Grande, quantizado 4-bit |
+| `resubmit_medmo_birads_instruction.ipynb` | MedMO 4B/8B | MBZUAI médico |
+| `resubmit_biogpt_large_birads.ipynb` | BioGPT Large | Microsoft biomédico |
+| `resubmit_clinicalbert_finetune.ipynb` | ClinicalBERT | Fine-tuning encoder |
 
 ---
 
