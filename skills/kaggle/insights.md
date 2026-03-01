@@ -95,9 +95,24 @@ insights/
 |---------|-----------|
 | Score Público | F1-Macro no test set público |
 | Score Privado | F1-Macro no test set privado (após competição) |
-| Baseline | TF-IDF + LinearSVC = **0.77885** |
+| Baseline TF-IDF | TF-IDF + LinearSVC = **0.77885** |
+| **Melhor Score** | **BERTimbau v4 = 0.82073** |
 
 ---
+
+## 🧠 Aprendizados Chave
+
+### ✅ O que FUNCIONA:
+- **Focal Loss** (γ=2.0, α=0.25) - essencial para desbalanceamento
+- **Threshold Tuning** - até +3% F1 adicional
+- **Seed Ensemble** (3+ seeds) - +0.5-1% F1
+- **BERTimbau** - melhor modelo para PT-BR médico
+
+### ❌ O que NÃO funciona:
+- **SMOTE** - regrediu o score
+- **Tratamento de texto pesado** - -2% F1
+- **Label Smoothing alto** - prejudica threshold tuning
+- **MAX_LEN=512** - timeout, relatórios são curtos
 
 ## ✅ Checklist de Insights
 

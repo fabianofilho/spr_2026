@@ -14,6 +14,9 @@ As skills são **ativadas sob demanda** quando o pedido coincide com a descriç�
 | [kaggle-submission](kaggle/submission.md) | Kaggle | Workflow de submissão de notebooks | Criar/submeter notebook |
 | [kaggle-insights](kaggle/insights.md) | Kaggle | Documentação de resultados e análises | Após score reportado |
 | [kaggle-models](kaggle/models.md) | Kaggle | Uso de modelos offline no Kaggle | Notebooks com transformers |
+| [kaggle-finetuning](kaggle/finetuning.md) | Kaggle | Fine-tuning: Focal Loss, Thresholds, Ensembles | Treinar transformers |
+| [kaggle-llm-instruction](kaggle/llm-instruction.md) | Kaggle | LLMs com prompt BI-RADS | Usar LLMs para classificação |
+| [kaggle-resubmit](kaggle/resubmit.md) | Kaggle | Workflow de resubmissão e backlog | Organizar experimentos |
 | [huggingface-local](models/huggingface.md) | Modelos | Configurações HuggingFace local/offline | Carregar modelos |
 | [model-upload](models/upload.md) | Modelos | Upload manual para Kaggle Datasets | Modelos não disponíveis |
 
@@ -46,6 +49,9 @@ skills/
 │   ├── submission.md   # Workflow de submissão
 │   ├── insights.md     # Workflow de insights
 │   ├── models.md       # Uso de modelos offline
+│   ├── finetuning.md   # Fine-tuning: Focal Loss, Thresholds
+│   ├── llm-instruction.md  # LLMs com BI-RADS prompt
+│   ├── resubmit.md     # Workflow de resubmissão
 │   └── templates/      # Templates de notebooks
 └── models/
     ├── huggingface.md  # Configurações HF
@@ -60,3 +66,14 @@ skills/
 1. **Sempre commitar** após modificações (ver [git-workflow](git/README.md))
 2. **Documentar scores** no TODO.md e insights/ (ver [kaggle-insights](kaggle/insights.md))
 3. **Usar `local_files_only=True`** em notebooks Kaggle (ver [huggingface-local](models/huggingface.md))
+4. **Usar Focal Loss** para transformers (ver [kaggle-finetuning](kaggle/finetuning.md))
+5. **Threshold Tuning** obrigatório após treino (ver [kaggle-finetuning](kaggle/finetuning.md))
+
+---
+
+## 🏆 Scores de Referência
+
+| Modelo | Score | Técnicas |
+|--------|-------|----------|
+| TF-IDF + LinearSVC | 0.77885 | Baseline |
+| **BERTimbau v4** | **0.82073** | Focal Loss + Threshold Tuning |
