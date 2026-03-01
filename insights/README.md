@@ -1,6 +1,6 @@
 # Insights - Análise Metodológica
 
-> Consolidação de 40+ submissões (Fev/2026)
+> Consolidação de 45+ submissões (Fev/2026)
 
 ## Leaderboard Completo
 
@@ -8,13 +8,14 @@
 
 | Rank | Modelo | Score | Categoria |
 |------|--------|-------|-----------|
-| 🏆 | BERTimbau + Focal Loss | **0.79696** | Transformers |
-| 2 | Super Ensemble v1 | 0.78729 | Ensemble |
-| 3 | Ensemble Soft Voting | 0.78049 | Ensemble |
-| 4 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
-| 5 | Custom Transformer | 0.77272 | Custom |
-| 6 | LinearSVC v4 | 0.77244 | TF-IDF |
-| 7 | SGDClassifier v3 🚀 | 0.77036 | TF-IDF |
+| 🏆 | **BERTimbau v4 (Threshold Tuning)** | **0.82073** | Transformers |
+| 2 | BERTimbau + Focal Loss | 0.79696 | Transformers |
+| 3 | Super Ensemble v1 | 0.78729 | Ensemble |
+| 4 | Ensemble Soft Voting | 0.78049 | Ensemble |
+| 5 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
+| 6 | Custom Transformer | 0.77272 | Custom |
+| 7 | LinearSVC v4 | 0.77244 | TF-IDF |
+| 8 | SGDClassifier v3 | 0.77036 | TF-IDF |
 
 ### Mid Performers (0.65 - 0.75)
 

@@ -6,28 +6,30 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Melhor Score | **0.79696** (BERTimbau + Focal Loss) |
-| 2º Melhor | 0.78729 (Super Ensemble v1) |
-| Única Melhoria v3 | 0.77036 (SGDClassifier v3, +2.7%) |
-| Total Submissões | 40+ |
+| 🏆 Melhor Score | **0.82073** (BERTimbau v4 + Threshold Tuning) |
+| 2º Melhor | 0.79696 (BERTimbau + Focal Loss) |
+| 3º Melhor | 0.78729 (Super Ensemble v1) |
+| Total Submissões | 45+ |
 
 ---
 
 ## 🎯 Estratégias Prioritárias
 
-### 1. Threshold Tuning (ALTA PRIORIDADE) 🔥
+### 1. ✅ Threshold Tuning - VALIDADO!
 
-**Hipótese:** Ajustar thresholds de decisão por classe pode melhorar F1-Macro em classes minoritárias.
+**Resultado Kaggle:** 0.82073 (+3% sobre baseline!) 🏆
 
-**Resultados do Colab (validação):**
-| Config | F1-Macro |
-|--------|----------|
-| Baseline (argmax) | 0.78665 |
-| Threshold tuning | **0.84896** |
+**Config vencedora:**
+```python
+THRESHOLDS = {
+    0: 0.50, 1: 0.50, 2: 0.50,
+    3: 0.50, 4: 0.50,
+    5: 0.30,  # Classe 5 - mais sensível
+    6: 0.25,  # Classe 6 - muito mais sensível
+}
+```
 
-**Notebook:** `resubmit/backlog/resubmit_bertimbau_threshold_v6.ipynb`
-
-**Risco:** Baixo (não altera modelo treinado)
+**Próximo:** Otimizar thresholds via grid search no backlog
 
 ---
 

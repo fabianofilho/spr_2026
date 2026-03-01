@@ -1,50 +1,49 @@
 # Backlog - Notebooks para Submissões Futuras
 
-Notebooks preparados mas ainda não submetidos.
-
-## Prioridade Alta
-
-| Notebook | Descrição | Origem |
-|----------|-----------|--------|
-| resubmit_bertimbau_threshold_v6.ipynb | **Threshold tuning por classe** | Colab |
-| resubmit_super_ensemble_v2.ipynb | Stacking + Tratamento + SMOTE | - |
-| resubmit_ensemble_v4.ipynb | Pesos otimizados | - |
-| resubmit_bertimbau_v5.ipynb | Melhorias incrementais | - |
-
-## Prioridade Média
-
-| Notebook | Descrição |
-|----------|-----------|
-| resubmit_modernbert_v2.ipynb | Focal Loss |
-| resubmit_xlmroberta_v2.ipynb | Focal Loss |
-| resubmit_biobertpt_v3.ipynb | Ajustes |
-| resubmit_ensemble_v5.ipynb | Variação |
-
-## LLMs (Baixa Prioridade)
-
-| Notebook | Descrição |
-|----------|-----------|
-| resubmit_gemma3_oneshot.ipynb | Few-shot |
-| resubmit_llama3_oneshot.ipynb | Few-shot |
-| resubmit_qwen3_4b_oneshot.ipynb | Few-shot |
-
-## Iterações
-
-| Notebook | Descrição |
-|----------|-----------|
-| resubmit_sgd_v6.ipynb | Próxima iteração SGD |
+Notebooks baseados na arquitetura campeã: **BERTimbau v4 Threshold Tuning (0.82073)** 🏆
 
 ---
 
-## Estratégias do Colab
+## 🎯 Prioridade Alta (BERTimbau v5 Series)
 
-Experimentos testados no Google Colab (`colab/`):
+| Notebook | Melhoria | Hipótese |
+|----------|----------|----------|
+| `resubmit_bertimbau_v5_threshold_grid.ipynb` | Grid search fino | Thresholds mais precisos (+0.5-1%) |
+| `resubmit_bertimbau_v5_cv_thresholds.ipynb` | CV para thresholds | Mais estabilidade |
+| `resubmit_bertimbau_v5_alpha_weights.ipynb` | α adaptativo por classe | Foco em minoritárias |
+| `resubmit_super_ensemble_v3_threshold.ipynb` | Super Ensemble + Threshold | Combinar tudo |
 
-| Técnica | Resultado (Val) | Notebook |
-|---------|-----------------|----------|
-| MLM + gamma=2.0 + threshold | **0.84896** | otimizacao_threshold_e_gamma.ipynb |
-| MLM + gamma=1.0 + threshold | 0.80193 | otimizacao_threshold_e_gamma.ipynb |
-| Domain Adaptive Pretrain (MLM) | - | domain_adaptive_pretrain_CORRIGIDO.ipynb |
-| Fine-tune BERTimbau + Focal | - | finetune_bertimbau_medical_focal.ipynb |
+## 🔬 Prioridade Média (Hyperparameter Search)
 
-**Próximo passo:** Testar threshold tuning no Kaggle com `resubmit_bertimbau_threshold_v6.ipynb`
+| Notebook | Melhoria | Valores |
+|----------|----------|---------|
+| `resubmit_bertimbau_v5_gamma_search.ipynb` | Testar γ Focal Loss | 1.0, 1.5, 2.0, 2.5, 3.0 |
+| `resubmit_bertimbau_v5_lr_search.ipynb` | Learning rate | 1e-5, 2e-5, 3e-5, 5e-5 |
+| `resubmit_bertimbau_v5_maxlen_512.ipynb` | Sequências maiores | 512 tokens |
+| `resubmit_bertimbau_v5_label_smoothing.ipynb` | Regularização | ε = 0.1 |
+
+## 🔄 Prioridade Baixa (Ensemble Variations)
+
+| Notebook | Melhoria | Descrição |
+|----------|----------|-----------|
+| `resubmit_bertimbau_v5_seed_ensemble.ipynb` | Multi-seed | 5 seeds diferentes |
+| `resubmit_bertimbau_v5_ensemble_threshold.ipynb` | Multi-model | BERTimbau + BioBERTpt |
+
+---
+
+## 📊 Arquitetura Base (BERTimbau v4)
+
+```python
+# Config campeã
+SEED = 42
+MAX_LEN = 256
+BATCH_SIZE = 8
+EPOCHS = 5
+LR = 2e-5
+FOCAL_GAMMA = 2.0
+FOCAL_ALPHA = 0.25
+THRESHOLDS = {0: 0.50, 1: 0.50, 2: 0.50, 3: 0.50, 4: 0.50, 5: 0.30, 6: 0.25}
+```
+
+## 🏆 Score Atual
+- **BERTimbau v4 (Threshold Tuning): 0.82073** (+3% sobre baseline)
