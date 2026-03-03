@@ -4,18 +4,22 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 🏆 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 2 | **BioBERTpt** | **0.72480** | ✅ Submetido |
-| 3 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
-| 4 | ModernBERT base | 0.68578 | ✅ Submetido |
-| 5 | BERTimbau base | 0.64319 | ✅ Submetido |
-| 6 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 7 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| 🏆 | **BERTimbau v4 + Threshold Tuning** | **0.82073** | ✅ MELHOR |
+| 2 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
+| 3 | BERTimbau v5 (Gamma Search γ=2.5) | 0.75574 | ❌ Abaixo v4 |
+| 4 | BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo v4 |
+| 5 | **BioBERTpt** | **0.72480** | ✅ Submetido |
+| 6 | BERTimbau v5 (Class) | 0.69238 | ❌ Regressão |
+| 7 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
+| 8 | ModernBERT base | 0.68578 | ✅ Submetido |
+| 9 | BERTimbau base | 0.64319 | ✅ Submetido |
+| 10 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 11 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa + class weights | 0.01008 | ⚠️ BUG |
 | ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
 
-> **✅ TODOS OS TRANSFORMERS SUBMETIDOS** - BERTimbau + Focal Loss lidera!
+> **🏆 BERTimbau v4 + Threshold Tuning = 0.82073** - Variações de LR/Gamma não melhoram!
 
 ---
 

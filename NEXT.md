@@ -10,7 +10,7 @@
 | 2º Melhor | 0.79696 (BERTimbau + Focal Loss) |
 | 3º Melhor | 0.78729 (Super Ensemble v1) |
 | Baseline TF-IDF | 0.77885 |
-| Total Submissões | 45+ |
+| Total Submissões | 48+ |
 
 ---
 
@@ -52,15 +52,27 @@ LLM com prompt detalhado das categorias BI-RADS (experimental).
 
 ---
 
+## 📊 Resultados Recentes (2026-03-03)
+
+| Notebook | Score | Resultado |
+|----------|-------|----------|
+| BERTimbau v5 (Gamma Search) | 0.75574 | ❌ Abaixo do v4 |
+| BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo do v4 |
+| BERTimbau v5 (Class) | 0.69238 | ❌ Regressão significativa |
+
+**Conclusão:** Nenhuma variação v5 superou o v4 (0.82073). Threshold tuning continua sendo o diferencial.
+
+---
+
 ## 🧪 Backlog de Experimentos
 
 ### Alta Prioridade (BERTimbau v5)
-| Notebook | Técnica | Risco |
-|----------|---------|-------|
-| `alpha_weights` | α=0.3, 0.4 no Focal Loss | Baixo |
-| `gamma_search` | γ=1.5, 2.5, 3.0 | Baixo |
-| `seed_ensemble` | 5 seeds | Baixo |
-| `lr_search` | LR=1e-5, 3e-5 | Baixo |
+| Notebook | Técnica | Risco | Status |
+|----------|---------|-------|--------|
+| `alpha_weights` | α=0.3, 0.4 no Focal Loss | Baixo | Pendente |
+| `gamma_search` | γ=1.5, 2.5, 3.0 | Baixo | ❌ 0.75574 |
+| `seed_ensemble` | 5 seeds | Baixo | Pendente |
+| `lr_search` | LR=1e-5, 3e-5 | Baixo | ❌ 0.75508 |
 
 ### LLMs Médicos (Experimental)
 | Notebook | Modelo | Tamanho |
