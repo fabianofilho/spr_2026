@@ -2,6 +2,62 @@
 
 > Consolidação de 55+ submissões (Fev-Mar/2026)
 
+---
+
+## 🎯 DICAS RÁPIDAS (Copie e Cole!)
+
+### ✅ FAÇA ISSO
+
+```python
+# 1. USE MAX_LEN=512 (não 192!)
+MAX_LEN = 512  # +2.4% vs MAX_LEN=192
+
+# 2. USE 5-FOLD ENSEMBLE
+N_FOLDS = 5
+# Média das predições dos 5 folds
+
+# 3. USE FOCAL LOSS
+FOCAL_GAMMA = 2.0
+FOCAL_ALPHA = 0.25
+
+# 4. USE THRESHOLD TUNING POR CLASSE
+thresholds = [1.25, 0.40, 1.55, 0.90, 1.0, 1.0, 1.0]
+adjusted = probs * thresholds
+preds = adjusted.argmax(axis=1)
+
+# 5. USE BERTimbau LARGE (não base!)
+model = "neuralmind/bert-large-portuguese-cased"
+
+# 6. USE RAW DATA (sem tratamento de texto)
+# Não normalize, não remova stopwords!
+```
+
+### ❌ NÃO FAÇA ISSO
+
+| Técnica | Por que falha | Score |
+|---------|---------------|-------|
+| LoRA offline | Kaggle não suporta | 0.13 |
+| LLMs zero/one-shot | Não entendem BI-RADS | 0.13 |
+| SMOTE | Overfitting | -5% |
+| Tratar texto | Remove contexto útil | -2% |
+| Seed Ensemble (>3) | Variância aumenta | -8% |
+| BERTimbau base | Capacidade insuficiente | 0.64 |
+| mDeBERTa | Bug fp16 | 0.01 |
+
+### 🔥 PRÓXIMO EXPERIMENTO (Prioridade)
+
+```python
+# Combinar as 3 melhores técnicas:
+MAX_LEN = 512              # ✅ Melhor score
+N_FOLDS = 5                # ✅ Estabilidade
+thresholds = otimizar()    # ✅ +3% potencial
+label_smoothing = 0.1      # ✅ Regularização
+```
+
+**Meta:** Superar 0.85+
+
+---
+
 ## Leaderboard Completo
 
 ### Top Performers (> 0.75)
