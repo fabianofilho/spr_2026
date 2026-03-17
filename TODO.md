@@ -5,15 +5,15 @@
 | Rank | Modelo | Score | Data |
 |------|--------|-------|------|
 | 🏆 | **BERTimbau v4 (Threshold Tuning)** | **0.82073** | 28/02 |
-| 2 | BERTimbau + Focal Loss | 0.79696 | 24/02 |
-| 3 | Super Ensemble v1 | 0.78729 | 27/02 |
-| 4 | Ensemble Soft Voting | 0.78049 | 24/02 |
-| 5 | TF-IDF + LinearSVC | 0.77885 | 24/02 |
-| 6 | Custom Transformer | 0.77272 | 24/02 |
-| 7 | LinearSVC v4 | 0.77244 | 28/02 |
-| 8 | SGDClassifier v3 | 0.77036 | 26/02 |
-| 9 | Ensemble v3 | 0.76567 | 28/02 |
-| 10 | SGDClassifier v4 | 0.76503 | 28/02 |
+| 🥈 | **BERTimbau v5 + Label Smoothing** | **0.81100** | 09/03 |
+| 3 | BERTimbau + Focal Loss | 0.79696 | 24/02 |
+| 4 | Super Ensemble v1 | 0.78729 | 27/02 |
+| 5 | Super Ensemble v3 + Threshold | 0.78660 | 09/03 |
+| 6 | Ensemble Soft Voting | 0.78049 | 24/02 |
+| 7 | TF-IDF + LinearSVC | 0.77885 | 24/02 |
+| 8 | BERTimbau v5 Ensemble Threshold | 0.77385 | 09/03 |
+| 9 | Custom Transformer | 0.77272 | 24/02 |
+| 10 | LinearSVC v4 | 0.77244 | 28/02 |
 
 > Ver lista completa em [insights/README.md](insights/README.md)
 
@@ -51,6 +51,7 @@ Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 
 ### ✅ O que funciona
 - **Threshold Tuning** por classe (+3% no BERTimbau v4!) 🔥
+- **Label Smoothing** → 2º melhor score (0.81100) 🔥
 - **Focal Loss** (γ=2.0, α=0.25) → essencial
 - **Seed Ensemble** (3 seeds) → +0.5-1% robustez
 - **5-Fold CV** → thresholds estáveis
@@ -61,7 +62,7 @@ Ver [NEXT.md](NEXT.md) para estratégias detalhadas.
 - **LLMs zero/one-shot** para este problema
 - **SMOTE** com v4/v5 (todas regrediram)
 - **Tratamento de texto** com v5 (piorou -2%)
-- **Label Smoothing alto** → prejudica threshold tuning
+- **Seed Ensemble v5** → 0.72135 (não funciona como v4)
 - **MAX_LEN=512** → timeout (relatórios são curtos)
 
 ---

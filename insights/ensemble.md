@@ -4,9 +4,12 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 🥈 | **VotingClassifier soft** | **0.78049** | ✅ Submetido |
-| 2 | TF-IDF + W2V voting | 0.74667 | ✅ Submetido |
-| 3 | Stacking Meta-Learner | 0.73852 | ✅ Submetido |
+| � | **Super Ensemble v1** | **0.78729** | ✅ Submetido |
+| 🥈 | **Super Ensemble v3 + Threshold** | **0.78660** | ✅ Submetido |
+| 3 | **VotingClassifier soft** | **0.78049** | ✅ Submetido |
+| 4 | BERTimbau v5 Ensemble Threshold | 0.77385 | ✅ Submetido |
+| 5 | TF-IDF + W2V voting | 0.74667 | ✅ Submetido |
+| 6 | Stacking Meta-Learner | 0.73852 | ✅ Submetido |
 
 ---
 

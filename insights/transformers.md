@@ -5,21 +5,24 @@
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
 | 🏆 | **BERTimbau v4 + Threshold Tuning** | **0.82073** | ✅ MELHOR |
-| 2 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 3 | BERTimbau v5 (Gamma Search γ=2.5) | 0.75574 | ❌ Abaixo v4 |
-| 4 | BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo v4 |
-| 5 | **BioBERTpt** | **0.72480** | ✅ Submetido |
-| 6 | BERTimbau v5 (Class) | 0.69238 | ❌ Regressão |
-| 7 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
-| 8 | ModernBERT base | 0.68578 | ✅ Submetido |
-| 9 | BERTimbau base | 0.64319 | ✅ Submetido |
-| 10 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 11 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| 🥈 | **BERTimbau v5 + Label Smoothing** | **0.81100** | ✅ 2º MELHOR |
+| 3 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
+| 4 | BERTimbau v5 Ensemble Threshold | 0.77385 | ✅ Submetido |
+| 5 | BERTimbau v5 (Gamma Search γ=2.5) | 0.75574 | ❌ Abaixo v4 |
+| 6 | BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo v4 |
+| 7 | **BioBERTpt** | **0.72480** | ✅ Submetido |
+| 8 | BERTimbau v5 Seed Ensemble | 0.72135 | ❌ Abaixo v4 |
+| 9 | BERTimbau v5 (Class) | 0.69238 | ❌ Regressão |
+| 10 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
+| 11 | ModernBERT base | 0.68578 | ✅ Submetido |
+| 12 | BERTimbau base | 0.64319 | ✅ Submetido |
+| 13 | BERT Multilingual | 0.56095 | ✅ Submetido |
+| 14 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa + class weights | 0.01008 | ⚠️ BUG |
 | ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
 
-> **🏆 BERTimbau v4 + Threshold Tuning = 0.82073** - Variações de LR/Gamma não melhoram!
+> **🏆 BERTimbau v4 + Threshold Tuning = 0.82073** - Label Smoothing (v5) quase iguala!
 
 ---
 

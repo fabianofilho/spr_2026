@@ -1,16 +1,17 @@
 # NEXT.md - Próximos Passos
 
-> Baseado em 45+ submissões (Fev/2026)
+> Baseado em 50+ submissões (Fev-Mar/2026)
 
 ## Estado Atual
 
 | Métrica | Valor |
 |---------|-------|
 | 🏆 Melhor Score | **0.82073** (BERTimbau v4 + Threshold Tuning) |
-| 2º Melhor | 0.79696 (BERTimbau + Focal Loss) |
-| 3º Melhor | 0.78729 (Super Ensemble v1) |
+| 🥈 2º Melhor | **0.81100** (BERTimbau v5 + Label Smoothing) |
+| 3º Melhor | 0.79696 (BERTimbau + Focal Loss) |
+| 4º Melhor | 0.78729 (Super Ensemble v1) |
 | Baseline TF-IDF | 0.77885 |
-| Total Submissões | 48+ |
+| Total Submissões | 50+ |
 
 ---
 
@@ -46,21 +47,22 @@ LLM com prompt detalhado das categorias BI-RADS (experimental).
 | LLMs zero/one-shot | Não entendem contexto médico |
 | SMOTE | v4/v5 regrediram |
 | Tratamento de texto | v5 com normalização piorou -2% |
-| Label Smoothing alto | Prejudica threshold tuning |
+| Seed Ensemble v5 | Score 0.72135 (pior que v4) |
 | MAX_LEN=512 | Timeout, relatórios são curtos (~100 tokens) |
 | Iterar sobre sucesso | SGD v4/v5 pioraram vs v3 |
 
 ---
 
-## 📊 Resultados Recentes (2026-03-03)
+## 📊 Resultados Recentes (2026-03-09)
 
 | Notebook | Score | Resultado |
 |----------|-------|----------|
-| BERTimbau v5 (Gamma Search) | 0.75574 | ❌ Abaixo do v4 |
-| BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo do v4 |
-| BERTimbau v5 (Class) | 0.69238 | ❌ Regressão significativa |
+| BERTimbau v5 + Label Smoothing | **0.81100** | ✅ 2º melhor! |
+| Super Ensemble v3 + Threshold | 0.78660 | ✅ Top 5 |
+| BERTimbau v5 Ensemble Threshold | 0.77385 | ✅ Acima baseline |
+| BERTimbau v5 Seed Ensemble (08/03) | 0.72135 | ❌ Abaixo do v4 |
 
-**Conclusão:** Nenhuma variação v5 superou o v4 (0.82073). Threshold tuning continua sendo o diferencial.
+**Conclusão:** Label Smoothing com v5 quase igualou o v4! Próximo passo: combinar Label Smoothing + Threshold Tuning.
 
 ---
 
@@ -69,9 +71,10 @@ LLM com prompt detalhado das categorias BI-RADS (experimental).
 ### Alta Prioridade (BERTimbau v5)
 | Notebook | Técnica | Risco | Status |
 |----------|---------|-------|--------|
+| `bertimbau_v5_label_smooth_threshold` | Label Smoothing + Threshold Tuning | Baixo | 🔥 PRÓXIMO |
 | `alpha_weights` | α=0.3, 0.4 no Focal Loss | Baixo | Pendente |
 | `gamma_search` | γ=1.5, 2.5, 3.0 | Baixo | ❌ 0.75574 |
-| `seed_ensemble` | 5 seeds | Baixo | Pendente |
+| `seed_ensemble` | 5 seeds | Baixo | ❌ 0.72135 |
 | `lr_search` | LR=1e-5, 3e-5 | Baixo | ❌ 0.75508 |
 
 ### LLMs Médicos (Experimental)

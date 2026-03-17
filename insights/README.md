@@ -1,6 +1,6 @@
 # Insights - Análise Metodológica
 
-> Consolidação de 45+ submissões (Fev/2026)
+> Consolidação de 50+ submissões (Fev-Mar/2026)
 
 ## Leaderboard Completo
 
@@ -9,13 +9,16 @@
 | Rank | Modelo | Score | Categoria |
 |------|--------|-------|-----------|
 | 🏆 | **BERTimbau v4 (Threshold Tuning)** | **0.82073** | Transformers |
-| 2 | BERTimbau + Focal Loss | 0.79696 | Transformers |
-| 3 | Super Ensemble v1 | 0.78729 | Ensemble |
-| 4 | Ensemble Soft Voting | 0.78049 | Ensemble |
-| 5 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
-| 6 | Custom Transformer | 0.77272 | Custom |
-| 7 | LinearSVC v4 | 0.77244 | TF-IDF |
-| 8 | SGDClassifier v3 | 0.77036 | TF-IDF |
+| 🥈 | **BERTimbau v5 + Label Smoothing** | **0.81100** | Transformers |
+| 3 | BERTimbau + Focal Loss | 0.79696 | Transformers |
+| 4 | Super Ensemble v1 | 0.78729 | Ensemble |
+| 5 | Super Ensemble v3 + Threshold | 0.78660 | Ensemble |
+| 6 | Ensemble Soft Voting | 0.78049 | Ensemble |
+| 7 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
+| 8 | BERTimbau v5 Ensemble Threshold | 0.77385 | Transformers |
+| 9 | Custom Transformer | 0.77272 | Custom |
+| 10 | LinearSVC v4 | 0.77244 | TF-IDF |
+| 11 | SGDClassifier v3 | 0.77036 | TF-IDF |
 
 ### Mid Performers (0.65 - 0.75)
 
@@ -29,6 +32,7 @@
 | Stacking Meta-Learner | 0.73852 | Ensemble |
 | TF-IDF + LogReg | 0.72935 | TF-IDF |
 | BioBERTpt | 0.72480 | Transformers |
+| BERTimbau v5 Seed Ensemble | 0.72135 | Transformers |
 | LogReg v3 | 0.71303 | TF-IDF |
 | TF-IDF + LightGBM | 0.70273 | TF-IDF |
 | TF-IDF + XGBoost | 0.69482 | TF-IDF |
