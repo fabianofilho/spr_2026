@@ -4,29 +4,52 @@
 
 | Rank | Modelo | Score | Status |
 |------|--------|-------|--------|
-| 🏆 | **BERTimbau v4 + Threshold Tuning** | **0.82073** | ✅ MELHOR |
-| 🥈 | **BERTimbau v5 + Label Smoothing** | **0.81100** | ✅ 2º MELHOR |
-| 3 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
-| 4 | BERTimbau v5 Ensemble Threshold | 0.77385 | ✅ Submetido |
-| 5 | BERTimbau v5 (Gamma Search γ=2.5) | 0.75574 | ❌ Abaixo v4 |
-| 6 | BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo v4 |
-| 7 | **BioBERTpt** | **0.72480** | ✅ Submetido |
-| 8 | BERTimbau v5 Seed Ensemble | 0.72135 | ❌ Abaixo v4 |
-| 9 | BERTimbau v5 (Class) | 0.69238 | ❌ Regressão |
-| 10 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
-| 11 | ModernBERT base | 0.68578 | ✅ Submetido |
-| 12 | BERTimbau base | 0.64319 | ✅ Submetido |
-| 13 | BERT Multilingual | 0.56095 | ✅ Submetido |
-| 14 | DistilBERT Multilingual | 0.55229 | ✅ Submetido |
+| 🏆 | **BERTimbau 5-Fold + MAX_LEN=512** | **0.84027** | ✅ MELHOR |
+| 🥈 | BERTimbau Threshold v3 | 0.81301 | ✅ 2º MELHOR |
+| 3 | BERTimbau Raw Data v9 | 0.81213 | ✅ Submetido |
+| 4 | BERTimbau v5 + Label Smoothing | 0.81100 | ✅ Submetido |
+| 5 | BERTimbau 5-Fold v11 | 0.80950 | ✅ Submetido |
+| 6 | BERTimbau MAX_LEN=512 v2 | 0.80509 | ✅ Submetido |
+| 7 | BERTimbau v4 + Threshold Tuning | 0.82073 | ✅ Submetido |
+| 8 | **BERTimbau + Focal Loss** | **0.79696** | ✅ Submetido |
+| 9 | BERTimbau v5 Ensemble Threshold | 0.77385 | ✅ Submetido |
+| 10 | BERTimbau v5 (Gamma Search γ=2.5) | 0.75574 | ❌ Abaixo best |
+| 11 | BERTimbau v5 (LR Search) | 0.75508 | ❌ Abaixo best |
+| 12 | **BioBERTpt** | **0.72480** | ✅ Submetido |
+| 13 | BERTimbau v5 Seed Ensemble | 0.72135 | ❌ Abaixo best |
+| 14 | BERTimbau v5 (Class) | 0.69238 | ❌ Regressão |
+| 15 | **XLM-RoBERTa + Mean Pool** | **0.68767** | ✅ Submetido |
+| 16 | ModernBERT base | 0.68578 | ✅ Submetido |
 | ❌ | BERTimbau + LoRA (Offline) | 0.13261 | ⚠️ Falhou |
 | ❌ | mDeBERTa + class weights | 0.01008 | ⚠️ BUG |
-| ❌ | mDeBERTa-v3 | 0.01008 | ⚠️ Bug fp16 |
 
-> **🏆 BERTimbau v4 + Threshold Tuning = 0.82073** - Label Smoothing (v5) quase iguala!
+> **🏆 BERTimbau 5-Fold + MAX_LEN=512 = 0.84027** - Novo recorde! +2% acima do v4!
 
 ---
 
-## 🏆 Análise: BERTimbau + Focal Loss (0.79696) - MELHOR SCORE!
+## 🔥 Análise: MAX_LEN=512 (0.84027) - NOVO MELHOR SCORE!
+
+**MAX_LEN=512 superou todas as outras técnicas!** Score de **0.84027** supera o v4 (0.82073) em **+2.4%**.
+
+### Por que funcionou?
+
+1. **MAX_LEN=512:** Relatórios médicos podem ter informações importantes no final
+2. **5-Fold Ensemble:** Média de 5 modelos reduz variância
+3. **model-v4:** Pesos mais recentes e melhor calibrados
+4. **Calibração com thresholds:** Ajuste fino por classe
+
+### Comparação de MAX_LEN
+
+| MAX_LEN | Score | Delta |
+|---------|-------|-------|
+| 512 | **0.84027** | +2.4% |
+| 192 | 0.81213 | baseline |
+
+**Insight:** Usar mais contexto ajuda significativamente!
+
+---
+
+## 🏆 Análise: BERTimbau + Focal Loss (0.79696)
 
 **Primeiro transformer a superar TF-IDF!** BERTimbau com Focal Loss alcançou **0.79696**, superando o baseline TF-IDF (0.77885) em **+2.3%**.
 

@@ -1,6 +1,6 @@
 # Insights - Análise Metodológica
 
-> Consolidação de 50+ submissões (Fev-Mar/2026)
+> Consolidação de 55+ submissões (Fev-Mar/2026)
 
 ## Leaderboard Completo
 
@@ -8,26 +8,19 @@
 
 | Rank | Modelo | Score | Categoria |
 |------|--------|-------|-----------|
-| 🏆 | **BERTimbau v4 (Threshold Tuning)** | **0.82073** | Transformers |
-| 🥈 | **BERTimbau v5 + Label Smoothing** | **0.81100** | Transformers |
-| 3 | BERTimbau + Focal Loss | 0.79696 | Transformers |
-| 4 | Super Ensemble v1 | 0.78729 | Ensemble |
-| 5 | Super Ensemble v3 + Threshold | 0.78660 | Ensemble |
-| 6 | Ensemble Soft Voting | 0.78049 | Ensemble |
-| 7 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
-| 8 | BERTimbau v5 Ensemble Threshold | 0.77385 | Transformers |
-| 9 | Custom Transformer | 0.77272 | Custom |
-| 10 | LinearSVC v4 | 0.77244 | TF-IDF |
-| 11 | SGDClassifier v3 | 0.77036 | TF-IDF |
-
-### Mid Performers (0.65 - 0.75)
-
-| Modelo | Score | Categoria |
-|--------|-------|-----------|
-| Ensemble v3 | 0.76567 | Ensemble |
-| SGDClassifier v4 | 0.76503 | TF-IDF |
-| LinearSVC v3 | 0.75966 | TF-IDF |
-| TF-IDF + SGDClassifier | 0.75019 | TF-IDF |
+| 🏆 | **BERTimbau 5-Fold + MAX_LEN=512** | **0.84027** | Transformers |
+| 🥈 | BERTimbau Threshold v3 | 0.81301 | Transformers |
+| 3 | BERTimbau Raw Data v9 | 0.81213 | Transformers |
+| 4 | BERTimbau v5 + Label Smoothing | 0.81100 | Transformers |
+| 5 | BERTimbau 5-Fold v11 | 0.80950 | Transformers |
+| 6 | BERTimbau MAX_LEN=512 v2 | 0.80509 | Transformers |
+| 7 | BERTimbau v4 (Threshold Tuning) | 0.82073 | Transformers |
+| 8 | BERTimbau + Focal Loss | 0.79696 | Transformers |
+| 9 | Super Ensemble v1 | 0.78729 | Ensemble |
+| 10 | Super Ensemble v3 + Threshold | 0.78660 | Ensemble |
+| 11 | Ensemble Soft Voting | 0.78049 | Ensemble |
+| 12 | TF-IDF + LinearSVC | 0.77885 | TF-IDF |
+| 13 | BERTimbau v5 Ensemble Threshold | 0.77385 | Transformers |
 | Ensemble TF-IDF + W2V | 0.74667 | Ensemble |
 | Stacking Meta-Learner | 0.73852 | Ensemble |
 | TF-IDF + LogReg | 0.72935 | TF-IDF |

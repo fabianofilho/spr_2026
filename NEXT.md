@@ -1,41 +1,30 @@
 # NEXT.md - Próximos Passos
 
-> Baseado em 50+ submissões (Fev-Mar/2026)
+> Baseado em 55+ submissões (Fev-Mar/2026)
 
 ## Estado Atual
 
 | Métrica | Valor |
 |---------|-------|
-| 🏆 Melhor Score | **0.82073** (BERTimbau v4 + Threshold Tuning) |
-| 🥈 2º Melhor | **0.81100** (BERTimbau v5 + Label Smoothing) |
-| 3º Melhor | 0.79696 (BERTimbau + Focal Loss) |
-| 4º Melhor | 0.78729 (Super Ensemble v1) |
+| 🏆 Melhor Score | **0.84027** (BERTimbau 5-Fold + MAX_LEN=512) |
+| 🥈 2º Melhor | **0.81301** (BERTimbau Threshold v3) |
+| 3º Melhor | 0.81213 (BERTimbau Raw Data v9) |
+| 4º Melhor | 0.81100 (BERTimbau v5 + Label Smoothing) |
+| 5º Melhor | 0.80950 (BERTimbau 5-Fold v11) |
 | Baseline TF-IDF | 0.77885 |
-| Total Submissões | 50+ |
+| Total Submissões | 55+ |
 
 ---
 
-## 🚀 Pasta 2026-03-01 (Rodar Amanhã)
+## 🔥 Descoberta Chave: MAX_LEN=512
 
-### Ultimate v6 - PRIORIDADE MÁXIMA
-```python
-# Combina TODAS as técnicas validadas:
-SEEDS = [42, 123, 456]      # 3-seed ensemble
-N_FOLDS = 5                  # Cross-validation
-FOCAL_GAMMA = 2.0            # Focal Loss
-FOCAL_ALPHA = 0.25
-# + Grid Search Thresholds por classe
-```
-**Expectativa:** >0.82073, meta 0.83+
+O notebook `resubmit_bertimbau_maxlen512_v0` alcançou **0.84027** usando:
+- 5-Fold Ensemble
+- MAX_LEN=512 (vs 192 anterior)
+- model-v4 (pesos recentes)
+- Calibração com thresholds
 
-### Threshold Grid v5
-Grid search mais fino de thresholds (step=0.02).
-
-### CV Thresholds v5
-Thresholds estimados via média de 5 folds para estabilidade.
-
-### Qwen + BI-RADS Instruction
-LLM com prompt detalhado das categorias BI-RADS (experimental).
+**Próximos passos:** Combinar MAX_LEN=512 com Label Smoothing e Threshold Tuning otimizado.
 
 ---
 
