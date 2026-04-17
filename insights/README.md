@@ -47,11 +47,16 @@ model = "neuralmind/bert-large-portuguese-cased"
 ### 🔥 PRÓXIMO EXPERIMENTO (Prioridade)
 
 ```python
-# Combinar as 3 melhores técnicas:
-MAX_LEN = 512              # ✅ Melhor score
-N_FOLDS = 5                # ✅ Estabilidade
-thresholds = otimizar()    # ✅ +3% potencial
-label_smoothing = 0.1      # ✅ Regularização
+# Combinacao comprovada pelos colegas (2026-04-08):
+MODEL = "neuralmind/bert-large-portuguese-cased"
+MAX_LEN = 512              # +2.4% vs 192
+N_FOLDS = 5                # estabilidade
+FOCAL_GAMMA = 2.0
+FOCAL_ALPHA = 0.25
+LABEL_SMOOTHING = 0.05     # regularizacao leve
+AWP_LR = 1e-1              # +0.3-0.5 pp esperado
+AWP_EPS = 1e-2
+N_TRIALS_OPTUNA = 300      # temperatura + 7 thresholds simultaneos
 ```
 
 **Meta:** Superar 0.85+
@@ -173,12 +178,22 @@ Word2Vec (média) dilui essa informação.
 
 | Arquivo | Melhor Score | Conclusão |
 |---------|--------------|-----------|
-| [transformers.md](transformers.md) | 0.79696 | BERTimbau + Focal Loss domina |
-| [ensemble.md](ensemble.md) | 0.78049 | Soft Voting > Stacking |
-| [tfidf.md](tfidf.md) | 0.77885 | Baseline difícil de bater |
+| [transformers.md](transformers.md) | 0.84027 | BERTimbau Large 5-fold MAX_LEN=512 domina |
+| [ensemble.md](ensemble.md) | 0.78729 | Super Ensemble v1 melhor |
+| [tfidf.md](tfidf.md) | 0.77885 | Baseline forte |
 | [sentence_transformers.md](sentence_transformers.md) | 0.77272 | Custom encoder surpreende |
-| [word2vec.md](word2vec.md) | 0.66385 | Não recomendado |
+| [word2vec.md](word2vec.md) | 0.66385 | Nao recomendado |
+
+### Rodada 2026-04-08 (colegas, aguardando scores)
+
+| Notebook | Tecnica Nova | Status |
+|----------|-------------|--------|
+| bertimbau_awp_v1 | AWP + Optuna 300 trials | Em avaliacao |
+| bertimbau_large_optuna_v1 | Optuna 300 trials (sem AWP) | Em avaliacao |
+| mdeberta_v3_focal_v1 | mDeBERTa corrigido (sem token_type_ids) | Em avaliacao |
+| xlmroberta_large_focal_v1 | XLM-R Large + Grad Accum | Em avaliacao |
+| ensemble_stacking_v1 | Stacking 3 transformers + LGB meta | Em avaliacao |
 
 ---
 
-*Atualizado: 28/02/2026*
+*Atualizado: 17/04/2026*

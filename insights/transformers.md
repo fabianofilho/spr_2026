@@ -373,4 +373,68 @@ Classes 5 e 6 (minoria) têm thresholds mais baixos, aumentando recall nessas cl
 
 ---
 
-*Atualizado em: 03/03/2026*
+## Rodada 2026-04-08 (colegas)
+
+Cinco notebooks rodados pelos colegas, sem scores publicos ainda (em avaliacao):
+
+| Notebook | Modelo | Tecnicas Novas | Epochs | Batch efetivo |
+|----------|--------|----------------|--------|---------------|
+| bertimbau_awp_v1 | BERTimbau Large | AWP + Focal + Label Smooth + Optuna 300 trials | 5 | 8 |
+| bertimbau_large_optuna_v1 | BERTimbau Large | Focal + Label Smooth + Optuna 300 trials | 5 | 8 |
+| mdeberta_v3_focal_v1 | mDeBERTa-v3-base | Focal + Label Smooth + Optuna 300 trials + Early Stop | 7 | 16 |
+| xlmroberta_large_focal_v1 | XLM-RoBERTa Large | Focal + Label Smooth + Grad Accum (4x4) + Optuna 300 | 5 | 16 |
+| ensemble_stacking_v1 | BERTimbau + mDeBERTa + XLM-R base | Stacking LightGBM meta-learner + Optuna 200 | 3 | variavel |
+
+### Tecnicas novas em relacao ao estado anterior
+
+**AWP (Adversarial Weight Perturbation):**
+```python
+AWP_LR = 1e-1
+AWP_EPS = 1e-2
+AWP_START_EPOCH = 1  # Warmup de 1 epoch antes de ativar
+# Perturba pesos na direcao do gradiente -> minimos mais planos -> melhor generalizacao
+# Estimativa dos colegas: +0.3-0.5 pp
+```
+
+**Optuna Joint Calibration (300 trials):**
+```python
+# Otimiza simultaneamente: 1 temperatura + 7 thresholds por classe
+# Sampler: TPESampler(seed=42)
+# Muito superior ao grid search sequencial
+N_TRIALS = 300
+```
+
+**Label Smoothing:**
+```python
+LABEL_SMOOTHING = 0.05  # Regularizacao leve, nao prejudica threshold tuning
+```
+
+**Gradient Accumulation (XLM-R Large):**
+```python
+BATCH_SIZE = 4
+GRAD_ACCUM = 4  # Effective batch = 16
+LR = 1e-5       # LR menor para modelo de 550M params
+```
+
+**Stacking com LightGBM meta-learner:**
+```python
+# OOF predictions de 3 modelos -> stack de (N, 21) features
+# Meta-learner LGB com early stopping (50 rounds)
+# Optuna 200 trials sobre meta-learner OOF
+lgb_params = {'learning_rate': 0.05, 'num_leaves': 31, 'n_estimators': 500}
+```
+
+### Correcao importante: mDeBERTa
+
+O bug fp16 anterior (score 0.01) foi porque o modelo anterior usava `token_type_ids` incorretamente.
+mDeBERTa NAO usa token_type_ids. Correto:
+```python
+# CORRETO para mDeBERTa e XLM-RoBERTa:
+inputs = {'input_ids': ..., 'attention_mask': ...}  # sem token_type_ids
+# ERRADO (causava o bug):
+inputs = {'input_ids': ..., 'attention_mask': ..., 'token_type_ids': ...}
+```
+
+---
+
+*Atualizado em: 17/04/2026*

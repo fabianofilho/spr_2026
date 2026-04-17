@@ -108,4 +108,25 @@ StackingClassifier(
 
 ---
 
-*Atualizado em: 24/02/2026*
+## Rodada 2026-04-08: Stacking com LightGBM (em avaliacao)
+
+Colegas rodaram `resubmit_ensemble_stacking_v1.ipynb` com arquitetura nova:
+
+```
+BERTimbau (5-fold, 3 epochs)  --|
+mDeBERTa-v3 (5-fold, 3 epochs) -+-> stack OOF (N, 21) -> LightGBM meta-learner -> Optuna 200 trials
+XLM-RoBERTa-base (5-fold, 3 ep) |
+```
+
+**Diferencas vs stacking anterior (0.73852):**
+- Base-learners sao transformers (nao TF-IDF/W2V)
+- Diversidade real de arquiteturas (BERT, DeBERTa, RoBERTa)
+- Meta-learner LightGBM (nao LogReg)
+- Optuna sobre o OOF do meta-learner
+
+**Hipotese:** Diversidade de arquiteturas deve resultar em erros descorrelacionados.
+Se confirmar, pode superar 0.84027 (melhor score atual).
+
+---
+
+*Atualizado em: 17/04/2026*
