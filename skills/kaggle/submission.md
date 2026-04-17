@@ -88,6 +88,25 @@ Exemplos:
 - [ ] Modelos com `local_files_only=True`
 - [ ] Output gera `submission.csv`
 
+### Paths corretos (confirmados em 2026-04-17):
+
+```python
+# Dataset da competicao
+TRAIN_PATH = '/kaggle/input/competitions/spr-2026-mammography-report-classification/train.csv'
+TEST_PATH  = '/kaggle/input/competitions/spr-2026-mammography-report-classification/test.csv'
+
+# BERTimbau Large (model: fabianofilho/bertimbau-ptbr-complete)
+MODEL_PATH = '/kaggle/input/models/fabianofilho/bertimbau-ptbr-complete/pytorch/default/1'
+```
+
+Para descobrir paths desconhecidos:
+```python
+import os
+for root, dirs, files in os.walk('/kaggle/input'):
+    for f in files:
+        print(os.path.join(root, f))
+```
+
 ### Após Score Reportado:
 - [ ] Copiar para `submissions/`
 - [ ] Atualizar `TODO.md`

@@ -63,6 +63,7 @@ Modelos que funcionam via **Add Input → Models**:
 |--------|--------|-------|-----------|------|
 | BERT Multilingual | `bert-base-multilingual-cased` | `muhammadukasha09` | `default` (V1) | `/kaggle/input/models/muhammadukasha09/bert-base-multilingual-cased/transformers/default/1/bert-base-multilingual-cased` |
 | ModernBERT | `modernbert` | `answer-ai` | `base` (V2) | `/kaggle/input/models/answer-ai/modernbert/pytorch/base/2` |
+| **BERTimbau Large** | `bertimbau-ptbr-complete` | `fabianofilho` | `pytorch/default/1` | `/kaggle/input/models/fabianofilho/bertimbau-ptbr-complete/pytorch/default/1` |
 
 ---
 
@@ -72,7 +73,6 @@ Requerem **upload manual** via Dataset:
 
 | Modelo | HuggingFace Hub |
 |--------|-----------------|
-| BERTimbau | `neuralmind/bert-base-portuguese-cased` |
 | BioBERTpt | `pucpr/biobertpt-all` |
 
 → Ver [upload.md](../models/upload.md) para instruções de upload manual.
