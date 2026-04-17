@@ -44,22 +44,45 @@ model = "neuralmind/bert-large-portuguese-cased"
 | BERTimbau base | Capacidade insuficiente | 0.64 |
 | mDeBERTa | Bug fp16 | 0.01 |
 
-### 🔥 PRÓXIMO EXPERIMENTO (Prioridade)
+### 🔥 LICAO 2026-04-17: AWP + Optuna = 0.77969 (REGRESSAO -6pp)
 
-```python
-# Combinacao comprovada pelos colegas (2026-04-08):
-MODEL = "neuralmind/bert-large-portuguese-cased"
-MAX_LEN = 512              # +2.4% vs 192
-N_FOLDS = 5                # estabilidade
-FOCAL_GAMMA = 2.0
-FOCAL_ALPHA = 0.25
-LABEL_SMOOTHING = 0.05     # regularizacao leve
-AWP_LR = 1e-1              # +0.3-0.5 pp esperado
-AWP_EPS = 1e-2
-N_TRIALS_OPTUNA = 300      # temperatura + 7 thresholds simultaneos
-```
+**Resultado contraintuitivo.** A combinacao "de ponta" falhou feio. Scores abaixo:
 
-**Meta:** Superar 0.85+
+| Tentativa | Score | Delta vs winner |
+|-----------|-------|-----------------|
+| Winner historico (BERTimbau 5-fold MAX_LEN=512) | **0.84027** | baseline |
+| Baseline TF-IDF + LinearSVC | 0.77885 | -6.1 pp |
+| **AWP + Optuna 300 trials (2026-04-17)** | **0.77969** | **-6.1 pp** |
+
+**Causas identificadas (ordem de impacto):**
+
+1. **Faltou `build_input_text` (maior culpado):** o notebook AWP usou texto raw (`train_df['report'].fillna('')`). O winner extrai secoes Indicacao/Achados/Comparativa. Diferenca estimada: **-3 a -5 pp**.
+2. **Optuna overfitou OOF:** 8 dimensoes x 300 trials sobre ~3000 amostras. O ganho no OOF nao generalizou. **-1 a -2 pp**.
+3. **Regularizacao tripla:** AWP + Label Smoothing + Focal Loss juntos suprimem o sinal em dataset pequeno. **-0.5 a -1 pp**.
+4. **AWP_LR=1e-1 excessivo:** literatura usa 1e-4 a 1e-3. **-0.5 a -1 pp**.
+
+### 🎯 NOVA ESTRATEGIA: Voltar ao basico
+
+Parar de inventar combinacoes. **Primeiro reproduzir, depois inovar.**
+
+#### Plano de 4 submissoes
+
+| # | Notebook | Tecnica | Meta |
+|---|----------|---------|------|
+| 1 | `winner_reproduce` | Copia exata do winner (thresholds fixos, sem Optuna) | ~0.84 (controle) |
+| 2 | `winner_pseudo_label` | Winner + pseudo-labeling (conf >0.95) | +0.5 a +1 pp |
+| 3 | `winner_msdropout` | Winner + Multi-Sample Dropout (5x) | +0.2 a +0.5 pp |
+| 4 | `winner_ensemble` | Media das 3 anteriores | +0.3 a +0.8 pp |
+
+**Principios desta rodada:**
+
+- ✅ USAR `build_input_text` sempre (extracao de secoes)
+- ✅ Thresholds fixos do winner: `[0.95, 1.6, 1.35, 1.0, 0.4, 1.15, 0.1]`, T=0.958
+- ✅ Focal Loss γ=2.0, α=0.25 (sem label smoothing)
+- ❌ SEM AWP (nao ajudou aqui)
+- ❌ SEM Optuna (overfitou)
+- ❌ SEM label smoothing combinado com focal
+- ❌ SEM texto raw
 
 ---
 
@@ -184,15 +207,11 @@ Word2Vec (média) dilui essa informação.
 | [sentence_transformers.md](sentence_transformers.md) | 0.77272 | Custom encoder surpreende |
 | [word2vec.md](word2vec.md) | 0.66385 | Nao recomendado |
 
-### Rodada 2026-04-08 (colegas, aguardando scores)
+### Rodada 2026-04-17
 
-| Notebook | Tecnica Nova | Status |
-|----------|-------------|--------|
-| bertimbau_awp_v1 | AWP + Optuna 300 trials | Em avaliacao |
-| bertimbau_large_optuna_v1 | Optuna 300 trials (sem AWP) | Em avaliacao |
-| mdeberta_v3_focal_v1 | mDeBERTa corrigido (sem token_type_ids) | Em avaliacao |
-| xlmroberta_large_focal_v1 | XLM-R Large + Grad Accum | Em avaliacao |
-| ensemble_stacking_v1 | Stacking 3 transformers + LGB meta | Em avaliacao |
+| Notebook | Tecnica Nova | Score | Observacao |
+|----------|-------------|-------|------------|
+| submit_bertimbau_large_awp_optuna | AWP + Optuna 300 trials | **0.77969** | ❌ -6pp vs winner. Texto raw + Optuna overfit |
 
 ---
 

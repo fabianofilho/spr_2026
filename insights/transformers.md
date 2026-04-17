@@ -6,6 +6,7 @@
 |------|--------|-------|--------|
 | 🏆 | **BERTimbau 5-Fold + MAX_LEN=512** | **0.84027** | ✅ MELHOR |
 | 🥈 | BERTimbau Threshold v3 | 0.81301 | ✅ 2º MELHOR |
+| ❌ | **BERTimbau Large + AWP + Optuna (2026-04-17)** | **0.77969** | ⚠️ Regressao -6pp |
 | 3 | BERTimbau Raw Data v9 | 0.81213 | ✅ Submetido |
 | 4 | BERTimbau v5 + Label Smoothing | 0.81100 | ✅ Submetido |
 | 5 | BERTimbau 5-Fold v11 | 0.80950 | ✅ Submetido |
@@ -277,6 +278,58 @@ Todos os modelos transformer precisam ser adicionados como **Input** no Kaggle:
 1. **BERTimbau base:** Melhor modelo PT-BR, baseline obrigatório
 2. **BioBERTpt:** Domínio médico, pode ter vantagem
 3. **mDeBERTa:** Estado da arte em NLU
+
+---
+
+## ❌ Análise: BERTimbau Large + AWP + Optuna (2026-04-17) — REGRESSAO
+
+**Score: 0.77969 (-6.1 pp vs winner 0.84027).** Ate abaixo do baseline TF-IDF (0.77885).
+
+### Configuracao submetida
+
+- BERTimbau Large, MAX_LEN=512, 5-fold, Focal Loss (γ=2.0, α=0.25)
+- **AWP** (AWP_LR=1e-1, AWP_EPS=1e-2, start epoch 2)
+- **Label Smoothing 0.05** (combinado com Focal)
+- **Optuna 300 trials** (8 dimensoes: 1 temperatura + 7 thresholds)
+- **Texto raw** (sem `build_input_text`)
+
+### Diagnostico das causas (ordem de impacto)
+
+| # | Causa | Delta estimado |
+|---|-------|----------------|
+| 1 | Faltou `build_input_text` (texto raw em vez de secoes extraidas) | -3 a -5 pp |
+| 2 | Optuna overfitou OOF (8 dim x 300 trials, ~3000 amostras) | -1 a -2 pp |
+| 3 | Tripla regularizacao: AWP + Label Smoothing + Focal | -0.5 a -1 pp |
+| 4 | AWP_LR=1e-1 excessivo (literatura: 1e-4 a 1e-3) | -0.5 a -1 pp |
+
+### Por que o OOF nao previu o score publico?
+
+**OOF com Optuna inflado:** otimizar 8 parametros sobre ~3000 amostras cria overfit sintetico.
+O F1 OOF "melhor" e artificial: thresholds escolhidos para memorizar quirks do OOF
+nao generalizam para o test set. **Lição: calibracao otimizada no OOF nao e confiavel
+com muitos graus de liberdade.**
+
+### Por que AWP nao ajudou?
+
+AWP e efetivo quando o modelo ja treina bem e voce precisa de generalizacao extra.
+Aqui, com texto raw + label smoothing + Focal, o modelo ja estava subotimo no treino.
+AWP em modelo subotimo = ruido adicional, nao regularizacao util.
+
+### Licoes Aprendidas (2026-04-17)
+
+- ❌ **Nao mudar pipeline de pre-processamento** sem validar no OOF
+- ❌ **Nao empilhar regularizadores** (AWP + LS + Focal = demais)
+- ❌ **Optuna com muitos trials/dims em OOF pequeno = overfit garantido**
+- ✅ **Reproducao primeiro, inovacao depois** (nao pulamos essa etapa)
+- ✅ **Thresholds fixos do winner** sao mais confiaveis que Optuna OOF
+- ✅ **O diferencial do winner e o pre-processamento** (`build_input_text`), nao truques de treino
+
+### Proxima rodada (estrategia corretiva)
+
+1. **Reproduzir o winner exato** (controle) - usa `build_input_text` + thresholds fixos
+2. **Pseudo-labeling** (test preds com conf >0.95 → retrain)
+3. **Multi-Sample Dropout** (5x dropout no head, media)
+4. **Ensemble das 3 acima**
 
 ---
 
