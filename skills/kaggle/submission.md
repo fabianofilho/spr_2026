@@ -88,7 +88,7 @@ Exemplos:
 - [ ] Modelos com `local_files_only=True`
 - [ ] Output gera `submission.csv`
 
-### Paths corretos (confirmados em 2026-04-17):
+### Paths e colunas confirmados em 2026-04-17:
 
 ```python
 # Dataset da competicao
@@ -97,6 +97,13 @@ TEST_PATH  = '/kaggle/input/competitions/spr-2026-mammography-report-classificat
 
 # BERTimbau Large (model: fabianofilho/bertimbau-ptbr-complete)
 MODEL_PATH = '/kaggle/input/models/fabianofilho/bertimbau-ptbr-complete/pytorch/default/1'
+
+# Colunas do dataset
+TEXT_COL   = 'report'   # coluna de texto (NAO 'text')
+TARGET_COL = 'target'
+ID_COL     = 'ID'       # maiusculo (NAO 'id')
+
+# Tamanho: Train=18272, Test=4
 ```
 
 Para descobrir paths desconhecidos:
