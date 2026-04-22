@@ -215,4 +215,24 @@ Word2Vec (média) dilui essa informação.
 
 ---
 
-*Atualizado: 17/04/2026*
+## 👥 Trabalho do Team (Augusto Serpa, clonado 22/04)
+
+Ver [team.md](team.md) para detalhes completos.
+
+**Diferenciais do approach do Augusto:**
+
+- HuggingFace Trainer + YAML + wandb (infra diferente)
+- BERTimbau **base** (nao Large), MAX_LEN 256
+- Weighted CE (nao Focal), LR 1e-5
+- **Cascata BI-RADS 2 vs 3:** classificador binario especializado que faz override bidirecional (2→3 ou 3→2) quando o 7-classes tem duvida entre essas duas classes
+
+**Oportunidades combinadas (em ordem de prioridade):**
+
+1. 🔥 **Cascata 2v3 sobre o winner:** binario 2v3 com BERTimbau Large + Focal em vez do base. Override no output do 5-fold. Meta: +0.5 a +1.5 pp.
+2. 🔥 **Blend de arquiteturas:** 50/50 winner_large + augusto_base. Diversidade de hiperparametros gera ganho em ensemble.
+3. **Stacking com meta-learner:** 14 features (7 do meu + 7 do dele) em LightGBM OOF.
+4. **Cascata multipla:** alem de 2v3, fronteiras 0v1 e 4v5 tambem podem ter pontos de confusao.
+
+---
+
+*Atualizado: 22/04/2026*

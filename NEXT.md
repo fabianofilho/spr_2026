@@ -1,8 +1,36 @@
 # NEXT.md - Próximos Passos
 
-> Atualizado 2026-04-17 apos regressao do AWP+Optuna (0.77969)
+> Atualizado 2026-04-22 com incorporacao do trabalho do team (Augusto Serpa)
 
-## 🚨 Diagnostico da rodada 2026-04-17
+## 🚀 Estrategia Combinada (time + eu)
+
+Ver [insights/team.md](insights/team.md) para detalhes do trabalho do Augusto.
+
+### Plano de 4 submissoes (2026-04-23)
+
+**Prioridade baseada no que cada abordagem traz:** o winner tem BERTimbau Large calibrado, o Augusto tem cascata 2v3. Combinar.
+
+| # | Notebook | Tecnica | Meta |
+|---|----------|---------|------|
+| 1 | `submit_winner_cascade_2v3` | Winner (5-fold Large) + cascata 2v3 (Large tambem) | +0.5 a +1.5 pp |
+| 2 | `submit_blend_large_base` | Blend 50/50: winner_5fold + augusto_base_8020 | +0.3 a +0.8 pp |
+| 3 | `submit_stacking_meta` | LGB meta-learner sobre 7+7 probs (winner + augusto) | +0.5 a +1 pp |
+| 4 | `submit_multi_cascade` | Winner + cascata 2v3 + 0v1 + 4v5 (3 binarios) | +0.3 a +1 pp |
+
+### Regras (validadas na analise pos-AWP)
+
+- ✅ `build_input_text` sempre (extracao de secoes)
+- ✅ Thresholds fixos do winner `[0.95, 1.6, 1.35, 1.0, 0.4, 1.15, 0.1]`, T=0.958
+- ✅ Focal Loss γ=2.0, α=0.25 para modelo principal
+- ✅ weighted_cross_entropy para binarios (classe minoritaria desbalanceada)
+- ❌ SEM AWP
+- ❌ SEM Optuna sobre OOF (overfitou)
+
+---
+
+## Historico 2026-04-17 (diagnostico AWP)
+
+### 🚨 Diagnostico da rodada 2026-04-17
 
 **AWP + Optuna 300 trials = 0.77969** (regressao de 6pp vs winner 0.84027).
 

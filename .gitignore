@@ -67,3 +67,6 @@ Thumbs.db
 .env
 secrets/
 kaggle.json
+
+# Repositorio do colega de time (clone local, nao commitar)
+team/
